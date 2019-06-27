@@ -26,7 +26,7 @@
 	            <aside class="col-sm-5">
                     <div class="card">
                         <article class="card-body">
-	                        <h4 class="card-title text-center mb-4 mt-1">Sign in</h4>
+	                        <h4 class="card-title text-center mb-4 mt-1">Login</h4>
 	                        <hr>
 	                        <p class="text-primary text-center">Sign in to your account</p>
 	                        <form>
