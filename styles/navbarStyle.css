@@ -9,7 +9,7 @@ li>a {
     color: #ffffff !important;
 }
 
-li>a:hover {
+.navbar-nav li>a:hover {
     color: #4ece3d !important;
 }
 

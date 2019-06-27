@@ -26,28 +26,64 @@
                 <div class="line"></div>
                 <ul class="navbar-nav nav mr-auto mt-2 mt-lg-0" id="pills-tab" role="tablist">
                     <li class="nav-item active">
-                        <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Caselaws</a>
+                        <a class="nav-link active" id="pills-caselaws-tab" data-toggle="pill" href="#pills-caselaws" role="tab" aria-controls="pills-caselaws" aria-selected="true">Caselaws</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Rules </a>
+                        <a class="nav-link" id="pills-rules-tab" data-toggle="pill" href="#pills-rules" role="tab" aria-controls="pills-rules" aria-selected="false">Rules</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Contact us</a>
+                        <a class="nav-link" id="pills-contactus-tab" data-toggle="pill" href="#pills-contactus" role="tab" aria-controls="pills-contactus" aria-selected="false">Contact us</a>
                     </li>
                 </ul>
-                <form class="form-inline my-2 my-lg-0">
-                    <button class="btn btn-login btn-dark my-2 my-sm-0 mr-2" onclick="location.href='#'" type="button">Log in</button>
-                    <button class="btn btn-success my-2 my-sm-0" onclick="location.href='#'" type="button">Sign up</button> </form>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="nav-item mr-1">
+                        <a class="nav-link btn btn-login" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="false">Log in</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-success" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Sign up</a>
+                    </li>
+                </ul>
+                <!-- <form class="form-inline my-2 my-lg-0">
+                    <ul class="nav nav-pills" id="pills-tab" role="tablist">
+                        <li class="nav-item mr-2">
+                            <a class="nav-link btn-login" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="false">Log in</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-success" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Sign up</a>
+                        </li>
+                    </ul> -->
+                <!-- <button class="btn btn-login btn-dark my-2 my-sm-0 mr-2" onclick="location.href='#'" type="button">Log in</button> -->
+                <!-- <button class="btn btn-success my-2 my-sm-0" onclick="location.href='#'" type="button">Sign up</button> -->
+                <!-- </form> -->
             </div>
         </div>
     </nav>
     <div class="container">
         <div class="tab-content" id="pills-tabContent">
-            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">Case laws</div>
-            <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">Rules</div>
-            <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">Contact us</div>
+            <div class="tab-pane fade show active" id="pills-caselaws" role="tabpanel" aria-labelledby="pills-caselaws-tab">
+                Case laws
+            </div>
+            <div class="tab-pane fade" id="pills-rules" role="tabpanel" aria-labelledby="pills-rules-tab">
+                Rules
+            </div>
+            <div class="tab-pane fade" id="pills-contactus" role="tabpanel" aria-labelledby="pills-contactus-tab">
+                Contact us
+            </div>
+            <div class="tab-pane fade" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                Log in
+            </div>
+            <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+                Sign up
+            </div>
         </div>
     </div>
+
+
+
+
+
+
+
 
 
     <!-- Optional JavaScript -->
@@ -57,4 +93,4 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 
-</html>
+</html
