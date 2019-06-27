@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #0079c4;">
+    <nav class="navbar sticky-top navbar-expand-lg navbar-dark" style="background-color: #0079c4;">
         <div class="container">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -61,19 +61,19 @@
     <div class="container">
         <div class="tab-content" id="pills-tabContent">
             <div class="tab-pane fade show active" id="pills-caselaws" role="tabpanel" aria-labelledby="pills-caselaws-tab">
-                Case laws
+                <?php include 'routes/caselaws.php'; ?>  
             </div>
             <div class="tab-pane fade" id="pills-rules" role="tabpanel" aria-labelledby="pills-rules-tab">
-                Rules
+                <?php include 'routes/rules.php'; ?>  
             </div>
             <div class="tab-pane fade" id="pills-contactus" role="tabpanel" aria-labelledby="pills-contactus-tab">
-                Contact us
+                <?php include 'routes/contactUs.php'; ?>  
             </div>
             <div class="tab-pane fade" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                Log in
+                <?php include 'routes/logInPage.php'; ?>  
             </div>
             <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-                Sign up
+                <?php include 'routes/signUpPage.php'; ?>  
             </div>
         </div>
     </div>
