@@ -17,6 +17,9 @@ li>a {
     .line {
         display: none;
     }
+    .mb-0 {
+        margin-bottom: 5 !important;
+    }
 }
 
 .btn-login {

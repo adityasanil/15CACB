@@ -18,7 +18,7 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="">
                 <img src="images/15cacb.png" width="" height="30" class="d-inline-block align-top" alt="">
             </a>
 
@@ -37,10 +37,10 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="nav-item mr-1">
-                        <a class="nav-link btn btn-login" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="false">Log in</a>
+                        <a class="nav-link btn btn-login btn-block mb-1" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="false">Log in</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-success" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Sign up</a>
+                        <a class="nav-link btn btn-success btn-block mb-1" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Sign up</a>
                     </li>
                 </ul>
                 <!-- <form class="form-inline my-2 my-lg-0">
