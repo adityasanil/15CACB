@@ -21,7 +21,6 @@
 
     <body>
         <div class="container">
-            <br>
             <div class="row">
 	            <aside class="col-sm-8">
                     <div class="card text-dark">
