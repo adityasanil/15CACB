@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 ?>
 <html>
@@ -13,7 +13,7 @@
 
     <body>
         <div class="container">
-            <h1>Case laws</h1>
+            <h1>CASE LAWS</h1>
         </div>
     </body>
 </html>
