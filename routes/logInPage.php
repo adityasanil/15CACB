@@ -29,13 +29,13 @@
 	                        <h4 class="card-title text-center mb-4 mt-1">Login</h4>
 	                        <hr>
 	                        <p class="text-primary text-center">Sign in to your account</p>
-	                        <form>
+	                        <form class="form">
                                 <div class="form-group">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fas fa-user"></i> </span>
                                         </div>
-                                        <input name="" class="form-control" placeholder="Username" type="text">
+                                        <input class="form-control" placeholder="Username" type="text" name="username" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -43,11 +43,11 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"> <i class="fas fa-lock"></i> </span>
                                         </div>
-                                        <input class="form-control" placeholder="Password" type="password">
+                                        <input class="form-control" placeholder="Password" type="password" name="password" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <button type="button" class="btn btn-success btn-block" onclick="location.href='#'">Login</button>
+                                    <button type="submit" class="btn btn-success btn-block" name="loginSubmit" onclick="location.href='#'">Login</button>
                                 </div>
                                 <p class="text-center"><a href="#" class="text-primary">Forgot password?</a></p>
                             </form>
