@@ -1,5 +1,5 @@
 .line {
-    border-left: 1px solid white !important;
+    border-left: 1px solid #e3e1e1 !important;
     height: 35px !important;
 }
 
@@ -29,4 +29,14 @@ li>a {
 
 .btn-login:hover {
     background-color: #1a92dd !important;
+}
+
+.content {
+    font-family: 'Roboto' !important;
+}
+
+@media screen and (max-width: 574px) {
+    .collide {
+        margin-top: -18px !important;
+    }
 }
