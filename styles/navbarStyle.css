@@ -1,0 +1,29 @@
+.line {
+    border-left: 1px solid white !important;
+    height: 35px !important;
+}
+
+li>a {
+    font-family: 'Roboto';
+    font-size: 18px;
+    color: #ffffff !important;
+}
+
+li>a:hover {
+    color: #4ece3d !important;
+}
+
+@media screen and (max-width: 991px) {
+    .line {
+        display: none;
+    }
+}
+
+.btn-login {
+    background-color: #0079c4 !important;
+    border: none !important;
+}
+
+.btn-login:hover {
+    background-color: #1a92dd !important;
+}
