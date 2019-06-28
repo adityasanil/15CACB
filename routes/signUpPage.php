@@ -1,6 +1,3 @@
-<?php 
-
-?>
 <html>
     <head>
         <title>Sign up</title>
@@ -30,7 +27,7 @@
                             <p class="text-primary text-center">Fill in the details, you will be provided with an username & password via email.</p>
 
                             <!-- FORM START -->
-	                        <form class="form">
+	                        <form class="form" action="insertData.php" method="POST">
                                 <div class="form-group">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
@@ -98,6 +95,8 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">SWIFT code</span>
                                         </div>
+
+
                                         <input class="form-control" placeholder="8 or 11 characters SWIFT code" type="contact" name="codeSWIFT" required minlength="8" maxlength="11" pattern="[0-9]+">
                                     </div>
                                 </div>
@@ -110,7 +109,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-success btn-block" name="signUpSubmit">Submit</button>
+                                    <input type="submit" class="btn btn-success btn-block" name="submit"></input>
                                 </div>
                             </form>
                         </article>
