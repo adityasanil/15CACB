@@ -21,14 +21,13 @@
 
     <body>
         <div class="container">
-            <br>
             <div class="row">
-	            <aside class="col-sm-8">
-                    <div class="card text-dark">
+	            <aside class="col-sm-7">
+                    <div class="card text-dark" style="border: none;">
                         <article class="card-body">
 	                        <h4 class="card-title text-center mb-4 mt-1">Sign up</h4>
 	                        <hr>
-                            <p class="text-primary text-center">Fill the details, you will be provided with a username, password via email.</p>
+                            <p class="text-primary text-center">Fill in the details, you will be provided with an username & password via email.</p>
 
                             <!-- FORM START -->
 	                        <form class="form">
