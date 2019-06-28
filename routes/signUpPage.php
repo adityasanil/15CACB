@@ -37,8 +37,8 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">Name</span>
                                         </div>
-                                        <input name="firstName" class="form-control" placeholder="First name" type="text" required>
-                                        <input name="lastName" class="form-control" placeholder="Last name" type="text" required>
+                                        <input name="firstName" class="form-control" placeholder="First name" type="text" required pattern="[a-zA-Z]+">
+                                        <input name="lastName" class="form-control" placeholder="Last name" type="text" required pattern="[a-zA-Z]+">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -46,7 +46,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">Address</span>
                                         </div>
-                                        <textarea name="address" class="form-control" placeholder="residential address" rows="2"></textarea>
+                                        <textarea name="address" class="form-control" placeholder="residential address" rows="2" required maxlength="80"></textarea>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -54,7 +54,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">Email</span>
                                         </div>
-                                        <input name="email" class="form-control" placeholder="email id" type="email">
+                                        <input name="email" class="form-control" placeholder="email id" type="email" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -62,12 +62,12 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">Pan number</span>
                                         </div>
-                                        <input class="form-control mr-1" placeholder="10 digit number" type="text" name="panNumber">
+                                        <input class="form-control mr-1" placeholder="10 digit number" type="text" name="panNumber" required maxlength="10" pattern="[a-zA-Z0-9]+">
 
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">Contact</span>
                                         </div>
-                                        <input class="form-control" placeholder="contact number" type="tel" name="contactNumber" pattern="[0-9]{10}" title="must be 10 digit number" required>
+                                        <input class="form-control" placeholder="contact number" type="tel" name="contactNumber" pattern="[0-9]{10}" title="must be 10 digit number" required minlength="10" maxlenght="10">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -75,7 +75,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">Company name</span>
                                         </div>
-                                        <input class="form-control" placeholder="company name" type="text" name="companyName">
+                                        <input class="form-control" placeholder="company name" type="text" name="companyName" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -83,7 +83,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">GST number</span>
                                         </div>
-                                        <input class="form-control" placeholder="15 digit GST number" type="text" name="gstNumber">
+                                        <input class="form-control" placeholder="15 digit GST number" type="text" name="gstNumber" required minlength="15" maxlength="15" pattern="[a-zA-Z0-9]+">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -91,7 +91,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">IFSC code</span>
                                         </div>
-                                        <input class="form-control" placeholder="11 digit IFSC code" type="text" name="codeIFSC">
+                                        <input class="form-control" placeholder="11 digit IFSC code" type="text" name="codeIFSC" required minlength="11" maxlength="11" pattern="[a-zA-Z0-9]+"> 
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -99,7 +99,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">SWIFT code</span>
                                         </div>
-                                        <input class="form-control" placeholder="8 or 11 characters SWIFT code" type="text" name="codeSWIFT">
+                                        <input class="form-control" placeholder="8 or 11 characters SWIFT code" type="contact" name="codeSWIFT" required minlength="8" maxlength="11" pattern="[0-9]+">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -107,7 +107,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">Account number</span>
                                         </div>
-                                        <input class="form-control" placeholder="bank account number" type="text" name="accountNumber">
+                                        <input class="form-control" placeholder="bank account number" type="text" name="accountNumber" required minlength="11" maxlength="11" pattern="[0-9]+" >
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -120,4 +120,4 @@
             </div>
         </div> 
     </body>
-</html>
+</html> pattern="[0-9]"
