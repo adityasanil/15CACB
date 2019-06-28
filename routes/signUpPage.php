@@ -67,7 +67,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">Contact</span>
                                         </div>
-                                        <input class="form-control" placeholder="contact number" type="tel" name="contactNumber" pattern="[0-9]{10}" title="must be 10 digit number" required minlength="10" maxlenght="10">
+                                        <input class="form-control" placeholder="contact number" type="tel" name="contactNumber" pattern="[0-9]{10}" title="must be 10 digit number" required minlength="10" maxlength="10">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -120,4 +120,4 @@
             </div>
         </div> 
     </body>
-</html> pattern="[0-9]"
+</html>
