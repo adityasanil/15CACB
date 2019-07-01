@@ -29,7 +29,7 @@
 
                             <!-- FORM START -->
 	                        <form id="signup" class="form" method="POST">
-                                <!-- <div class="form-group">
+                                <div class="form-group">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">Name</span>
@@ -108,7 +108,7 @@
                                         </div>
                                         <input class="form-control" id="account" placeholder="bank account number" type="text" name="accountNumber" required minlength="11" maxlength="11" pattern="[0-9]+" >
                                     </div>
-                                </div> -->
+                                </div>
                                 <div class="form-group">
                                     <input type="submit" id="submitDetails" class="btn btn-success btn-block" value="Submit">
                                     <span id="result"></span>
@@ -122,14 +122,14 @@
 
         <script type="text/javascript">
             $(document).ready(function() {
-                $("#submitDetails").click(function(event) {
-                    event.preventDefault();
+                $("#submitDetails").click(function() {
+                    // event.preventDefault();
                     // console.log("Click");
                     $.post( "php/insertData.php", $("#signup").serialize(), function(data){
                         console.log(data);
                     });
-                    });
                 });
+            });
         </script>
     </body>
 </html>
