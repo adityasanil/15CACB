@@ -8,12 +8,6 @@ $dbname     = "user";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-if ($conn->connect_error)
- 	{
-    	die("Connection failed" .$conn->connect_error);
-	}
-
-
 $first_name = $_POST['firstName'];
  
 $last_name = $_POST['lastName'];
@@ -41,12 +35,11 @@ $acc_no = $_POST['accountNumber'];
 $sql = "INSERT INTO info (fname, lname, address, email, pan, contact, company, gst, ifsc, swift, acoount_no ) VALUES ('$first_name', '$last_name', '$add', '$email', '$pan', '$contact', '$company_name', '$gst', '$ifsc', '$swift', '$acc_no')";
 
 
-if ($conn->multi_query($sql) === TRUE) {
+if (mysqli_query($conn, $sql)) {
     echo "New records created successfully";
-} else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
 }
-
-$conn->close();
+else {
+	echo"Unsuccesfull";
+}
 
 ?>
