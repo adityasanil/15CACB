@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
         <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
 
@@ -29,7 +29,7 @@
 
                             <!-- FORM START -->
 	                        <form id="signup" class="form" method="POST">
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">Name</span>
@@ -108,9 +108,9 @@
                                         </div>
                                         <input class="form-control" id="account" placeholder="bank account number" type="text" name="accountNumber" required minlength="11" maxlength="11" pattern="[0-9]+" >
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="form-group">
-                                    <input type="button" id="submit" class="btn btn-success btn-block" value="ok"></input>
+                                    <input type="submit" id="submitDetails" class="btn btn-success btn-block" value="Submit">
                                     <span id="result"></span>
                                 </div>
                             </form>
@@ -119,24 +119,17 @@
                 </aside>
             </div>
         </div> 
-        <script>
 
-            $(document).ready(function(){
-                
-                $("#submit").click(function(){
-
-                        $.post({
-                        url:"../insertData.php",
-                        type:"post",
-                        input:$("#signup").serialize(),
-                        success:function(d)
-                        {
-                            alert(d);
-                        }
-
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $("#submitDetails").click(function(event) {
+                    event.preventDefault();
+                    console.log("Click");
+                    // $.post( "../php/insertData.php", $("#signup").serialize(), function(data){
+                    // $.post( "../php/insertData.php", {name: "John"}, function(data){
+                        // console.log(data);
                     });
                 });
-            });
         </script>
- </body>
+    </body>
 </html>
