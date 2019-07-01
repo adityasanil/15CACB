@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Sign up</title>
+        <title>SIGN UP</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -29,7 +29,7 @@
 
                             <!-- FORM START -->
 	                        <form id="signup" class="form" method="POST">
-                                <!-- <div class="form-group">
+                                <div class="form-group">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">Name</span>
@@ -108,7 +108,7 @@
                                         </div>
                                         <input class="form-control" id="account" placeholder="bank account number" type="text" name="accountNumber" required minlength="11" maxlength="11" pattern="[0-9]+" >
                                     </div>
-                                </div> -->
+                                </div>
                                 <div class="form-group">
                                     <input type="submit" id="submitDetails" class="btn btn-success btn-block" value="Submit">
                                     <span id="result"></span>
@@ -125,11 +125,12 @@
                 $("#submitDetails").click(function(event) {
                     event.preventDefault();
                     console.log("Click");
-                    // $.post( "../php/insertData.php", $("#signup").serialize(), function(data){
-                    // $.post( "../php/insertData.php", {name: "John"}, function(data){
-                        // console.log(data);
+                    $.post( "../php/insertData.php", $("#signup").serialize(), function(data){
+                    $.post( "../php/insertData.php", {name: "John"}, function(data){
+                    console.log(data);
                     });
                 });
         </script>
     </body>
 </html>
+5
