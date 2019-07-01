@@ -125,9 +125,9 @@
                 $("#submitDetails").click(function(event) {
                     event.preventDefault();
                     console.log("Click");
-                    // $.post( "../insertData.php", $("#signup").serialize(), function(data){
-                    // $.post( "../insertData.php", {name: "John"}, function(data){
-                        console.log(data);
+                    // $.post( "../php/insertData.php", $("#signup").serialize(), function(data){
+                    // $.post( "../php/insertData.php", {name: "John"}, function(data){
+                        // console.log(data);
                     });
                 });
         </script>
