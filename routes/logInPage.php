@@ -13,7 +13,7 @@
 
         <style>
             .row {
-                justify-content: center;
+                justify-c ontent: center;
             }
         </style>
 
