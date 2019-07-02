@@ -47,7 +47,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-success btn-block" name="loginSubmit" onclick="location.href='#'">Login</button>
+                                    <button type="submit" class="btn btn-success btn-block" name="loginSubmit">Login</button>
                                 </div>
                                 <p class="text-center"><a href="#" class="text-primary">Forgot password?</a></p>
                             </form>
