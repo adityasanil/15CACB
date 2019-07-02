@@ -40,7 +40,7 @@ if (mysqli_query($conn, $sql)) {
     echo "New records created successfully";
 }
 else {
-	echo"Unsuccessfull";
+	echo"Unable to add Details";
 }
 
 ?>
