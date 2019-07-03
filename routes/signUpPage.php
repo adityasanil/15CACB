@@ -23,12 +23,9 @@
                             <h4 class="card-title text-center mb-4 mt-1">Sign up</h4>
                             <hr>
                             <p class="text-primary text-center">Fill in the details, you will be provided with an username & password via email.</p>
+                            
                             <!-- FORM START -->
-<<<<<<< HEAD
                             <form id="signup" class="form" method="POST">
-=======
-	                        <form id="signup" class="form" method="POST">
->>>>>>> 1c4c63452efbcc1274f4f4e63e704c928a3bfd81
                                 <div class="form-group">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
@@ -119,33 +116,21 @@
            <script type="text/javascript">
             $(document).ready(function() {
                 $("#submitDetails").click(function() {
-<<<<<<< HEAD
                     event.preventDefault();
-                     console.log("Click");0
+                    //  console.log("Click");
                     $.post( "php/insertData.php", $("#signup").serialize(), function(data){
                         console.log(data);
                         alert(data);
-=======
-                    // event.preventDefault();
-                    // console.log("Click");
-                    $.post( "php/insertData.php", $("#signup").serialize(), function(data){
-                        console.log(data);
->>>>>>> 1c4c63452efbcc1274f4f4e63e704c928a3bfd81
+                    clear();
                     });
-                 clear();
+
+                    function clear(){
+                        $("#signup :input").each(function() {
+                            $(this).val('');
+                        });
+                    }
                 });
-<<<<<<< HEAD
-                
-                function clear(){
-                    $("#signup :input").each(function(){
-                        $(this).val('');
-                    });
-                }
-            });
-          </script>
-=======
             });
         </script>
->>>>>>> 1c4c63452efbcc1274f4f4e63e704c928a3bfd81
     </body>
 </html>

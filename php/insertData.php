@@ -1,46 +1,27 @@
 <?php
+include "connectionDb15CACB.php";
 
-$servername = "localhost";
-$username   = "root";
-$password   = "";
-$dbname     = "user";
-
-
-$conn = mysqli_connect($servername, $username, $password, $dbname);
-
-
-$first_name = $_POST['firstName'];
- 
-$last_name = $_POST['lastName'];
- 
-$add = $_POST['address'];
- 
+$firstName = $_POST['firstName'];
+$lastName = $_POST['lastName'];
+$identity = "client";
+$address = $_POST['address'];
 $email = $_POST['email'];
- 
-$pan = $_POST['panNumber'];
-
+$panNumber = $_POST['panNumber'];
 $contact = $_POST['contactNumber'];
-
-$company_name = $_POST['companyName'];
-
-$gst = $_POST['gstNumber'];
-
-$ifsc = $_POST['codeIFSC'];
-
-$swift = $_POST['codeSWIFT'];
-
-$acc_no = $_POST['accountNumber'];
+$companyName = $_POST['companyName'];
+$gstNumber = $_POST['gstNumber'];
+$codeIFSC = $_POST['codeIFSC'];
+$codeSWIFT = $_POST['codeSWIFT'];
+$accountNumber = $_POST['accountNumber'];
 
 
+$sql = "INSERT INTO info (`fname`, `lname`, `identity`, `addr`, `email`, `pan`, `contact`, `company`, `gst`, `ifsc`, `swift`, `acoount_no` ) VALUES ('$firstName', '$lastName', '$identity', '$address', '$email', '$panNumber', '$contact', '$companyName', '$gstNumber', '$codeIFSC', '$codeSWIFT', '$accountNumber')";
 
-$sql = "INSERT INTO info (fname, lname, address, email, pan, contact, company, gst, ifsc, swift, acoount_no ) VALUES ('$first_name', '$last_name', '$add', '$email', '$pan', '$contact', '$company_name', '$gst', '$ifsc', '$swift', '$acc_no')";
-
-
-if (mysqli_query($conn, $sql)) {
+if (mysqli_query($connect, $sql)) {
     echo "New records created successfully";
 }
 else {
-	echo"Unable to add Details";
+	echo "Unable to add Details! Error: " . mysqli_error($connect);
 }
 
 ?>
