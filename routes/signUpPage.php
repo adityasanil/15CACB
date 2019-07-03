@@ -8,27 +8,27 @@
         <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
-
         <style>
             .row {
                 justify-content: center;
             }
         </style>
-
     </head>
-
     <body>
         <div class="container">
             <div class="row">
-	            <aside class="col-sm-7">
+                <aside class="col-sm-7">
                     <div class="card text-dark" style="border: none;">
                         <article class="card-body">
-	                        <h4 class="card-title text-center mb-4 mt-1">Sign up</h4>
-	                        <hr>
+                            <h4 class="card-title text-center mb-4 mt-1">Sign up</h4>
+                            <hr>
                             <p class="text-primary text-center">Fill in the details, you will be provided with an username & password via email.</p>
-
                             <!-- FORM START -->
+<<<<<<< HEAD
+                            <form id="signup" class="form" method="POST">
+=======
 	                        <form id="signup" class="form" method="POST">
+>>>>>>> 1c4c63452efbcc1274f4f4e63e704c928a3bfd81
                                 <div class="form-group">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
@@ -60,7 +60,6 @@
                                             <span class="input-group-text">Pan number</span>
                                         </div>
                                         <input class="form-control mr-1" id="pan" placeholder="10 digit number" type="text" name="panNumber" required maxlength="10" pattern="[a-zA-Z0-9]+">
-
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">Contact</span>
                                         </div>
@@ -72,7 +71,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">Company name</span>
                                         </div>
-                                        <input class="form-control" id="company" placeholder="company name" type="text" name="companyName" required>
+                                        <input class="form-control" id="company" placeholder="company name" type="text" name=" companyName" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -96,8 +95,6 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">SWIFT code</span>
                                         </div>
-
-
                                         <input class="form-control" id="swift" placeholder="8 or 11 characters SWIFT code" type="contact" name="codeSWIFT" required minlength="8" maxlength="11" pattern="[0-9]+">
                                     </div>
                                 </div>
@@ -118,18 +115,37 @@
                     </div>
                 </aside>
             </div>
-        </div> 
-
-        <script type="text/javascript">
+        </div>
+           <script type="text/javascript">
             $(document).ready(function() {
                 $("#submitDetails").click(function() {
+<<<<<<< HEAD
+                    event.preventDefault();
+                     console.log("Click");0
+                    $.post( "php/insertData.php", $("#signup").serialize(), function(data){
+                        console.log(data);
+                        alert(data);
+=======
                     // event.preventDefault();
                     // console.log("Click");
                     $.post( "php/insertData.php", $("#signup").serialize(), function(data){
                         console.log(data);
+>>>>>>> 1c4c63452efbcc1274f4f4e63e704c928a3bfd81
                     });
+                 clear();
                 });
+<<<<<<< HEAD
+                
+                function clear(){
+                    $("#signup :input").each(function(){
+                        $(this).val('');
+                    });
+                }
+            });
+          </script>
+=======
             });
         </script>
+>>>>>>> 1c4c63452efbcc1274f4f4e63e704c928a3bfd81
     </body>
 </html>

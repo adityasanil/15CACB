@@ -6,7 +6,8 @@ $password   = "";
 $dbname     = "user";
 
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+
 
 $first_name = $_POST['firstName'];
  
@@ -39,7 +40,7 @@ if (mysqli_query($conn, $sql)) {
     echo "New records created successfully";
 }
 else {
-	echo"Unsuccesfull";
+	echo"Unable to add Details";
 }
 
 ?>
