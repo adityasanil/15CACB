@@ -10,6 +10,6 @@ if (!$connect) {
     die("Connection failed to database failed! Error: " . mysqli_connect_error());
 }
 else {
-    echo "Database connected";
+    // echo "Database connected";
 }
 ?>
