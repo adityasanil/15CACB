@@ -1,14 +1,15 @@
 <?php
-include "connectionDb15CACB.php";
+session_start();
+include 'connectionDb15CACB.php';
 
-if(isset($_POST['registerUser'])) {
-
-    function test_input($data) {
+function test_input($data) {
     $data = trim($data);
     $data = stripslashes($data);
     $data = htmlspecialchars($data);
     return $data;
-    }
+}
+
+if(isset($_POST['registerUser'])) {
 
     $id = uniqid(rand(1000,9999));
     $firstName = test_input($_POST['firstName']);
