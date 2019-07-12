@@ -113,7 +113,7 @@
                 </aside>
             </div>
         </div>
-           <script type="text/javascript">
+           <!-- <script type="text/javascript">
             $(document).ready(function() {
                 $("#submitDetails").click(function() {
                     event.preventDefault();
@@ -131,6 +131,6 @@
                     }
                 });
             });
-        </script>
+        </script> -->
     </body>
 </html>

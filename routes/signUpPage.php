@@ -26,7 +26,7 @@
                             <p class="text-primary text-center">Fill in the details, you will be provided with an username & password via email.</p>
                             
                             <!-- FORM START -->
-                            <form id="signup" class="form" method="POST">
+                            <form id="signup" class="form" method="POST" action="php/registerUser.php">
                                 <div class="form-group">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
@@ -85,15 +85,16 @@
                 </aside>
             </div>
         </div>
-           <script type="text/javascript">
+           <!-- <script type="text/javascript">
             $(document).ready(function() {
                 $("#submitDetails").click(function() {
                     // event.preventDefault();
-                    //  console.log("Click");
-                    $.post( "php/registerUser.php", $("#signup").serialize(), function(data){
+                     console.log("Click");
+                    // $.post( "php/registerUser.php", $("#signup").serialize(), function(data){
+                    $.post("php/registerUser.php", {name: "Aditya"}, function(data){
                         console.log(data);
                         // alert(data);
-                    clear();
+                    // clear();
                     });
 
                     function clear(){
@@ -103,6 +104,6 @@
                     }
                 });
             });
-        </script>
+        </script> -->
     </body>
 </html>
