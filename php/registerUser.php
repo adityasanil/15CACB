@@ -24,11 +24,13 @@ if(isset($_POST['registerUser'])) {
     ('$id', '$firstName', '$lastName', '$userName','$passwordHash', '$identity', '$email', '$contact')";
     
     if (mysqli_query($connect, $sql)) {
-        echo "New records created successfully";
+        echo "<script type='text/javascript'>alert('New records created successfully');</script>";
+        header('Location: ../index.php');
     }
     else {
         echo "Unable to add Details! Error: " . mysqli_error($connect);
     }
+
 
 }
 ?>
