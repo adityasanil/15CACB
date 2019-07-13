@@ -14,4 +14,5 @@ if (!$connect) {
 else {
     // echo "Database connected";
 }
+
 ?>

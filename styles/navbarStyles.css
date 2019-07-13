@@ -35,6 +35,11 @@ li>a {
     font-family: 'Roboto' !important;
 }
 
+#remarks {
+    background-color: #f5feff !important;
+    box-shadow: inset 2px 2px 2px 0px #ddd;
+}
+
 @media screen and (max-width: 574px) {
     .collide {
         margin-top: -18px !important;
