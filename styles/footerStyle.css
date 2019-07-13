@@ -1,0 +1,27 @@
+		  footer{
+    	  position: fixed;
+   		  left: 0;
+   		  bottom: 0;
+   		  width: 100%;
+   	    margin-bottom: 10px;
+   	  }
+
+  
+  		.cpr{
+        border-top: 1px solid rgba(143,143,143, 0.5);
+  			font-size: 16px;
+  			font-weight: bold;
+  			margin-top: 5px; 
+  		}
+
+  		.smedia{
+        float:right;
+  			margin-top: 18px;
+
+  		}
+
+
+  		.contact{
+  		 	font-size: 16px;
+  		 	color: #8f8f8f;
+  		}
