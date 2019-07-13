@@ -1,8 +1,54 @@
 <?php 
 session_start();
 
-$sessionHolder = $_SESSION['user'];
+$$sessionHolder = $_SESSION['user'];
 
+// include 'connectionDb15CACB.php';
+
+// $sessionHolder = $_SESSION['user'];
+
+// function test_input($data) {
+//     $data = trim($data);
+//     $data = stripslashes($data);
+//     $data = htmlspecialchars($data);
+//     return $data;
+// }
+
+// if(isset($_POST["submitFile"])) {
+    
+//     $remarks = test_input($_POST['clientRemarks']);
+
+//     $target_dir = "../../uploads/";
+//     $target_file = $target_dir . basename($_FILES["clientUploadedFile"]["name"]);
+//     $uploadOk = 1;
+//     $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+
+//     if (file_exists($target_file)) {
+//         echo "<script type='text/javascript'>alert('Sorry, file already exists. Rename it.');</script>";
+//         $uploadOk = 0;
+//     }
+
+//     if ($_FILES["clientUploadedFile"]["size"] > 500000) {
+//         echo "<script type='text/javascript'>alert('Sorry, your file is too large');</script>";
+//         $uploadOk = 0;
+//     }
+
+//     if($imageFileType != "docx" && $imageFileType != "txt" && $imageFileType != "pdf") {
+//         echo "<script type='text/javascript'>alert('Sorry, only docx, pdf & txt files are allowed.');</script>";
+//         $uploadOk = 0;
+//     }
+
+//     if ($uploadOk == 0) {
+//         echo "<script type='text/javascript'>alert('Sorry, there was an error uploading your file.');</script>";
+//     } else {
+//         if (move_uploaded_file($_FILES["clientUploadedFile"]["tmp_name"], $target_file)) {
+//             echo "<script type='text/javascript'>alert('Your file ". basename( $_FILES["clientUploadedFile"]["name"]). " has been uploaded.');</script>";
+//             // echo "<br>Directory: " . $target_file;
+//         } else {
+//             echo "<script type='text/javascript'>alert('Sorry, there was an error uploading your file.');</script>";
+//         }
+//     }
+// } 
 
 ?>
 <html>
@@ -11,6 +57,7 @@ $sessionHolder = $_SESSION['user'];
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>        
         <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
         <link href='../../styles/navbarStyles.css' rel="stylesheet">
         <style>
@@ -23,7 +70,8 @@ $sessionHolder = $_SESSION['user'];
     </head>
 
     <body>
-        <form action="../../php/storeClientFile.php" method="post" enctype="multipart/form-data">
+        <!-- <form action="?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" enctype="multipart/form-data"> -->
+        <form action="../../php/storeClientFile.php" method="post" enctype="multipart/form-data" id="uploadClientFileForm">
             <div class="form-group"><br>
                 <label for="fileInput" class="lead">Initiate a new file</label>
                 <div class="input-group">
@@ -41,7 +89,7 @@ $sessionHolder = $_SESSION['user'];
                         </label>
                     </div>
                     <div class="col-auto">
-                        <input type="submit" class="btn btn-success" name="submitFile" value="Submit">
+                        <input type="submit" class="btn btn-success" id="submitFile" name="submitFile" value="Submit">
                     </div>
                 </div>
             </div>
@@ -90,9 +138,15 @@ $sessionHolder = $_SESSION['user'];
                     </tbody>
                 </table>
             </div>
-
         </form>
+    
 
-    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>        
+
+
+    <script>
+        
+    </script>
+
+
     </body>
 </html>

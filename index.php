@@ -76,17 +76,25 @@ session_start();
                 </div>
             </div>
         </div>
+
+
         <footer>
-                <div class="container">
+            <div class="container">
 		        <p class="cpr">&copy 2019 15CACB Pvt. Ltd.
-				<a href=""><img class="smedia" src="images/fb.jpg" height="30" width="30" hspace="5"/></a>
-  				<a href=""><img class="smedia" src="images/tw.jpg" height="30" width="30" hspace="5"/></a>
-  				<a href=""><img class="smedia" src="images/ln.jpg" height="30" width="30" hspace="5"/></a>
-  			</p>
-  			<span class="contact">contact@15cacb.com</span>
-  			<span class="contact">+91 9967110003</span>
-  		</div>
-  	</footer>
+                    <a href="https://www.facebook.com/financelookup/" target="_blank">
+                        <i class="smedia fab fa-facebook-square fa-lg ml-2"></i>
+                    </a>
+                    <a href="https://twitter.com/financelookup" target="_blank">
+                        <i class="smedia fab fa-twitter-square fa-lg ml-2"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/company/f-lookup-advisors/" target="_blank">
+                        <i class="smedia fab fa-linkedin fa-lg"></i>
+                    </a>
+  			    </p>
+                <span class="contact mr-3"><a href="mailto:contact@15cacb.com" style="color: grey;">contact@15cacb.com</span>
+                <span class="contact">+91-9967110003</span>
+  		    </div>
+  	    </footer>
     </body>
 </html>
 								
