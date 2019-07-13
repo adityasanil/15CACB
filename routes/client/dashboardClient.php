@@ -3,9 +3,7 @@ session_start();
 
 $$sessionHolder = $_SESSION['user'];
 
-// include 'connectionDb15CACB.php';
-
-// $sessionHolder = $_SESSION['user'];
+include '../../php/connectionDb15CACB.php';
 
 // function test_input($data) {
 //     $data = trim($data);
@@ -67,6 +65,22 @@ $$sessionHolder = $_SESSION['user'];
                 border-radius: 5px !important ;
             }
         </style>
+        <!-- <script>
+            function loadClientData() {
+                var xhttp; 
+                xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("displayData").innerHTML = this.responseText;
+                    }
+                };
+                xhttp.open("GET", "retrieveClientData.php", true);
+                xhttp.send();
+            }
+            
+        </script> -->
+
+
     </head>
 
     <body>
@@ -124,17 +138,26 @@ $$sessionHolder = $_SESSION['user'];
                             <th scope="col">Status</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>data</td>
-                            <td>data</td>
-                            <td>data</td>
-                            <td>data</td>
-                            <td>data</td>
-                            <td>data</td>
-                            <td>data</td>
-                        </tr>
+                    <tbody id="displayData">
+                        <?php
+                            $counter = 1;
+                            $sql = "SELECT partyName, dateRegistered, ackNumber, trackingNumber, uidNumber, adminUploadedDoc, taskStatus FROM documentStore WHERE userName ='$sessionHolder'";
+                            $querySql = mysqli_query($connect, $sql);
+                            
+                            while ($result = mysqli_fetch_array($querySql)) {
+                                echo "<tr>";
+                                echo "<th scope='row'>$counter</th>";
+                                echo "<td>" . $result['partyName'] . "</td>";
+                                echo "<td>" . $result['dateRegistered'] . "</td>";
+                                echo "<td>" . $result['ackNumber'] . "</td>";
+                                echo "<td>" . $result['trackingNumber'] . "</td>";
+                                echo "<td>" . $result['uidNumber'] . "</td>";
+                                echo "<td>" . $result['adminUploadedDoc'] . "</td>";
+                                echo "<td>" . $result['taskStatus'] . "</td>";
+                                echo "</tr>";
+                                ++$counter;
+                            }
+                        ?>
                     </tbody>
                 </table>
             </div>
