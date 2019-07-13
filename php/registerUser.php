@@ -21,7 +21,7 @@ if(isset($_POST['registerUser'])) {
     $passToHash = test_input($_POST['password']);
     $passwordHash = password_hash($passToHash, PASSWORD_DEFAULT);
     
-    $sql = "INSERT INTO registerPageData (`id`, `firstName`, `lastName`, `userName`, `password`, `identity`, `email`, `contact`) VALUES 
+    $sql = "INSERT INTO Users (`id`, `firstName`, `lastName`, `userName`, `password`, `identity`, `email`, `contact`) VALUES 
     ('$id', '$firstName', '$lastName', '$userName','$passwordHash', '$identity', '$email', '$contact')";
     
     if (mysqli_query($connect, $sql)) {

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Jul 12, 2019 at 12:19 PM
+-- Generation Time: Jul 13, 2019 at 11:29 AM
 -- Server version: 5.7.25
 -- PHP Version: 7.3.1
 
@@ -13,6 +13,28 @@ SET time_zone = "+00:00";
 --
 -- Database: `15CACB`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `documentStore`
+--
+
+CREATE TABLE `documentStore` (
+  `id` varchar(20) NOT NULL,
+  `userName` varchar(15) NOT NULL,
+  `dateRegistered` date NOT NULL,
+  `identity` varchar(7) NOT NULL,
+  `remarks` text,
+  `partyName` varchar(15) NOT NULL,
+  `ackNumber` varchar(30) NOT NULL,
+  `trackingNumber` varchar(50) NOT NULL,
+  `uid` varchar(30) NOT NULL,
+  `clientUploadedDoc` varchar(100) NOT NULL,
+  `adminUploadedDoc` varchar(100) NOT NULL,
+  `status` varchar(15) NOT NULL,
+  `contact` varchar(12) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -42,6 +64,12 @@ INSERT INTO `Users` (`id`, `firstName`, `lastName`, `userName`, `password`, `ide
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `documentStore`
+--
+ALTER TABLE `documentStore`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `Users`
