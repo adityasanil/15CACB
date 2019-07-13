@@ -1,6 +1,9 @@
 <?php 
 session_start();
 
+$sessionHolder = $_SESSION['user'];
+
+
 ?>
 <html>
     <head>
@@ -20,11 +23,11 @@ session_start();
     </head>
 
     <body>
-        <form>
+        <form action="../../php/storeClientFile.php" method="post" enctype="multipart/form-data">
             <div class="form-group"><br>
                 <label for="fileInput" class="lead">Initiate a new file</label>
                 <div class="input-group">
-                    <textarea class="form-control" id="remarks" placeholder="Type your remarks" type="text" rows="4" name="clientRemarks"></textarea>
+                    <textarea class="form-control" id="remarks" placeholder="Type your remarks, if none type 'None'" type="text" rows="4" name="clientRemarks" required></textarea>
                 </div>
             </div>
 
@@ -33,8 +36,7 @@ session_start();
                     <div class="col-auto">
                         <span class='label label-info mt-2 mr-2' id="uploadFileInfo"></span>
                         <label class="btn btn-success" for="myFileSelector">
-                            <input id="myFileSelector" type="file" style="display:none" 
-                            onchange="$('#uploadFileInfo').html(this.files[0].name)">
+                            <input id="myFileSelector" type="file" style="display:none" name="clientUploadedFile" onchange="$('#uploadFileInfo').html(this.files[0].name)" required>
                             Upload File
                         </label>
                     </div>
