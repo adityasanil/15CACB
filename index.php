@@ -73,51 +73,33 @@ session_start();
                     <?php include 'routes/signUpPage.php'; ?>  
                 </div>
             </div>
-        </div>
+        </div>          
 
-
-        <footer>
-            <div class="container">
-		        <p class="cpr">&copy 2019 15CACB Pvt. Ltd.
-                    <a href="https://www.facebook.com/financelookup/" target="_blank">
-                        <i class="smedia fab fa-facebook-square fa-lg ml-2"></i>
-                    </a>
-                    <a href="https://twitter.com/financelookup" target="_blank">
-                        <i class="smedia fab fa-twitter-square fa-lg ml-2"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/company/f-lookup-advisors/" target="_blank">
-                        <i class="smedia fab fa-linkedin fa-lg"></i>
-                    </a>
-  			    </p>
-                <span class="contact mr-3"><a href="mailto:contact@15cacb.com" style="color: grey;">contact@15cacb.com</span>
-                <span class="contact">+91-9967110003</span>
-  		    </div>
-          </footer>
-          
-
-        <!-- <nav class="navbar navbar-light bg-light" style="background-color: white; !important">
-            <div class="container">
-                <p>&copy 2019 15CACB Pvt. Ltd.</p>
+        <nav class="navbar fixed-bottom navbar-light bg-light">
+            <div class="container borderLine">
+                <div class="float-left copyright lead">
+                    &copy 2019 15CACB Pvt. Ltd.
+                </div>
                 <div class="float-right">
                     <a href="https://www.facebook.com/financelookup/" target="_blank">
-                        <i class="fab fa-facebook-square fa-lg ml-2"></i>
+                        <i class="icon fab fa-facebook-square fa-lg ml-2"></i>
                     </a>
                     <a href="https://twitter.com/financelookup" target="_blank">
-                        <i class="fab fa-twitter-square fa-lg ml-2"></i>
+                        <i class="icon fab fa-twitter-square fa-lg ml-2"></i>
                     </a>
                     <a href="https://www.linkedin.com/company/f-lookup-advisors/" target="_blank">
-                        <i class="fab fa-linkedin fa-lg"></i>
+                        <i class="icon fab fa-linkedin fa-lg ml-2"></i>
                     </a>
                 </div>
             </div>
             <div class="container">
                 <div class="float-left">
-                    <span><a href="mailto:contact@15cacb.com" style="color: grey;">contact@15cacb.com</span>
-                    <span>+91-9967110003</span>
+                    <label class="contact mr-2 lead"><a href="mailto:contact@15cacb.com" style="color: grey;">contact@15cacb.com</label>
+                    <label class="contact lead"><a href="tel:+91-9967110003" style="color: grey;">+91-9967110003</label>
                 </div>
-            </div> -->
+            </div>
+        </nav>
 
-            
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 

@@ -74,18 +74,18 @@ if(isset($_POST['loginSubmit'])) {
             <br><br><br><br>
             <div class="row">
 	            <aside class="col-sm-5">
-                    <div class="card">
+                    <div class="card shadow">
                         <article class="card-body">
 	                        <h4 class="card-title text-center mb-4 mt-1">Login</h4>
 	                        <hr>
-	                        <p class="text-primary text-center">Sign in to your account</p>
+	                        <p class="text-primary text-center lead">Sign in to your account</p>
 	                        <form class="form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
                                 <div class="form-group">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fas fa-user"></i></span>
                                         </div>
-                                        <input class="form-control" placeholder="Username" type="text" name="username" required>
+                                        <input class="form-control lead" placeholder="Username" type="text" name="username" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -93,13 +93,13 @@ if(isset($_POST['loginSubmit'])) {
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"> <i class="fas fa-lock"></i> </span>
                                         </div>
-                                        <input class="form-control" placeholder="Password" type="password" name="password" required>
+                                        <input class="form-control lead" placeholder="Password" type="password" name="password" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-success btn-block" name="loginSubmit">Login</button>
                                 </div>
-                                <p class="text-center"><a href="#" class="text-primary">Forgot password?</a></p>
+                                <p class="text-center"><a href="#" class="text-primary lead">Forgot password?</a></p>
                             </form>
                         </article>
                     </div>
