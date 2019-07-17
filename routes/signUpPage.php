@@ -17,14 +17,14 @@
     </head>
     <body>
         <div class="container">
-        <br><br><br><br>
+        <br><br>
             <div class="row">
                 <aside class="col-sm-7">
-                    <div class="card text-dark">
+                    <div class="card text-dark shadow">
                         <article class="card-body">
                             <h4 class="card-title text-center mb-4 mt-1">Sign up</h4>
                             <hr>
-                            <p class="text-primary text-center">Fill in the details, you will be provided with an username & password via email.</p>
+                            <p class="text-primary text-center lead">Fill in the details, to register yourself.</p>
                             
                             <!-- FORM START -->
                             <form id="signup" class="form" method="POST" action="php/registerUser.php">

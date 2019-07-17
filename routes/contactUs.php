@@ -14,10 +14,9 @@
 
     <body>
         <div class="container">
-            <br>
             <div class="row">
                 <aside class="col-sm-5">
-                    <h4 class="content ">Contact our experts</h4>
+                    <h3 class="title lead mt-2">Contact our experts</h3>
                     <span>
                         <p class="content text-muted">
                             Contrary to popular belief, Lorem Ipsum is not simply random text. 
@@ -38,8 +37,9 @@
                     </span>
                 </aside>
                 <aside class="col-sm-7 collide">
+                    <br>
                     <div class="card" style="border: none;">
-                    <article class="card-body"><br>
+                    <article class="card-body">
                         <form class="form">
                             <div class="form-group">
                                 <div class="input-group">
