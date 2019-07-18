@@ -29,11 +29,12 @@ if(isset($_POST["submitFile"])) {
     $remarks = mysqli_real_escape_string($connect, test_input($_POST['clientRemarks']));
     $partyName = 'Vaibhav';
     $contact = $row['contact'];
-    $ackNumber = '(will be assigned)';
-    $trackingNumber = "#" . date('y') . rand(10,99) . rand(100,999) . substr($contact, 6);
-    $uidNumber = '(will be assigned)';
+    $ackNumber = null;
+    $trackingNumber = date('y') . rand(10,99) . rand(100,999) . substr($contact, 6);
+    $uidNumber = null;
     $adminUploadedDoc = null;
     $taskStatus = '../../images/pending.svg';
+    $process = 'Pending';
 
     $target_dir = "../uploads/";
     $extension = "." . end(explode(".", $_FILES["clientUploadedFile"]["name"]));
@@ -42,9 +43,9 @@ if(isset($_POST["submitFile"])) {
     $fileLocation = "../../uploads/" . $newFileName;
     $clientUploadedDoc = $fileLocation;
 
-    echo $target_file;
-    echo "<br>".$extension;
-    echo "<br>".$clientUploadedDoc;
+    // echo $target_file;
+    // echo "<br>".$extension;
+    // echo "<br>".$clientUploadedDoc;
 
     $uploadOk = 1;
     $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
@@ -81,8 +82,8 @@ if(isset($_POST["submitFile"])) {
     }else {
         if (move_uploaded_file($_FILES["clientUploadedFile"]["tmp_name"], $target_file)) {
 
-            $insertToDocumentStore = "INSERT INTO `documentStore`(`id`, `firstName`, `lastName`, `userName`, `dateRegistered`, `identity`, `remarks`, `partyName`, `ackNumber`, `trackingNumber`, `uidNumber`, `clientUploadedDoc`, `adminUploadedDoc`, `taskStatus`, `contact`) 
-						VALUES ('$id', '$firstName', '$lastName', '$userName', '$dateRegistered', '$identity', '$remarks', '$partyName', '$ackNumber', '$trackingNumber', '$uidNumber', '$clientUploadedDoc', '$adminUploadedDoc', '$taskStatus', '$contact')";
+            $insertToDocumentStore = "INSERT INTO `documentStore`(`id`, `firstName`, `lastName`, `userName`, `dateRegistered`, `identity`, `remarks`, `partyName`, `ackNumber`, `trackingNumber`, `uidNumber`, `clientUploadedDoc`, `adminUploadedDoc`, `taskStatus`, `contact`, `process`) 
+						VALUES ('$id', '$firstName', '$lastName', '$userName', '$dateRegistered', '$identity', '$remarks', '$partyName', '$ackNumber', '$trackingNumber', '$uidNumber', '$clientUploadedDoc', '$adminUploadedDoc', '$taskStatus', '$contact', '$process')";
 
 						if(mysqli_query($connect, $insertToDocumentStore)) {
 							echo "<script type='text/javascript'>alert('Uploaded to database');</script>";

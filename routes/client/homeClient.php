@@ -1,8 +1,9 @@
 <?php 
 session_start();
-
 $sessionHolder = $_SESSION['user'];
 
+
+// echo $sessionHolder;
 ?>
 
 <!DOCTYPE html>

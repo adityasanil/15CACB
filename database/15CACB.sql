@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Jul 16, 2019 at 09:46 PM
+-- Generation Time: Jul 18, 2019 at 01:24 PM
 -- Server version: 5.7.25
 -- PHP Version: 7.3.1
 
@@ -21,6 +21,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `documentStore` (
+  `serialNumber` int(11) NOT NULL,
   `id` varchar(25) NOT NULL,
   `firstName` varchar(15) NOT NULL,
   `lastName` varchar(15) NOT NULL,
@@ -33,17 +34,19 @@ CREATE TABLE `documentStore` (
   `trackingNumber` varchar(50) NOT NULL,
   `uidNumber` varchar(30) NOT NULL,
   `clientUploadedDoc` varchar(100) NOT NULL,
-  `adminUploadedDoc` varchar(100) DEFAULT NULL,
+  `adminUploadedDoc` varchar(200) DEFAULT NULL,
   `taskStatus` varchar(30) NOT NULL,
-  `contact` varchar(12) NOT NULL
+  `contact` varchar(12) NOT NULL,
+  `process` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `documentStore`
 --
 
-INSERT INTO `documentStore` (`id`, `firstName`, `lastName`, `userName`, `dateRegistered`, `identity`, `remarks`, `partyName`, `ackNumber`, `trackingNumber`, `uidNumber`, `clientUploadedDoc`, `adminUploadedDoc`, `taskStatus`, `contact`) VALUES
-('55015d28369b9a465', 'Aditya', 'Sanil', 'aditya.sanil', 'Wed, 17th Jul 2019 03:15', 'client', 'none', 'Vaibhav', '(will be assigned)', '#19395848105', '(will be assigned)', '../../uploads/#19395848105.docx', '', '../../images/pending.svg', '8169848105');
+INSERT INTO `documentStore` (`serialNumber`, `id`, `firstName`, `lastName`, `userName`, `dateRegistered`, `identity`, `remarks`, `partyName`, `ackNumber`, `trackingNumber`, `uidNumber`, `clientUploadedDoc`, `adminUploadedDoc`, `taskStatus`, `contact`, `process`) VALUES
+(14, '55015d28369b9a465', 'Aditya', 'Sanil', 'aditya.sanil', 'Thu, 18th Jul 2019 17:04', 'client', 'None', 'Vaibhav', '', '19518318105', '', '../../uploads/19518318105.docx', '', '../../images/pending.svg', '8169848105', 'Pending'),
+(13, '55015d28369b9a465', 'Aditya', 'Sanil', 'aditya.sanil', 'Thu, 18th Jul 2019 16:32', 'client', 'None', 'Vaibhav', '123456789', '19758578105', '0987654321', '../../uploads/19758578105.docx', '<a href=\'../../uploadsAdmin/15CA123456789.docx\' download><i class=\'fas fa-download fa-lg\'></i></a>', '../../images/approved.svg', '8169848105', 'Completed');
 
 -- --------------------------------------------------------
 
@@ -78,7 +81,8 @@ INSERT INTO `Users` (`id`, `firstName`, `lastName`, `userName`, `password`, `ide
 -- Indexes for table `documentStore`
 --
 ALTER TABLE `documentStore`
-  ADD UNIQUE KEY `trackingNumber` (`trackingNumber`);
+  ADD UNIQUE KEY `trackingNumber` (`trackingNumber`),
+  ADD UNIQUE KEY `serialNumber` (`serialNumber`);
 
 --
 -- Indexes for table `Users`
@@ -88,3 +92,13 @@ ALTER TABLE `Users`
   ADD UNIQUE KEY `email` (`email`),
   ADD UNIQUE KEY `contact` (`contact`),
   ADD UNIQUE KEY `userName` (`userName`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `documentStore`
+--
+ALTER TABLE `documentStore`
+  MODIFY `serialNumber` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;

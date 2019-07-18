@@ -2,6 +2,7 @@
 session_start();
 $$sessionHolder = $_SESSION['user'];
 
+
 include '../../php/connectionDb15CACB.php';
 
 
@@ -15,14 +16,23 @@ include '../../php/connectionDb15CACB.php';
         <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>        
         <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
         <link href='../../styles/navbarStyles.css' rel="stylesheet">
-        <style>
-            .statusLogo {
-                height: 20px;
+        <script>
+        function showTable(str, holder) {
+            var xhttp;
+            if (str == "") {
+                document.getElementById("displayData").innerHTML = "";
+                return;
             }
-            .fas {
-                color: green;
-            }
-        </style>
+            xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("displayData").innerHTML = this.responseText;
+                }
+            };
+            xhttp.open("GET", "../../php/getTableClient.php?holder=" + holder + "&orderBy=" + str, true);
+            xhttp.send();
+        }
+    </script>
     </head>
 
     <body>
@@ -57,10 +67,11 @@ include '../../php/connectionDb15CACB.php';
                 <div class="btn-toolbar" role="toolbar">
                     <div class="btn-group mr-2" role="group">
                         <button type="button" class="btn btn-light btn-sm mr-4 disabled" style="font-weight: 900;">SORT BY</button>
-                        <button type="button" class="btn btn-light btn-sm mr-3 active">ALL</button>
-                        <button type="button" class="btn btn-light btn-sm mr-3">PENDING</button>
-                        <button type="button" class="btn btn-light btn-sm mr-3">APPROVED</button>
-                        <button type="button" class="btn btn-light btn-sm mr-3">DECLINED</button>
+                        <select  class='btn btn-light btn-sm selectElement' name="sort" onchange="showTable(this.value, '<?php echo $sessionHolder; ?>')">
+                            <option value="A">All</option>
+                            <option value="Pending">Pending</option>
+                            <option value="Completed ">Completed</option>
+                        </select>
                     </div>
                 </div>
             </div><br>
@@ -76,17 +87,16 @@ include '../../php/connectionDb15CACB.php';
                             <th scope="col">Tracking Number</th>
                             <th scope="col">UIDN </th>
                             <th scope="col">Status 15CB</th>
-                            <th scope="col">Get 15CB</th>
+                            <th scope="col"><i class="fas fa-arrow-down"></i>&nbsp&nbsp15CB</th>
                             <!-- <th scope="col">Upload 15CA</th> -->
                             <!-- <th scope="col">Status 15CA</th> -->
                             <!-- <th scope="col">Get 15CA</th> -->
-
                         </tr>
                     </thead>
                     <tbody id="displayData">
                         <?php
                             $counter = 1;
-                            $sql = "SELECT partyName, dateRegistered, ackNumber, trackingNumber, uidNumber, adminUploadedDoc, taskStatus FROM documentStore WHERE userName ='$sessionHolder'";
+                            $sql = "SELECT serialNumber, partyName, dateRegistered, ackNumber, trackingNumber, uidNumber, adminUploadedDoc, taskStatus FROM documentStore WHERE userName ='$sessionHolder' ORDER BY serialNumber DESC";
                             $querySql = mysqli_query($connect, $sql);
                             
                             while ($result = mysqli_fetch_array($querySql)) {
@@ -99,11 +109,12 @@ include '../../php/connectionDb15CACB.php';
                                 echo "<td>" . $result['uidNumber'] . "</td>";
                                 echo "<td align='center'><img class='statusLogo' src='".$result['taskStatus'] . "'></td>";
                                 // echo "<td align='center'><i class='fas fa-ellipsis-h fa-2x'></i></td>";
-                                echo "<td align='center'><a href=" . $result['adminUploadedDoc'] . " download><i class='fas fa-download fa-lg'></i></a></td>";
+                                echo "<td align='center'>".$result['adminUploadedDoc']."</td>";
+                                // echo "<td align='center'><a href=" . $result['adminUploadedDoc'] . " download><i class='fas fa-download fa-lg'></i></a></td>";
                                 echo "</tr>";
                                 ++$counter;
                             }
-                        ?>
+                        ?> 
                     </tbody>
                 </table>
             </div>
