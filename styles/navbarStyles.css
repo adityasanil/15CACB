@@ -85,3 +85,7 @@ table>thead>tr>th {
 .selectElement {
     font-weight: 500;
 }
+
+.fa-upload {
+    color: green;
+}

@@ -77,40 +77,55 @@ include '../../php/connectionDb15CACB.php';
             </div><br>
 
             <div class="table-responsive">
-                <table class="table table-hover">
+                <table class="table table-sm table-hover">
                     <thead>
                         <tr>
                             <th scope="col" class="">#</th>
-                            <th scope="col">Party Name</th>
+                            <!-- <th scope="col">Party Name</th> -->
                             <th scope="col">Date Registered</th>
                             <th scope="col">ACK Number</th>
                             <th scope="col">Tracking Number</th>
-                            <th scope="col">UIDN </th>
+                            <th scope="col">UIDN</th>
                             <th scope="col">Status 15CB</th>
                             <th scope="col"><i class="fas fa-arrow-down"></i>&nbsp&nbsp15CB</th>
-                            <!-- <th scope="col">Upload 15CA</th> -->
-                            <!-- <th scope="col">Status 15CA</th> -->
-                            <!-- <th scope="col">Get 15CA</th> -->
+                            <th scope="col"><i class="fas fa-arrow-up"></i>&nbsp&nbsp15CA</th>
+                            <th scope="col">Send</th>
+                            <th scope="col">Status 15CA</th>
+                            <th scope="col"><i class="fas fa-arrow-down"></i>&nbsp&nbsp15CA</th>
                         </tr>
                     </thead>
                     <tbody id="displayData">
                         <?php
                             $counter = 1;
-                            $sql = "SELECT serialNumber, partyName, dateRegistered, ackNumber, trackingNumber, uidNumber, adminUploadedDoc, taskStatus FROM documentStore WHERE userName ='$sessionHolder' ORDER BY serialNumber DESC";
+                            $sql = "SELECT submitTime, partyName, dateRegistered, ackNumber, trackingNumber, uidNumber, adminUploadedDoc, taskStatus FROM documentStore WHERE userName ='$sessionHolder' ORDER BY submitTime DESC";
                             $querySql = mysqli_query($connect, $sql);
                             
                             while ($result = mysqli_fetch_array($querySql)) {
                                 echo "<tr>";
                                 echo "<th scope='row'>$counter</th>";
-                                echo "<td>" . $result['partyName'] . "</td>";
+                                // echo "<td>" . $result['partyName'] . "</td>";
                                 echo "<td>" . $result['dateRegistered'] . "</td>";
                                 echo "<td>" . $result['ackNumber'] . "</td>";
                                 echo "<td>" . $result['trackingNumber'] . "</td>";
                                 echo "<td>" . $result['uidNumber'] . "</td>";
                                 echo "<td align='center'><img class='statusLogo' src='".$result['taskStatus'] . "'></td>";
-                                // echo "<td align='center'><i class='fas fa-ellipsis-h fa-2x'></i></td>";
                                 echo "<td align='center'>".$result['adminUploadedDoc']."</td>";
-                                // echo "<td align='center'><a href=" . $result['adminUploadedDoc'] . " download><i class='fas fa-download fa-lg'></i></a></td>";
+                                echo "<td align='center'>
+                                        <label for='fileUpload15CA" . $counter . "'>
+                                            <i class='fas fa-upload fa-lg'></i>
+                                        </label>
+                                        <input id='fileUpload15CA" . $counter ."' name='clientUp15CA_".$result['trackingNumber']."' type='file' style='display:none;'>
+                                        <input type='hidden' name='fileID15CA_".$counter."' value='" . $result['trackingNumber'] . "'>
+                                    </td>
+                                    <script>
+                                        $('#fileUpload15CA" . $counter . "').change(function() {
+                                            var i = $(this).prev('label').clone();
+                                            var file = $('#fileUpload15CA" . $counter . "')[0].files[0].name;
+                                            $(this).prev('label').text(file);
+                                        });
+                                    </script>
+                                    ";
+                                echo "<td><input type='submit' class='btn btn-success btn-sm' name='submitFinal_" . $counter . "'></td>";
                                 echo "</tr>";
                                 ++$counter;
                             }

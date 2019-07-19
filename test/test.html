@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<style>
+    table,
+    th,
+    td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+    
+    th,
+    td {
+        padding: 5px;
+    }
+</style>
+
+<body>
+
+    <h2>The XMLHttpRequest Object</h2>
+    <select name="sort" onchange="showCustomer(this.value)">
+            <option value="">Select a customer:</option>
+            <option value="A">All</option>
+            <option value="Pending">pending</option>
+            <option value="Completed">Complete</option>
+        </select>
+    <br>
+
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+            </tr>
+        </thead>
+        <tbody id='displayData'>
+
+        </tbody>
+    </table>
+
+    <script>
+        function showTableAdmin(str, holder) {
+            var xhttp;
+            if (str == "") {
+                document.getElementById("displayData").innerHTML = "";
+                return;
+            }
+            xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("displayData").innerHTML = this.responseText;
+                }
+            };
+            xhttp.open("GET", "process.php?holderAdmin=" + holder + "&orderByAdmin=" + str, true);
+            xhttp.send();
+        }
+    </script>
+</body>
+
+</html>

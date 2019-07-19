@@ -82,7 +82,7 @@ if(isset($_POST["submitFile"])) {
     }else {
         if (move_uploaded_file($_FILES["clientUploadedFile"]["tmp_name"], $target_file)) {
 
-            $insertToDocumentStore = "INSERT INTO `documentStore`(`id`, `firstName`, `lastName`, `userName`, `dateRegistered`, `identity`, `remarks`, `partyName`, `ackNumber`, `trackingNumber`, `uidNumber`, `clientUploadedDoc`, `adminUploadedDoc`, `taskStatus`, `contact`, `process`) 
+            $insertToDocumentStore = "INSERT INTO `documentStore`(`id`, `firstName`, `lastName`, `userName`, `dateRegistered`, `identityUser`, `remarks`, `partyName`, `ackNumber`, `trackingNumber`, `uidNumber`, `clientUploadedDoc`, `adminUploadedDoc`, `taskStatus`, `contact`, `process`) 
 						VALUES ('$id', '$firstName', '$lastName', '$userName', '$dateRegistered', '$identity', '$remarks', '$partyName', '$ackNumber', '$trackingNumber', '$uidNumber', '$clientUploadedDoc', '$adminUploadedDoc', '$taskStatus', '$contact', '$process')";
 
 						if(mysqli_query($connect, $insertToDocumentStore)) {

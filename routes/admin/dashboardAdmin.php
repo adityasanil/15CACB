@@ -12,20 +12,9 @@ include '../../php/connectionDb15CACB.php';
         <title>Admin Dashboard</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>        
+        <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script> 
         <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
         <link href='../../styles/navbarStyles.css' rel="stylesheet">
-        <style>
-            .statusLogo {
-                height: 20px;
-            }
-            .fa-download {
-                color: #007bff;
-            }
-            .fa-upload {
-                color: green;
-            }
-        </style>
         <script>
         function showTableAdmin(str, holder) {
             var xhttp;
@@ -57,7 +46,7 @@ include '../../php/connectionDb15CACB.php';
                             <select  class='btn btn-light btn-sm selectElement' name="sort" onchange="showTableAdmin(this.value, '<?php echo $sessionHolder; ?>')">
                                 <option value="A">All</option>
                                 <option value="Pending">Pending</option>
-                                <option value="Completed ">Completed</option>
+                                <option value="Completed">Completed</option>
                             </select>
                         </div>
                     </div>
@@ -71,6 +60,7 @@ include '../../php/connectionDb15CACB.php';
                                 <th scope="col" class="">#</th>
                                 <th scope="col">Party Name</th>
                                 <th scope="col">Date Registered</th>
+                                <th scope="col">Remarks</th>
                                 <th scope="col">ACK Number</th>
                                 <th scope="col">Tracking Number</th>
                                 <th scope="col">UIDN </th>
@@ -83,7 +73,7 @@ include '../../php/connectionDb15CACB.php';
                         <tbody id="displayData">
                             <?php
                                 $counter = 1;
-                                $sql = "SELECT serialNumber, firstName, lastName, dateRegistered, ackNumber, trackingNumber, uidNumber, clientUploadedDoc, taskStatus FROM documentStore WHERE identity ='client' ORDER BY serialNumber DESC";
+                                $sql = "SELECT submitTime, firstName, lastName, dateRegistered, identityUser, remarks, ackNumber, trackingNumber, uidNumber, clientUploadedDoc, taskStatus FROM documentStore WHERE identityUser ='client' ORDER BY submitTime DESC";
                                 $querySql = mysqli_query($connect, $sql);
                                 
                                 while ($result = mysqli_fetch_array($querySql)) {
@@ -91,6 +81,9 @@ include '../../php/connectionDb15CACB.php';
                                     echo "<th scope='row'>$counter</th>";
                                     echo "<td>" . $result['firstName'] . " " .$result['lastName'] . "</td>";
                                     echo "<td>" . $result['dateRegistered'] . "</td>";
+                                    echo "<td><button type='button' data-container='body' class='btn btn-outline-light btn-sm' style='color: black;' data-toggle='tooltip' data-placement='left' title='". $result['remarks'] . "'>
+                                    Remark
+                                    </button></td>";
 
                                     echo "<td><input type='text' name='ackNumber_" . $counter . "' value='" . $result['ackNumber'] . "' required></td>";
                                     
@@ -115,7 +108,6 @@ include '../../php/connectionDb15CACB.php';
                                     echo "<td><input type='submit' class='btn btn-success btn-sm' name='submitFinal_" . $counter . "'></td>";
                                     echo "<td align='center'><img class='statusLogo' src='".$result['taskStatus'] . "'></td>";
                                     echo "</tr>";
-
                                     ++$counter;
                                 }
                             ?>

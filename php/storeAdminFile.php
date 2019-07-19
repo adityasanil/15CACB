@@ -23,7 +23,7 @@ if(isset($_POST)) {
     foreach($_POST as $key2 => $value2) {
         if(strpos($key2, 'ack') !== false) {
             $string2 = explode("_", $key2);
-            if($getNumber == $string[1]) {
+            if($getNumber == $string2[1]) {
                 $ackNumber = $value2;
             }
         }
@@ -121,7 +121,7 @@ if(isset($_POST)) {
                 echo "Error uploading: " . mysqli_error($connect);
             }
 
-            echo "<script type='text/javascript'>alert('Your file ". basename( $_FILES[$fileFinal]["name"]). " has been uploaded.');</script>";
+            // echo "<script type='text/javascript'>alert('Your file ". basename( $_FILES[$fileFinal]["name"]). "has been uploaded.');</script>";
         ?>
         <script>
             window.location.href = "../routes/admin/homeAdmin.php";
