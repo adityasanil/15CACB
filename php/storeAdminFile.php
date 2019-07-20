@@ -7,29 +7,71 @@ include 'connectionDb15CACB.php';
 if(isset($_POST)) {
     foreach($_POST as $key => $value) {
         if(strpos($key, 'submit') !== false) {
-            $getNumber = $key[-1];
+            $string = explode("_", $key);
+            $getNumber = $string[1];
         }
     }
     foreach($_POST as $key1 => $value1) {
         if(strpos($key1, 'file') !== false) {
-            if($getNumber == $key1[-1]) {
+            $string1 = explode("_", $key1);
+            if($getNumber == $string1[1]) {
                 $fileID = $value1;
             }
         }
     }
+
+    foreach($_POST as $key2 => $value2) {
+        if(strpos($key2, 'ack') !== false) {
+            $string2 = explode("_", $key2);
+            if($getNumber == $string2[1]) {
+                $ackNumber = $value2;
+            }
+        }
+    }
+    foreach($_POST as $key3 => $value3) {
+        if(strpos($key3, 'uid') !== false) {
+            $string3 = explode("_", $key3);
+            if($getNumber == $string3[1]) {                
+                $uidNumber = $value3;
+            }
+        }
+    }
     foreach($_FILES as $key => $value) {
-        if($getNumber == $key[-1]) {
+        $string = explode("_", $key);
+        if($getNumber == $string[1]) {
             $fileFinal = $key;
         }
     } 
 
-    $status = 'Completed';
+    // echo $getNumber;
+    // echo "<br>".$fileID;
+    // echo "<br>".$ackNumber;
+    // echo "<br>".$uidNumber;
+
+
+    $taskStatus = '../../images/approved.svg';
+
     $target_dir = "../uploadsAdmin/";
+    $extension = "." . end(explode(".", $_FILES[$fileFinal]["name"]));
+
     $target_file = $target_dir . basename($_FILES[$fileFinal]["name"]);
+
+    $newFileName = '15CA'. $ackNumber . $extension; 
+    $target_file = $target_dir . $newFileName;
+    $fileLocation = "../../uploadsAdmin/" . $newFileName;
+    $adminUploadedDoc = $fileLocation;
+
+    $process = 'Completed';
      
-    // echo $fileID;
-    // echo $target_file;
+    $location = mysqli_real_escape_string($connect,"<a href='" . $adminUploadedDoc . "' download><i class='fas fa-download fa-lg'></i></a>");
+
+    // echo "<br>".$fileID;
     // echo "<br>".$status;
+    // echo "<br>".$ackNumber;
+    // echo "<br>".$uidNumber;
+    // echo "<br>".$target_file;
+    // echo "<br>".$adminUploadedDoc;
+    // echo "<br>".$extension;
 
     $uploadOk = 1;
     $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
@@ -71,7 +113,7 @@ if(isset($_POST)) {
     }else 
     {
         if (move_uploaded_file($_FILES[$fileFinal]["tmp_name"], $target_file)) {
-            $uploadAdminDoc = "UPDATE `documentStore` SET `adminUploadedDoc`='$target_file', `taskStatus`='$status' WHERE `trackingNumber`='$fileID'";
+            $uploadAdminDoc = "UPDATE `documentStore` SET `adminUploadedDoc`='$location', `ackNumber`='$ackNumber', `uidNumber`='$uidNumber', `taskStatus`='$taskStatus', `process`='$process' WHERE `trackingNumber`='$fileID'";
 
             if(mysqli_query($connect, $uploadAdminDoc)) {
                 echo "<script type='text/javascript'>alert('Uploaded to database');</script>";
@@ -79,7 +121,7 @@ if(isset($_POST)) {
                 echo "Error uploading: " . mysqli_error($connect);
             }
 
-            echo "<script type='text/javascript'>alert('Your file ". basename( $_FILES[$fileFinal]["name"]). " has been uploaded.');</script>";
+            // echo "<script type='text/javascript'>alert('Your file ". basename( $_FILES[$fileFinal]["name"]). "has been uploaded.');</script>";
         ?>
         <script>
             window.location.href = "../routes/admin/homeAdmin.php";
@@ -96,9 +138,5 @@ if(isset($_POST)) {
 
     }
 }
-
-
-
-
 
 ?>

@@ -15,14 +15,14 @@ if(isset($_POST['registerUser'])) {
     $firstName = test_input($_POST['firstName']);
     $lastName = test_input($_POST['lastName']);
     $userName = test_input($_POST['username']);
-    $identity = "client";
+    $identityUser = "client";
     $email = test_input($_POST['email']);
     $contact = test_input($_POST['contactNumber']);
     $passToHash = test_input($_POST['password']);
     $passwordHash = password_hash($passToHash, PASSWORD_DEFAULT);
     
-    $sql = "INSERT INTO Users (`id`, `firstName`, `lastName`, `userName`, `password`, `identity`, `email`, `contact`) VALUES 
-    ('$id', '$firstName', '$lastName', '$userName','$passwordHash', '$identity', '$email', '$contact')";
+    $sql = "INSERT INTO Users (`id`, `firstName`, `lastName`, `userName`, `password`, `identityUser`, `email`, `contact`) VALUES 
+    ('$id', '$firstName', '$lastName', '$userName','$passwordHash', '$identityUser', '$email', '$contact')";
     
     if (mysqli_query($connect, $sql)) {
         echo "<script type='text/javascript'>alert('New records created successfully');</script>";
