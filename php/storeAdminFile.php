@@ -56,7 +56,7 @@ if(isset($_POST)) {
 
     $target_file = $target_dir . basename($_FILES[$fileFinal]["name"]);
 
-    $newFileName = '15CA'. $ackNumber . $extension; 
+    $newFileName = '15CB-'. $fileID . $extension; 
     $target_file = $target_dir . $newFileName;
     $fileLocation = "../../uploadsAdmin/" . $newFileName;
     $adminUploadedDoc = $fileLocation;

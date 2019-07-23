@@ -15,6 +15,13 @@ include '../../php/connectionDb15CACB.php';
         <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script> 
         <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
         <link href='../../styles/navbarStyles.css' rel="stylesheet">
+        <style>
+            table {
+                /* display: inline-block; */
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+        </style>
         <script>
         function showTableAdmin(str, holder) {
             var xhttp;
@@ -52,9 +59,8 @@ include '../../php/connectionDb15CACB.php';
                     </div>
                 </div>
                 <br>
-
                 <div class="table-responsive">
-                    <table class="table table-sm table-hover">
+                    <table class="table table-hovered">
                         <thead>
                             <tr>
                                 <th scope="col" class="">#</th>
@@ -62,18 +68,22 @@ include '../../php/connectionDb15CACB.php';
                                 <th scope="col">Date Registered</th>
                                 <th scope="col">Remarks</th>
                                 <th scope="col">ACK Number</th>
-                                <th scope="col">Tracking Number</th>
+                                <th scope="col">TRK Number</th>
                                 <th scope="col">UIDN </th>
                                 <th scope="col"><i class="fas fa-arrow-down"></i>&nbsp&nbspInvoice</th>
                                 <th scope="col"><i class="fas fa-arrow-up"></i>&nbsp&nbsp15CB</th>
-                                <th scope="col">Send</th>
-                                <th scope="col">Status</th>
+                                <th scope="col"><i class="fas fa-paper-plane"></i>&nbsp&nbsp15CB</th>
+                                <th scope="col">Status 15CB</th>
+                                <th scope="col"><i class="fas fa-arrow-down"></i>&nbsp&nbsp15CA</th>
+                                <th scope="col"><i class="fas fa-arrow-up"></i>&nbsp&nbsp15CA</th>
+                                <th scope="col"><i class="fas fa-paper-plane"></i>&nbsp&nbsp15CA</th>
+                                <th scope="col">Status 15CA</th>
                             </tr>
                         </thead>
                         <tbody id="displayData">
                             <?php
                                 $counter = 1;
-                                $sql = "SELECT submitTime, firstName, lastName, dateRegistered, identityUser, remarks, ackNumber, trackingNumber, uidNumber, clientUploadedDoc, taskStatus FROM documentStore WHERE identityUser ='client' ORDER BY submitTime DESC";
+                                $sql = "SELECT * FROM documentStore WHERE identityUser ='client' ORDER BY submitTime DESC";
                                 $querySql = mysqli_query($connect, $sql);
                                 
                                 while ($result = mysqli_fetch_array($querySql)) {
@@ -85,10 +95,10 @@ include '../../php/connectionDb15CACB.php';
                                     Remark
                                     </button></td>";
 
-                                    echo "<td><input type='text' name='ackNumber_" . $counter . "' value='" . $result['ackNumber'] . "' required></td>";
+                                    echo "<td><input type='text' name='ackNumber_" . $counter . "' value='" . $result['ackNumber'] . "'></td>";
                                     
                                     echo "<td>" . $result['trackingNumber'] . "</td>";
-                                    echo "<td><input type='text' name='uidNumber_" . $counter . "' value='" . $result['uidNumber'] . "' required></td>";
+                                    echo "<td><input type='text' name='uidNumber_" . $counter . "' value='" . $result['uidNumber'] . "'></td>";
                                     echo "<td align='center'><a href='" . $result['clientUploadedDoc'] . "' download><i class='fas fa-download fa-lg'></i></a></td>";
                                     echo "<td align='center'>
                                         <label for='fileUpload" . $counter . "'>
@@ -105,8 +115,50 @@ include '../../php/connectionDb15CACB.php';
                                         });
                                     </script>
                                     ";
-                                    echo "<td><input type='submit' class='btn btn-success btn-sm' name='submitFinal_" . $counter . "'></td>";
+                                    echo "<td align='center'><input type='submit' class='btn btn-success btn-sm' name='submitFinal_" . $counter . "'></td>";
                                     echo "<td align='center'><img class='statusLogo' src='".$result['taskStatus'] . "'></td>";
+                                    if($result['clientUp15CA'] == true) {
+                                        echo "<td align='center'><a href='" . $result['clientUp15CA'] . "' download><i class='fas fa-download fa-lg' style='color: #d9534f;'></i></a></td>";
+                                        echo "<td align='center'>
+                                        <label for='fileUploadAdmin15CA" . $counter . "'>
+                                            <i class='fas fa-upload fa-lg' style='color: #5bc0de'></i>
+                                        </label>
+                                        <input id='fileUploadAdmin15CA" . $counter ."' form='storeAdmin15CA' name='fileAdminFile15CA_". $result['trackingNumber']."' type='file' style='display:none;'>
+                                        <input type='hidden' name='fileAdminID15CA_".$counter."' form='storeAdmin15CA' value='" . $result['trackingNumber'] . "'>
+                                    </td>
+                                    <script>
+                                        $('#fileUploadAdmin15CA" . $counter . "').change(function() {
+                                            var i = $(this).prev('label').clone();
+                                            var file = $('#fileUploadAdmin15CA" . $counter . "')[0].files[0].name;
+                                            $(this).prev('label').text(file);
+                                        });
+                                    </script>
+                                    ";
+                                    echo "<td align='center'><input type='submit' class='btn btn-success btn-sm' form='storeAdmin15CA' name='submitAdmin15CA_" . $counter . "'></td>";
+                                    echo "<td align='center'><img class='statusLogo' src='".$result['taskStatus15CA'] . "'></td>";
+                                    } else {
+                                        echo "<td></td>";
+                                        echo "<td></td>";
+                                        echo "<td></td>";
+                                    }
+
+                                    // echo "<td align='center'>
+                                    //     <label for='fileUploadAdmin15CA" . $counter . "'>
+                                    //         <i class='fas fa-upload fa-lg' style='color: #5bc0de'></i>
+                                    //     </label>
+                                    //     <input id='fileUploadAdmin15CA" . $counter ."' form='storeAdmin15CA' name='fileAdminFile15CA_". $result['trackingNumber']."' type='file' style='display:none;'>
+                                    //     <input type='hidden' name='fileAdminID15CA_".$counter."' form='storeAdmin15CA' value='" . $result['trackingNumber'] . "'>
+                                    // </td>
+                                    // <script>
+                                    //     $('#fileUploadAdmin15CA" . $counter . "').change(function() {
+                                    //         var i = $(this).prev('label').clone();
+                                    //         var file = $('#fileUploadAdmin15CA" . $counter . "')[0].files[0].name;
+                                    //         $(this).prev('label').text(file);
+                                    //     });
+                                    // </script>
+                                    // ";
+                                    // echo "<td align='center'><input type='submit' class='btn btn-success btn-sm' form='storeAdmin15CA' name='submitAdmin15CA_" . $counter . "'></td>";
+                                    // echo "<td align='center'><img class='statusLogo' src='".$result['taskStatus15CA'] . "'></td>";
                                     echo "</tr>";
                                     ++$counter;
                                 }
@@ -115,6 +167,8 @@ include '../../php/connectionDb15CACB.php';
                     </table>
                 </div>
             </form>
+            <form action="../../php/storeAdmin15CA.php" id='storeAdmin15CA' enctype="multipart/form-data" method="post"></form>
+
         </div>
         
     

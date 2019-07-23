@@ -1,6 +1,8 @@
 <?php
 // session_start()
+// $$sessionHolder = $_SESSION['user'];
 
+// echo "Session holder: " . $sessionHolder;
 
 ?>
 <html>
@@ -15,6 +17,7 @@
     </head>
 
     <body>
+        
         <div class="container">
             <h3 class="title lead mt-2" style="">Caselaws</h3>
         </div>
@@ -70,7 +73,8 @@
 
             
         </div>
-        
+
+
 
 
     </body>
