@@ -71,6 +71,9 @@ session_start();
                 <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
                     <?php include 'routes/signUpPage.php'; ?>  
                 </div>
+                <div class="tab-pane fade" id="pills-resetPass" role="tabpanel" aria-labelledby="pills-resetPass-tab">
+                    <?php include 'routes/forgotPassword.php'; ?>  
+                </div>
             </div>
         </div>          
 

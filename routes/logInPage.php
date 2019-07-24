@@ -99,7 +99,9 @@ if(isset($_POST['loginSubmit'])) {
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-success btn-block" name="loginSubmit">Login</button>
                                 </div>
-                                <p class="text-center"><a href="#" class="text-primary lead">Forgot password?</a></p>
+                                <div>
+                                    <p class="text-center"><a class="text-primary lead" class="nav-link" id="pills-resetPass-tab" data-toggle="pill" href="#pills-resetPass" role="tab" aria-controls="pills-resetPass" aria-selected="false">Forgot password?</a></p>
+                                </div>
                             </form>
                         </article>
                     </div>

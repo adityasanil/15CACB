@@ -20,6 +20,12 @@ li>a {
     .mb-0 {
         margin-bottom: 5 !important;
     }
+    .linePass {
+        display: none;
+    }
+    .brHide {
+        display: none;
+    }
 }
 
 .btn-login {
@@ -88,4 +94,21 @@ table>thead>tr>th {
 
 .fa-upload {
     color: green;
+}
+
+.passPosition {
+    justify-c ontent: center;
+}
+
+.passHead {
+    font-weight: bold;
+}
+
+.lockPass {
+    height: 60px;
+}
+
+.linePass {
+    border-left: 1px solid #cccccc !important;
+    height: 350px !important;
 }
