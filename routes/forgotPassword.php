@@ -40,7 +40,7 @@
 <br><br>
     <div class="container">
         <div class='row passPosition'>
-            <div class="card mb-3 p-5" style="max-width: 700px;">
+            <div class="card mb-3 p-5 shadow" style="max-width: 700px;">
                 <div class="row no-gutters">
                     <div class="col-md-4">
                         <br class='brHide'><br class='brHide'><br class='brHide'>

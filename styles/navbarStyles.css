@@ -112,3 +112,14 @@ table>thead>tr>th {
     border-left: 1px solid #cccccc !important;
     height: 350px !important;
 }
+
+.carousel-item {
+    height: 400px;
+}
+
+.carousel-item img {
+    position: absolute;
+    background-size: cover;
+    min-height: 400px;
+    ;
+}
