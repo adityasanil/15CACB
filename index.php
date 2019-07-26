@@ -29,7 +29,7 @@ session_start();
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <a class="navbar-brand">
+                <a class="navbar-brand" href="index.php">
                     <img src="images/15cacb.png" width="" height="30" class="d-inline-block align-top" alt="">
                 </a>
 
