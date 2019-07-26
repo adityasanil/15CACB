@@ -8,13 +8,17 @@ session_start();
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>CACB</title>
-        <meta name="description" content="">
+        <meta name="description" content="15CACB documents">
+        <meta name="keywords" content="15CA, 15CB, 15CACB, CACB, CA">
+
         <meta name="viewport" content="width=device-width, initial-scale=1"> 
         <link rel="icon" type="png" href="images/15.png">
+
         <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>        
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">    
         <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0-11/css/all.min.css">
+
         <link href='styles/navbarStyles.css' rel="stylesheet">
         <link href="styles/footerStyle.css" rel="stylesheet">
     </head>
@@ -33,7 +37,10 @@ session_start();
                     <div class="line"></div>
                     <ul class="navbar-nav nav mr-auto mt-2 mt-lg-0" id="pills-tab" role="tablist">
                         <li class="nav-item active">
-                            <a class="nav-link active" id="pills-caselaws-tab" data-toggle="pill" href="#pills-caselaws" role="tab" aria-controls="pills-caselaws" aria-selected="true">Caselaws</a>
+                            <a class="nav-link active" id="pills-homePage-tab" data-toggle="pill" href="#pills-homePage" role="tab" aria-controls="pills-homePage" aria-selected="true">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="pills-caselaws-tab" data-toggle="pill" href="#pills-caselaws" role="tab" aria-controls="pills-caselaws" aria-selected="false">Caselaws</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" id="pills-rules-tab" data-toggle="pill" href="#pills-rules" role="tab" aria-controls="pills-rules" aria-selected="false">Rules</a>
@@ -44,10 +51,10 @@ session_start();
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li class="nav-item mr-1">
-                            <a class="nav-link btn btn-login btn-block mb-1" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="false">Log in</a>
+                            <a class="nav-link btn btn-login btn-block mb-1" id="pills-login-tab" data-toggle="pill" href="#pills-login" role="tab" aria-controls="pills-login" aria-selected="false">Log in</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link btn btn-success btn-block mb-1" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Sign up</a>
+                            <a class="nav-link btn btn-success btn-block mb-1" id="pills-signup-tab" data-toggle="pill" href="#pills-signup" role="tab" aria-controls="pills-signup" aria-selected="false">Sign up</a>
                         </li>
                     </ul>
                 </div>
@@ -56,7 +63,10 @@ session_start();
 
         <div class="container">
             <div class="tab-content" id="pills-tabContent">
-                <div class="tab-pane fade show active" id="pills-caselaws" role="tabpanel" aria-labelledby="pills-caselaws-tab">
+                <div class="tab-pane fade show active" id="pills-homePage" role="tabpanel" aria-labelledby="pills-homePage-tab">
+                    <?php include 'routes/homePage.php'; ?>  
+                </div>
+                <div class="tab-pane fade" id="pills-caselaws" role="tabpanel" aria-labelledby="pills-caselaws-tab">
                     <?php include 'routes/caselaws.php'; ?>  
                 </div>
                 <div class="tab-pane fade" id="pills-rules" role="tabpanel" aria-labelledby="pills-rules-tab">
@@ -65,19 +75,19 @@ session_start();
                 <div class="tab-pane fade" id="pills-contactus" role="tabpanel" aria-labelledby="pills-contactus-tab">
                     <?php include 'routes/contactUs.php'; ?>  
                 </div>
-                <div class="tab-pane fade" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                <div class="tab-pane fade" id="pills-login" role="tabpanel" aria-labelledby="pills-login-tab">
                     <?php include 'routes/logInPage.php'; ?>  
                 </div>
-                <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+                <div class="tab-pane fade" id="pills-signup" role="tabpanel" aria-labelledby="pills-signup-tab">
                     <?php include 'routes/signUpPage.php'; ?>  
                 </div>
                 <div class="tab-pane fade" id="pills-resetPass" role="tabpanel" aria-labelledby="pills-resetPass-tab">
                     <?php include 'routes/forgotPassword.php'; ?>  
                 </div>
             </div>
-        </div>          
+        </div>        
 
-        <nav class="navbar fixed-bottom navbar-light bg-light">
+        <!-- <nav class="navbar fixed-bottom navbar-light bg-light">
             <div class="container borderLine">
                 <div class="float-left copyright lead">
                     &copy 2019 15CACB Pvt. Ltd.
@@ -100,13 +110,13 @@ session_start();
                     <label class="contact lead"><a href="tel:+91-9967110003" style="color: grey;">+91-9967110003</label>
                 </div>
             </div>
-        </nav>
+        </nav> -->
 
 
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-    </body>
+</body>
 </html>
 								
