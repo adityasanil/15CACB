@@ -19,20 +19,13 @@
                     <h3 class="title lead mt-2">Contact our experts</h3>
                     <span>
                         <p class="content text-muted">
-                            Contrary to popular belief, Lorem Ipsum is not simply random text. 
-                            It has roots in a piece of classical Latin literature from 45 BC, 
-                            making it over 2000 years old. Richard McClintock, a Latin professor 
-                            at Hampden-Sydney College in Virginia.
+                            We would love to help. A team 
+                            member will be assigned to address your queries.
                             <br>
-                            It is a long established fact that a reader will be distracted by the readable 
-                            content of a page when looking at its layout. The point of using Lorem Ipsum 
-                            is that it has a more-or-less normal distribution of letters, as opposed to 
-                            using 'Content here, content here', making it look like readable English.
+                            
                         </p>
                         <p class="content text-muted">
-                            There are many variations of passages of Lorem Ipsum available, but the majority 
-                            have suffered alteration in some form, by injected humour, or randomised words 
-                            which don't look even slightly believable.
+                        Get in touch with us.
                         </p>
                     </span>
                 </aside>

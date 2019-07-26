@@ -38,7 +38,7 @@ if(isset($_POST["submitFile"])) {
 
     $target_dir = "../uploads/";
     $extension = "." . end(explode(".", $_FILES["clientUploadedFile"]["name"]));
-    $newFileName = $trackingNumber.$extension; 
+    $newFileName = "Invoice-".$trackingNumber.$extension; 
     $target_file = $target_dir . $newFileName;
     $fileLocation = "../../uploads/" . $newFileName;
     $clientUploadedDoc = $fileLocation;
@@ -107,7 +107,6 @@ if(isset($_POST["submitFile"])) {
         }
 
     }
-
 } 
 
 ?>

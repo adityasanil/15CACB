@@ -24,12 +24,13 @@ if($orderBy == 'A') {
         echo "<td>" . $result['uidNumber'] . "</td>";
         echo "<td align='center'><img class='statusLogo' src='".$result['taskStatus'] . "'></td>";
         echo "<td align='center'>".$result['adminUploadedDoc']."</td>";
-        echo "<td align='center'>
-            <label for='fileUpload15CA" . $counter . "'>
-                <i class='fas fa-upload fa-lg'></i>
-            </label>
-            <input id='fileUpload15CA" . $counter ."' name='clientUp15CA_".$result['trackingNumber']."' type='file' style='display:none;'>
-            <input type='hidden' name='fileID15CA_".$counter."' value='" . $result['trackingNumber'] . "'>
+        if($result['adminUploadedDoc'] == true) {
+            echo "<td align='center'>
+                <label for='fileUpload15CA" . $counter . "'>
+                    <i class='fas fa-upload fa-lg'></i>
+                </label>
+                <input id='fileUpload15CA" . $counter ."' name='clientUp15CA_".$result['trackingNumber']."' type='file' style='display:none;'>
+                <input type='hidden' name='fileID15CA_".$counter."' value='" . $result['trackingNumber'] . "'>
             </td>
             <script>
                 $('#fileUpload15CA" . $counter . "').change(function() {
@@ -38,8 +39,17 @@ if($orderBy == 'A') {
                     $(this).prev('label').text(file);
                 });
             </script>
-        ";
-        echo "<td><input type='submit' class='btn btn-success btn-sm' name='submitFinal_" . $counter . "'></td>";
+            ";
+            echo "<td align='center'><input type='submit' class='btn btn-success btn-sm' name='submit15CA_" . $counter . "'></td>";
+
+        } else {
+            echo "<td></td>";
+            echo "<td></td>";
+        }
+        
+        echo "<td align='center'><img class='statusLogo' src='".$result['taskStatus15CA'] . "'></td>";
+        echo "<td align='center'>".$result['adminUp15CA']."</td>";
+
         echo "</tr>";
         ++$counter;
     }
@@ -60,12 +70,13 @@ else {
         echo "<td>" . $result['uidNumber'] . "</td>";
         echo "<td align='center'><img class='statusLogo' src='".$result['taskStatus'] . "'></td>";
         echo "<td align='center'>".$result['adminUploadedDoc']."</td>";
-        echo "<td align='center'>
-            <label for='fileUpload15CA" . $counter . "'>
-                <i class='fas fa-upload fa-lg'></i>
-            </label>
-            <input id='fileUpload15CA" . $counter ."' name='clientUp15CA_".$result['trackingNumber']."' type='file' style='display:none;'>
-            <input type='hidden' name='fileID15CA_".$counter."' value='" . $result['trackingNumber'] . "'>
+        if($result['adminUploadedDoc'] == true) {
+            echo "<td align='center'>
+                <label for='fileUpload15CA" . $counter . "'>
+                    <i class='fas fa-upload fa-lg'></i>
+                </label>
+                <input id='fileUpload15CA" . $counter ."' name='clientUp15CA_".$result['trackingNumber']."' type='file' style='display:none;'>
+                <input type='hidden' name='fileID15CA_".$counter."' value='" . $result['trackingNumber'] . "'>
             </td>
             <script>
                 $('#fileUpload15CA" . $counter . "').change(function() {
@@ -75,7 +86,16 @@ else {
                 });
             </script>
             ";
-        echo "<td><input type='submit' class='btn btn-success btn-sm' name='submitFinal_" . $counter . "'></td>";
+            echo "<td align='center'><input type='submit' class='btn btn-success btn-sm' name='submit15CA_" . $counter . "'></td>";
+
+        } else {
+            echo "<td></td>";
+            echo "<td></td>";
+        }
+        
+        echo "<td align='center'><img class='statusLogo' src='".$result['taskStatus15CA'] . "'></td>";
+        echo "<td align='center'>".$result['adminUp15CA']."</td>";
+
         echo "</tr>";
         ++$counter;
     }

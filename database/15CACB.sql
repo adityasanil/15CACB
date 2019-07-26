@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Jul 19, 2019 at 07:57 PM
+-- Generation Time: Jul 23, 2019 at 06:53 PM
 -- Server version: 5.7.25
 -- PHP Version: 7.3.1
 
@@ -37,17 +37,11 @@ CREATE TABLE `documentStore` (
   `adminUploadedDoc` varchar(200) DEFAULT NULL,
   `taskStatus` varchar(30) NOT NULL,
   `contact` varchar(12) NOT NULL,
-  `process` varchar(10) NOT NULL
+  `process` varchar(10) NOT NULL,
+  `clientUp15CA` varchar(100) DEFAULT NULL,
+  `adminUp15CA` varchar(200) DEFAULT NULL,
+  `taskStatus15CA` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `documentStore`
---
-
-INSERT INTO `documentStore` (`submitTime`, `id`, `firstName`, `lastName`, `userName`, `dateRegistered`, `identityUser`, `remarks`, `partyName`, `ackNumber`, `trackingNumber`, `uidNumber`, `clientUploadedDoc`, `adminUploadedDoc`, `taskStatus`, `contact`, `process`) VALUES
-('2019-07-19 17:11:19.049188', '55015d28369b9a465', 'Aditya', 'Sanil', 'aditya.sanil', 'Fri, 19th Jul 2019 22:41', 'client', 'none', 'Vaibhav', '', '19153368105', '', '../../uploads/19153368105.pdf', '', '../../images/pending.svg', '8169848105', 'Pending'),
-('2019-07-19 16:34:15.452943', '55015d28369b9a465', 'Aditya', 'Sanil', 'aditya.sanil', 'Fri, 19th Jul 2019 21:57', 'client', 'none', 'Vaibhav', '12345', '19315218105', '098765', '../../uploads/19315218105.pdf', '<a href=\'../../uploadsAdmin/15CA12345.pdf\' download><i class=\'fas fa-download fa-lg\'></i></a>', '../../images/approved.svg', '8169848105', 'Completed'),
-('2019-07-19 16:59:45.591962', '55015d28369b9a465', 'Aditya', 'Sanil', 'aditya.sanil', 'Fri, 19th Jul 2019 22:11', 'client', 'none', 'Vaibhav', '', '19446428105', '', '../../uploads/19446428105.pdf', '', '../../images/pending.svg', '8169848105', 'Pending');
 
 -- --------------------------------------------------------
 

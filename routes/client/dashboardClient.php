@@ -61,13 +61,13 @@ include '../../php/connectionDb15CACB.php';
         </form>
         <br><br><hr>
 
-        <form>
+        <form action="../../php/storeClient15CA.php" method="post" enctype="multipart/form-data" id="uploadClient15CA">
             <label for="fileInput" class="lead">Initiated Docs</label>
             <div class="sortBy">
                 <div class="btn-toolbar" role="toolbar">
                     <div class="btn-group mr-2" role="group">
                         <button type="button" class="btn btn-light btn-sm mr-4 disabled" style="font-weight: 900;">SORT BY</button>
-                        <select  class='btn btn-light btn-sm selectElement' name="sort" onchange="showTable(this.value, '<?php echo $sessionHolder; ?>')">
+                        <select  class='btn btn-light btn-sm selectElement' onchange="showTable(this.value, '<?php echo $sessionHolder; ?>')">
                             <option value="A">All</option>
                             <option value="Pending">Pending</option>
                             <option value="Completed ">Completed</option>
@@ -89,7 +89,7 @@ include '../../php/connectionDb15CACB.php';
                             <th scope="col">Status 15CB</th>
                             <th scope="col"><i class="fas fa-arrow-down"></i>&nbsp&nbsp15CB</th>
                             <th scope="col"><i class="fas fa-arrow-up"></i>&nbsp&nbsp15CA</th>
-                            <th scope="col">Send</th>
+                            <th scope="col">Send 15CA</th>
                             <th scope="col">Status 15CA</th>
                             <th scope="col"><i class="fas fa-arrow-down"></i>&nbsp&nbsp15CA</th>
                         </tr>
@@ -97,7 +97,7 @@ include '../../php/connectionDb15CACB.php';
                     <tbody id="displayData">
                         <?php
                             $counter = 1;
-                            $sql = "SELECT submitTime, partyName, dateRegistered, ackNumber, trackingNumber, uidNumber, adminUploadedDoc, taskStatus FROM documentStore WHERE userName ='$sessionHolder' ORDER BY submitTime DESC";
+                            $sql = "SELECT * FROM documentStore WHERE userName ='$sessionHolder' ORDER BY submitTime DESC";
                             $querySql = mysqli_query($connect, $sql);
                             
                             while ($result = mysqli_fetch_array($querySql)) {
@@ -110,9 +110,10 @@ include '../../php/connectionDb15CACB.php';
                                 echo "<td>" . $result['uidNumber'] . "</td>";
                                 echo "<td align='center'><img class='statusLogo' src='".$result['taskStatus'] . "'></td>";
                                 echo "<td align='center'>".$result['adminUploadedDoc']."</td>";
-                                echo "<td align='center'>
+                                if($result['adminUploadedDoc'] == true) {
+                                    echo "<td align='center'>
                                         <label for='fileUpload15CA" . $counter . "'>
-                                            <i class='fas fa-upload fa-lg'></i>
+                                            <i class='fas fa-upload fa-lg' style='color: #5bc0de'></i>
                                         </label>
                                         <input id='fileUpload15CA" . $counter ."' name='clientUp15CA_".$result['trackingNumber']."' type='file' style='display:none;'>
                                         <input type='hidden' name='fileID15CA_".$counter."' value='" . $result['trackingNumber'] . "'>
@@ -125,7 +126,16 @@ include '../../php/connectionDb15CACB.php';
                                         });
                                     </script>
                                     ";
-                                echo "<td><input type='submit' class='btn btn-success btn-sm' name='submitFinal_" . $counter . "'></td>";
+                                    echo "<td align='center'><input type='submit' class='btn btn-success btn-sm' name='submit15CA_" . $counter . "'></td>";
+
+                                } else {
+                                    echo "<td></td>";
+                                    echo "<td></td>";
+                                }
+                                
+                                echo "<td align='center'><img class='statusLogo' src='".$result['taskStatus15CA'] . "'></td>";
+                                echo "<td align='center'>".$result['adminUp15CA']."</td>";
+
                                 echo "</tr>";
                                 ++$counter;
                             }
