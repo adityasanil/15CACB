@@ -48,9 +48,6 @@ $sessionHolder = $_SESSION['user'];
                     <li class="nav-item">
                         <a class="nav-link" id="pills-rules-tab" data-toggle="pill" href="#pills-rules" role="tab" aria-controls="pills-rules" aria-selected="false">Rules</a>
                     </li>
-                    <!-- <li class="nav-item">
-                        <a class="nav-link" id="pills-createBlog-tab" data-toggle="pill" href="#pills-createBlog" role="tab" aria-controls="pills-createBlog" aria-selected="false">Create Blog</a>
-                    </li> -->
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="nav-item">
@@ -72,9 +69,6 @@ $sessionHolder = $_SESSION['user'];
             <div class="tab-pane fade" id="pills-rules" role="tabpanel" aria-labelledby="pills-rules-tab">
                 <?php include '../../routes/rules.php'; ?>  
             </div>
-            <!-- <div class="tab-pane fade" id="pills-createBlog" role="tabpanel" aria-labelledby="pills-createBlog-tab">
-                <?php include '../../routes/createBlog.php'; ?>  
-            </div> -->
             <div class="tab-pane fade" id="pills-logout" role="tabpanel" aria-labelledby="pills-logout-tab">
             </div>
         </div>
