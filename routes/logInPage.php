@@ -16,29 +16,56 @@ if(isset($_POST['loginSubmit'])) {
     $password = test_input($_POST['password']);
 
     $sqlFindUser = "SELECT * FROM Users WHERE userName ='$username'";
+    $findDetails = "SELECT * FROM personaldetails WHERE username = '$username'";
     $queryFindUser = mysqli_query($connect, $sqlFindUser);
+    $queryFindDetails = mysqli_query($connect, $findDetails);
     $countUsers = mysqli_num_rows($queryFindUser);
     $row = mysqli_fetch_array($queryFindUser);
+    $r = mysqli_num_rows($queryFindDetails);
 
     if ($countUsers > 0) {
         if(password_verify($password, $row['password'])) {
             $_SESSION['user'] = $username;
             $userSession = $_SESSION['user'];
-
+            
             if($row['identity'] == 'admin') {
-            ?>
-            <script >
+                if($r > 0){
+             ?>
+                <script >
                 window.location.href = "routes/admin/homeAdmin.php";
-            </script>
-            <?php
+                </script>
+                <?php
+                }
+                else {
+                ?>
+                <script >
+                window.location.href = "routes/personalDetails.php";
+                </script>
+                <?php
+                }
             }
-            else {
-            ?>
-            <script >
+
+            if($row['identity'] == 'client') {
+                if($r > 0){
+             ?>
+                <script >
                 window.location.href = "routes/client/homeClient.php";
-            </script>
-            <?php
+                </script>
+                <?php
+                }
+                else {
+                ?>
+                <script >
+                window.location.href = "routes/personalDetails.php";
+                </script>
+                <?php
+                }
             }
+
+           
+
+            
+            
         }
         else {
             echo "<script type='text/javascript'>alert('Invalid password')</script>";
