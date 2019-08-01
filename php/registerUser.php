@@ -21,12 +21,12 @@ if(isset($_POST['registerUser'])) {
     $passToHash = test_input($_POST['password']);
     $passwordHash = password_hash($passToHash, PASSWORD_DEFAULT);
     
-    $sql = "INSERT INTO Users (`id`, `firstName`, `lastName`, `userName`, `password`, `identityUser`, `email`, `contact`) VALUES 
+    $sql = "INSERT INTO Users (`id`, `firstName`, `lastName`, `userName`, `password`, `identity`, `email`, `contact`) VALUES 
     ('$id', '$firstName', '$lastName', '$userName','$passwordHash', '$identityUser', '$email', '$contact')";
     
     if (mysqli_query($connect, $sql)) {
-        echo "<script type='text/javascript'>alert('New records created successfully');</script>";
-        header('Location: ../index.php');
+        echo "<script type='text/javascript'>alert('New records created successfully');
+                                            window.location.href = '../index.php';</script>";
     }
     else {
         echo "Unable to add Details! Error: " . mysqli_error($connect);

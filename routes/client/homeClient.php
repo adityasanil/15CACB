@@ -1,5 +1,10 @@
 <?php 
 session_start();
+
+if($_SESSION['user'] == null) {
+    header('Location: ../../index.php');
+}
+
 $sessionHolder = $_SESSION['user'];
 
 
@@ -19,6 +24,8 @@ $sessionHolder = $_SESSION['user'];
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0-11/css/all.min.css">
     <link href='../../styles/navbarStyles.css' rel="stylesheet">
+    <link href="../../styles/style.css" rel="stylesheet">
+    
     <script>
         function logout(){
             window.location.href = "../../php/logout.php";

@@ -1,9 +1,8 @@
 <?php
 // session_start()
 
-
 include 'php/connectionDb15CACB.php';
-$result = mysqli_query($connect, "SELECT * FROM posts where selectedOption='rule'");
+$result = mysqli_query($connect, "SELECT * FROM posts WHERE selectedOption='Rule' ORDER BY timestamp DESC");
 
 
 ?>
@@ -13,11 +12,6 @@ $result = mysqli_query($connect, "SELECT * FROM posts where selectedOption='rule
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Rules</title>
-        <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script> 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>      
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
         <link href="https://fonts.googleapis.com/css?family=Oswald:200,300,400,500,600,700&display=swap" rel="stylesheet">
         <style>
             .col-md-8{
@@ -27,126 +21,119 @@ $result = mysqli_query($connect, "SELECT * FROM posts where selectedOption='rule
            }
             .card-img-top {
                 width: 100%;
-                height: 20vh;
+                height: 25vh;
                 object-fit: cover;
+            }
+            .card-img-overlay{
+
+                background-color: rgba(0,0,0,0.5);
+                transition-property: background-color, color;
+                transition-duration: 0.2s;
+
+
+            }
+            .card-img-overlay:hover{
+                color: #4ece3d;
+                background-color: rgba(0,0,0,0.8) !important;
             }
         </style>
     </head>
 
     <body>
         <br>
-        <h3 class="">Caselaws</h3>
+        <div class="container">
+            <h3 class="">Rules</h3>
+        </div>
         <div class="card-deck">
-                <?php
-                    while ($row = mysqli_fetch_array($result)) 
-                    {
+            <?php
+                while ($row = mysqli_fetch_array($result)) {
                     ?>
-                    <div class="col-sm-6 col-md-5 col-lg-3">
-                    <div class="card shadow mb-3" style="width: 16rem;">
-                    <?php echo '<img class="card-img-top" src="data:image;base64,'.base64_encode($row["image"]).'" alt="Card image">' ; ?>
-                    <div class="card-body">
-                        <h5 class="card-title"><?php echo $row["title"]; ?></h5>
-                        <p class="card-text"><small class="text-muted text-success">Date of posting:&nbsp<?php echo $row["date"];?></small></p>
-                        <input type="button" name="view" value="view" id="<?php echo $row["post_id"]; ?>" class="btn btn-info btn-xs view_data" />
+                    <div class="col-sm-12 col-md-4 col-lg-4">
+                        <div class="card text-white">
+                        <!--<img class="card-img" src="../images/fractal.jpeg">-->
+                        <?php echo "<img class='card-img' src='../../images/blogs/".$row['image']."' alt='Card image' >"; ?>
+                                    <div class="card-img-overlay">
+                                            <br><br><h5 class="card-title stretched-link">Card title</h5>
+                                            <h5 class="card-text">Rule ID:&nbsp<?php echo $row["post_id"];?></h5>
+                                            <!--<p class="card-text">Date of posting:&nbsp<?php echo $row["date"];?></p>-->
+                                            <a  id="<?php echo $row["post_id"]; ?>" href="#" class="view_data stretched-link" style="display: hidden;"></a>
+                                            <!--<input type="button" style="display:none;" name="view" value="view" id="<?php echo $row["post_id"]; ?>" class="btn btn-info btn-xs read_data" />-->
+                                    </div>
+                        </div><br>
 
-                    </div>
-                    </div>
+                    <!--<div class="col-sm-6 col-md-5 col-lg-3">
+                        <div class="card shadow mb-3" style="width: 16rem;">
+                            <div class="card-body">
+                                <h5 class="card-title"><?php echo $row["title"]; ?></h5>
+                                <p class="card-text"><small class="text-muted text-success">Date of posting:&nbsp<?php echo $row["date"];?></small></p>
+                                <input type="button" name="view" value="view" id="<?php echo $row["post_id"]; ?>" class="btn btn-info btn-xs view_data" />
+                            </div>
+                        </div>-->
                     </div>
                     <?php
-                    }
-                    ?>
+                }
+                ?>
        </div>
+
+        <div id="ruleModal" class="modal fade">  
+            <div class="modal-dialog modal-xl modal-dialog-scrollable">  
+                <div class="modal-content">  
+                        <div class="modal-header">    
+                            <h4 class="modal-title">Rule</h4>  
+                        </div>
+                        <div class="modal-body" id="rule_detail">  
+                        </div>  
+                        <div class="modal-footer">  
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>  
+                        </div>  
+                </div>  
+            </div>  
+        </div><br><br><br>
+
+        
+        <!-- footer-->
+        <div>
+            <footer id="footer">
+                <div class="footer-top">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 footer-info">
+                                <h3>&copy 2019 15CACB Pvt. Ltd.</h3>
+                                <p>
+                                    <strong>Phone:</strong> <a href="tel:+91-9967110003" style="color: black;">+91-9967110003</a><br>
+                                    <strong>Email:</strong> <a href="mailto:contact@15cacb.com" style="color: black;">contact@15cacb.com</a>
+                                </p>
+                            </div>
+                            <div class="col-lg-6 col-md-6 footer-contact text-right">
+                                <div class="social-links">
+                                    <a href="https://twitter.com/financelookup" class="twitter" target="_blank"><i class="fab fa-twitter"></i></a>
+                                    <a href="https://www.facebook.com/financelookup/" class="facebook" target="_blank"><i class="fab fa-facebook"></i></a>
+                                    <a href="https://www.linkedin.com/company/f-lookup-advisors/" class="linkedin" target="_blank"><i class="fab fa-linkedin"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+
+
+    <script>  
+    $(document).ready(function(){  
+        $('.view_data').click(function(){  
+            var rule_id = $(this).attr("id");  
+            $.ajax({  
+                    url:"../../php/selectRule.php",  
+                    method:"post",  
+                    data:{rule_id:rule_id},  
+                    success:function(data){  
+                        $('#rule_detail').html(data);  
+                        $('#ruleModal').modal("show");  
+                    }  
+            });  
+        });  
+    });  
+    </script>
+
     </body>
 </html>
-
-
-
-<div id="dataModal" class="modal fade">  
-      <div class="modal-dialog modal-xl modal-dialog-scrollable">  
-           <div class="modal-content">  
-                <div class="modal-header">    
-                     <h4 class="modal-title">Rule</h4>  
-                </div>
-                <div class="modal-body" id="article_detail">  
-                </div>  
-                <div class="modal-footer">  
-                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>  
-                </div>  
-           </div>  
-      </div>  
- </div>  
-
-
-<script>  
- $(document).ready(function(){  
-      $('.view_data').click(function(){  
-           var article_id = $(this).attr("id");  
-           $.ajax({  
-                url:"php/select.php",  
-                method:"post",  
-                data:{article_id:article_id},  
-                success:function(data){  
-                     $('#article_detail').html(data);  
-                     $('#dataModal').modal("show");  
-                }  
-           });  
-      });  
- });  
- </script>
-
-
-    <!--         <div class="col-sm-6 col-md-4 col-lg-3">
-                <div class="card mb-4" style="width: 16rem;">
-                    <img class="card-img-top" src="images/space.jpeg" alt="Card image">
-                    <div class="card-body">
-                        <h5 class="card-title stretched-link">Card 1</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content. </p>
-                        <a href="https://www.google.com" class="stretched-link" style="display: hidden" target="_blank"></a>
-                        <p class="card-text"><small class="text-muted text-success">Date of posting</small></p>
-                    </div>
-                </div>
-             </div>
-
-             <div class="col-sm-6 col-md-4 col-lg-3">
-                <div class="card mb-4" style="width: 16rem;">
-                    <img class="card-img-top" src="images/space.jpeg" alt="Card image">
-                    <div class="card-body">
-                        <h5 class="card-title stretched-link">Card 2</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content. </p>
-                        <a href="https://www.google.com" class="stretched-link" style="display: hidden" target="_blank"></a>
-                        <p class="card-text"><small class="text-muted text-success">Date of posting</small></p>
-                    </div>
-                </div>
-             </div>
-
-             <div class="col-sm-6 col-md-4 col-lg-3">
-                <div class="card mb-4" style="width: 16rem;">
-                    <img class="card-img-top" src="images/space.jpeg" alt="Card image">
-                    <div class="card-body">
-                        <h5 class="card-title stretched-link">Card 3</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content. </p>
-                        <a href="https://www.google.com" class="stretched-link" style="display: hidden" target="_blank"></a>
-                        <p class="card-text"><small class="text-muted text-success">Date of posting</small></p>
-                    </div>
-                </div>
-             </div>
-
-             <div class="col-sm-6 col-md-4 col-lg-3">
-                <div class="card mb-4" style="width: 16rem;">
-                    <img class="card-img-top" src="images/space.jpeg" alt="Card image">
-                    <div class="card-body">
-                        <h5 class="card-title stretched-link">Card 4</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content. </p>
-                        <a href="https://www.google.com" class="stretched-link" style="display: hidden" target="_blank"></a>
-                        <p class="card-text"><small class="text-muted text-success">Date of posting</small></p>
-                    </div>
-                </div>
-             </div>
-             
-        
-        </div>-->
-        
-
-
-        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> -->

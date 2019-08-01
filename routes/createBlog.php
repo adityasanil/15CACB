@@ -16,18 +16,19 @@ if(isset($_POST["insert"]))
     $firstName = $row['firstName'];
     $lastName = $row['lastName'];
     $identity = $row['identity'];
-    $file = addslashes(file_get_contents($_FILES["image"]["tmp_name"]));
+    $image = $_FILES["image"]["name"];
+    $target = "../../images/blogs/".basename($image);
     $option=$_POST['selectbox'];
     $title = $_POST['title'];
     $content = $_POST['image_text'];
     $date = date("D\, jS M Y");    
-    $query = "INSERT INTO posts(firstName, lastName, identity, selectedOption, title, content, image, date) VALUES ('$firstName','$lastName','$identity','$option','$title','$content','$file', '$date')";
-    if(mysqli_query($connect, $query))  
-      {  
-       echo '<script>alert("Post created successfully")</script>';  
+    $query = "INSERT INTO posts(firstName, lastName, identity, selectedOption, title, content, image, date) VALUES ('$firstName', '$lastName', '$identity', '$option', '$title','$content','$target', '$date')";
+    mysqli_query($connect, $query);
+
+    if (move_uploaded_file($_FILES['image']['tmp_name'], $target))
+      {    
+          echo '<script>alert("Post created successfully")</script>';  
       }  
-
-
 
       /*$file = addslashes(file_get_contents($_FILES["image"]["tmp_name"])); 
       $title = $_POST['title'];

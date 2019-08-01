@@ -14,10 +14,8 @@ include '../../php/connectionDb15CACB.php';
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script> 
         <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
-        <link href='../../styles/navbarStyles.css' rel="stylesheet">
         <style>
             table {
-                /* display: inline-block; */
                 overflow-x: auto;
                 white-space: nowrap;
             }
@@ -115,7 +113,7 @@ include '../../php/connectionDb15CACB.php';
                                         });
                                     </script>
                                     ";
-                                    echo "<td align='center'><input type='submit' class='btn btn-success btn-sm' name='submitFinal_" . $counter . "'></td>";
+                                    echo "<td align='center'><input type='submit' class='btn btn-success btn-sm submitBtnTable mb-1' name='submitFinal_" . $counter . "'></td>";
                                     echo "<td align='center'><img class='statusLogo' src='".$result['taskStatus'] . "'></td>";
                                     if($result['clientUp15CA'] == true) {
                                         echo "<td align='center'><a href='" . $result['clientUp15CA'] . "' download><i class='fas fa-download fa-lg' style='color: #d9534f;'></i></a></td>";
@@ -134,7 +132,7 @@ include '../../php/connectionDb15CACB.php';
                                         });
                                     </script>
                                     ";
-                                    echo "<td align='center'><input type='submit' class='btn btn-success btn-sm' form='storeAdmin15CA' name='submitAdmin15CA_" . $counter . "'></td>";
+                                    echo "<td align='center'><input type='submit' class='btn btn-success btn-sm submitBtnTable mb-1' form='storeAdmin15CA' name='submitAdmin15CA_" . $counter . "'></td>";
                                     echo "<td align='center'><img class='statusLogo' src='".$result['taskStatus15CA'] . "'></td>";
                                     } else {
                                         echo "<td></td>";

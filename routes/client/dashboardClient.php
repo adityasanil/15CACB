@@ -15,7 +15,6 @@ include '../../php/connectionDb15CACB.php';
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>        
         <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
-        <link href='../../styles/navbarStyles.css' rel="stylesheet">
         <script>
         function showTable(str, holder) {
             var xhttp;
@@ -126,7 +125,7 @@ include '../../php/connectionDb15CACB.php';
                                         });
                                     </script>
                                     ";
-                                    echo "<td align='center'><input type='submit' class='btn btn-success btn-sm' name='submit15CA_" . $counter . "'></td>";
+                                    echo "<td align='center'><input type='submit' class='btn btn-success btn-sm submitBtnTable mb-1' name='submit15CA_" . $counter . "'></td>";
 
                                 } else {
                                     echo "<td></td>";

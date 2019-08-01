@@ -1,19 +1,19 @@
 <?php
-
 session_start();
+
+if($_SESSION['user'] == null) {
+    header('Location: ../../index.php');
+}
 
 $sessionHolder=$_SESSION['user'];
 
 include '../php/connectionDb15CACB.php';
-
-
 
 if(isset($_POST["insert"]))
 {
     $sql = "SELECT * FROM Users WHERE username = '$sessionHolder'";
     $querySql = mysqli_query($connect, $sql);
     $row = mysqli_fetch_array($querySql);
-
 
     $id = $row['id'];
     $username = $sessionHolder;
@@ -25,37 +25,25 @@ if(isset($_POST["insert"]))
     $ifsc = $_POST['ifscCode'];
     $swift = $_POST['swiftCode'];
     $accNumber = $_POST['accountNumber'];
-
-
-        
+   
     $query = "INSERT INTO personaldetails(id, username, identity, address, panNumber, companyName, gstNumber, ifscCode, swiftCode, accountNumber) VALUES ('$id','$username', '$identity', '$address','$pan','$compName','$gst','$ifsc','$swift', '$accNumber')";
     if(mysqli_query($connect, $query))  
     {  
 
-        if($identity == "admin"){
+        if($identity == "admin") {
             echo '<script type="text/javascript">
                     alert("Details entered successfully! Press OK to continue");                
                     window.location.href = "admin/homeAdmin.php";
               </script>';
-        }
-
-        else{
+        } else{
             echo '<script type="text/javascript">
                     alert("Details entered successfully! Press OK to continue");                
                     window.location.href = "client/homeClient.php";
               </script>';
-
         }
-
-
     }
-     
-
-
 }
 ?>
-
-
 
 <!DOCTYPE html>
     <head>
@@ -78,7 +66,7 @@ if(isset($_POST["insert"]))
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <a class="navbar-brand">
-                    <img src="../../images/15cacb.png" width="" height="30" class="d-inline-block align-top" alt="">
+                    <img src="../images/15cacb.png" width="" height="30" class="d-inline-block align-top" alt="">
                 </a>
         </nav>
         <br>

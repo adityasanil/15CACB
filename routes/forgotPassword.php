@@ -8,10 +8,8 @@
     <title>Reset Password</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="style/navbarStyles.css">
     <script>
         function myFunction() {
-
             var email = document.getElementById('changePwdEmail').value;
             var newPwd = document.getElementById('changePwd1').value;
             var newConfirmPwd = document.getElementById('changePwd2').value;

@@ -11,13 +11,12 @@ $holder = $_GET['holder'];
 if($orderBy == 'A') {
 
     $counter = 1;
-    $sql = "SELECT submitTime, partyName, dateRegistered, ackNumber, trackingNumber, uidNumber, adminUploadedDoc, taskStatus FROM documentStore WHERE userName ='$holder' ORDER BY submitTime DESC";
+    $sql = "SELECT * FROM documentStore WHERE userName ='$holder' ORDER BY submitTime DESC";
     $querySql = mysqli_query($connect, $sql);
 
     while ($result = mysqli_fetch_array($querySql)) {
         echo "<tr>";
         echo "<th scope='row'>$counter</th>";
-        // echo "<td>" . $result['partyName'] . "</td>";
         echo "<td>" . $result['dateRegistered'] . "</td>";
         echo "<td>" . $result['ackNumber'] . "</td>";
         echo "<td>" . $result['trackingNumber'] . "</td>";
@@ -27,7 +26,7 @@ if($orderBy == 'A') {
         if($result['adminUploadedDoc'] == true) {
             echo "<td align='center'>
                 <label for='fileUpload15CA" . $counter . "'>
-                    <i class='fas fa-upload fa-lg'></i>
+                    <i class='fas fa-upload fa-lg' style='color: #5bc0de'></i>
                 </label>
                 <input id='fileUpload15CA" . $counter ."' name='clientUp15CA_".$result['trackingNumber']."' type='file' style='display:none;'>
                 <input type='hidden' name='fileID15CA_".$counter."' value='" . $result['trackingNumber'] . "'>
@@ -40,7 +39,7 @@ if($orderBy == 'A') {
                 });
             </script>
             ";
-            echo "<td align='center'><input type='submit' class='btn btn-success btn-sm' name='submit15CA_" . $counter . "'></td>";
+            echo "<td align='center'><input type='submit' class='btn btn-success btn-sm submitBtnTable mb-1' name='submit15CA_" . $counter . "'></td>";
 
         } else {
             echo "<td></td>";
@@ -57,7 +56,7 @@ if($orderBy == 'A') {
 else {
 
     $counter = 1;
-    $sql = "SELECT submitTime, partyName, dateRegistered, ackNumber, trackingNumber, uidNumber, adminUploadedDoc, taskStatus, process FROM documentStore WHERE userName ='$holder' AND process='$orderBy' ORDER BY submitTime DESC";
+    $sql = "SELECT * FROM documentStore WHERE userName ='$holder' AND process='$orderBy' ORDER BY submitTime DESC";
     $querySql = mysqli_query($connect, $sql);
 
     while ($result = mysqli_fetch_array($querySql)) {
@@ -73,7 +72,7 @@ else {
         if($result['adminUploadedDoc'] == true) {
             echo "<td align='center'>
                 <label for='fileUpload15CA" . $counter . "'>
-                    <i class='fas fa-upload fa-lg'></i>
+                    <i class='fas fa-upload fa-lg' style='color: #5bc0de'></i>
                 </label>
                 <input id='fileUpload15CA" . $counter ."' name='clientUp15CA_".$result['trackingNumber']."' type='file' style='display:none;'>
                 <input type='hidden' name='fileID15CA_".$counter."' value='" . $result['trackingNumber'] . "'>
@@ -86,7 +85,7 @@ else {
                 });
             </script>
             ";
-            echo "<td align='center'><input type='submit' class='btn btn-success btn-sm' name='submit15CA_" . $counter . "'></td>";
+            echo "<td align='center'><input type='submit' class='btn btn-success btn-sm submitBtnTable mb-1' name='submit15CA_" . $counter . "'></td>";
 
         } else {
             echo "<td></td>";

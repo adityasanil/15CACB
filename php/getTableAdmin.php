@@ -42,7 +42,7 @@ if($orderBy == 'A') {
             });
         </script>
         ";
-        echo "<td align='center'><input type='submit' class='btn btn-success btn-sm' name='submitFinal_" . $counter . "'></td>";
+        echo "<td align='center'><input type='submit' class='btn btn-success btn-sm submitBtnTable mb-1' name='submitFinal_" . $counter . "'></td>";
         echo "<td align='center'><img class='statusLogo' src='".$result['taskStatus'] . "'></td>";
         if($result['clientUp15CA'] == true) {
             echo "<td align='center'><a href='" . $result['clientUp15CA'] . "' download><i class='fas fa-download fa-lg' style='color: #d9534f;'></i></a></td>";
@@ -61,7 +61,7 @@ if($orderBy == 'A') {
             });
         </script>
         ";
-        echo "<td align='center'><input type='submit' class='btn btn-success btn-sm' form='storeAdmin15CA' name='submitAdmin15CA_" . $counter . "'></td>";
+        echo "<td align='center'><input type='submit' class='btn btn-success btn-sm submitBtnTable mb-1' form='storeAdmin15CA' name='submitAdmin15CA_" . $counter . "'></td>";
         echo "<td align='center'><img class='statusLogo' src='".$result['taskStatus15CA'] . "'></td>";
         } else {
             echo "<td></td>";
@@ -123,7 +123,7 @@ if($orderBy == 'A') {
             });
         </script>
         ";
-        echo "<td align='center'><input type='submit' class='btn btn-success btn-sm' name='submitFinal_" . $counter . "'></td>";
+        echo "<td align='center'><input type='submit' class='btn btn-success btn-sm submitBtnTable mb-1' name='submitFinal_" . $counter . "'></td>";
         echo "<td align='center'><img class='statusLogo' src='".$result['taskStatus'] . "'></td>";
         if($result['clientUp15CA'] == true) {
             echo "<td align='center'><a href='" . $result['clientUp15CA'] . "' download><i class='fas fa-download fa-lg' style='color: #d9534f;'></i></a></td>";
@@ -142,7 +142,7 @@ if($orderBy == 'A') {
             });
         </script>
         ";
-        echo "<td align='center'><input type='submit' class='btn btn-success btn-sm' form='storeAdmin15CA' name='submitAdmin15CA_" . $counter . "'></td>";
+        echo "<td align='center'><input type='submit' class='btn btn-success btn-sm submitBtnTable mb-1' form='storeAdmin15CA' name='submitAdmin15CA_" . $counter . "'></td>";
         echo "<td align='center'><img class='statusLogo' src='".$result['taskStatus15CA'] . "'></td>";
         } else {
             echo "<td></td>";

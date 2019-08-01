@@ -7,31 +7,6 @@
         <title>Home</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="scripts/owlcarousel/assets/owl.carousel.min.css">
-        <link rel="stylesheet" href="scripts/owlcarousel/assets/owl.theme.default.min.css">
-        <link href='styles/style.css' rel='stylesheet'>
-        <script>
-            $(document).ready(function(){
-                $(".owl-carousel").owlCarousel({
-                    items:2, loop:true, center: true, nav:true, autoplay:true, autoplayTimeout:4000, autoplayHoverPause:true,
-                    responsiveClass:true,
-                    responsive:{
-                        0:{
-                            items:1,
-                            nav:true
-                        },
-                        600:{
-                            items:1,
-                            nav:true
-                        },
-                        1000:{
-                            items:3,
-                            nav:true,
-                        }
-                    }
-                });
-            });
-        </script>
     </head>
 
     <body>
@@ -43,28 +18,21 @@
                         <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
                         <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
                         <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
-                        <li data-target="#carouselExampleCaptions" data-slide-to="3"></li>
                     </ol>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="images/slider/lake.jpg" class="d-block w-100" alt="...">
+                            <img src="images/slider/map.jpg" class="d-block w-100" alt="...">
                             <div class="carousel-caption d-none d-md-block">
-                                <h5>First slide label</h5>
-                                <p>Caption for image 1</p>
                             </div>
                         </div>
                         <div class="carousel-item">
-                            <img src="images/slider/man.jpg" class="d-block w-100" alt="...">
+                            <img src="images/slider/flag.jpg" class="d-block w-100" alt="...">
                             <div class="carousel-caption d-none d-md-block">
-                                <h5>Second slide label</h5>
-                                <p>Caption for image 2</p>
                             </div>
                         </div>
                         <div class="carousel-item">
-                            <img src="images/slider/sunset.jpg" class="d-block w-100" alt="...">
+                            <img src="images/slider/hands.jpg" class="d-block w-100" alt="...">
                             <div class="carousel-caption d-none d-md-block">
-                                <h5>Third slide label</h5>
-                                <p>Caption for image 3</p>
                             </div>
                         </div>
                     </div>
@@ -94,7 +62,7 @@
                 <div class="col-md-4 wow fadeInUp">
                     <div class="about-col">
                         <div class="img">
-                            <img src="img/about-mission.jpg" alt="" class="img-fluid">
+                            <img src="" alt="" class="img-fluid">
                             <div class="icon"><i class="fas fa-tachometer-alt"></i></div>
                         </div>
                         <h2 class="title"><a href="#">Our Mission</a></h2>
@@ -107,7 +75,7 @@
                 <div class="col-md-4 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="about-col">
                         <div class="img">
-                            <img src="img/about-plan.jpg" alt="" class="img-fluid">
+                            <img src="" alt="" class="img-fluid">
                             <div class="icon"><i class="fas fa-list-ul"></i></div>
                         </div>
                         <h2 class="title"><a href="#">Our Plan</a></h2>
@@ -120,7 +88,7 @@
                 <div class="col-md-4 wow fadeInUp" data-wow-delay="0.2s">
                     <div class="about-col">
                         <div class="img">
-                            <img src="img/about-vision.jpg" alt="" class="img-fluid">
+                            <img src="" alt="" class="img-fluid">
                             <div class="icon"><i class="far fa-eye"></i></div>
                         </div>
                         <h2 class="title"><a href="#">Our Vision</a></h2>
@@ -132,73 +100,6 @@
             </div>
         </div>
         </section>
-
-        <!-- Slider -->
-        <br>
-        <div class="jumbotron">
-            <h4>Our services</h4>
-            <br>
-            <div class="owl-carousel owl-theme">
-                <div class="item">
-                    <div class="card shadow" style="width: 20rem; height: 300px;">
-                        <!-- <img class="card-img-top" src="images/space.jpeg" alt="Card image"> -->
-                        <div class="card-body">
-                            <h5 class="card-title text-center">Service 1</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content. </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="item">
-                    <div class="card shadow" style="width: 20rem; height: 300px;">
-                        <!-- <img class="card-img-top" src="images/space.jpeg" alt="Card image"> -->
-                        <div class="card-body">
-                            <h5 class="card-title text-center">Service 2</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content. </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="item">
-                    <div class="card shadow" style="width: 20rem; height: 300px;">
-                        <!-- <img class="card-img-top" src="images/space.jpeg" alt="Card image"> -->
-                        <div class="card-body">
-                            <h5 class="card-title text-center">Service 3</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content. </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="item">
-                    <div class="card shadow" style="width: 20rem; height: 300px;">
-                        <!-- <img class="card-img-top" src="images/space.jpeg" alt="Card image"> -->
-                        <div class="card-body">
-                            <h5 class="card-title text-center">Service 4</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content. </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="item">
-                    <div class="card shadow" style="width: 20rem; height: 300px;">
-                        <!-- <img class="card-img-top" src="images/space.jpeg" alt="Card image"> -->
-                        <div class="card-body">
-                            <h5 class="card-title text-center">Service 5</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content. </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="card shadow" style="width: 20rem; height: 300px;">
-                        <!-- <img class="card-img-top" src="images/space.jpeg" alt="Card image"> -->
-                        <div class="card-body">
-                            <h5 class="card-title text-center">Service 6</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content. </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <!-- Featured Services  -->
         <section id="featured-services">
@@ -236,8 +137,8 @@
                             <div class="col-lg-6 col-md-6 footer-info">
                                 <h3>&copy 2019 15CACB Pvt. Ltd.</h3>
                                 <p>
-                                    <strong>Phone:</strong> <a href="tel:+91-9967110003" style="color: white;">+91-9967110003</a><br>
-                                    <strong>Email:</strong> <a href="mailto:contact@15cacb.com" style="color: white;">contact@15cacb.com</a>
+                                    <strong>Phone:</strong> <a href="tel:+91-9967110003" style="color: black;">+91-9967110003</a><br>
+                                    <strong>Email:</strong> <a href="mailto:contact@15cacb.com" style="color: black;">contact@15cacb.com</a>
                                 </p>
                             </div>
                             <div class="col-lg-6 col-md-6 footer-contact text-right">
@@ -250,12 +151,15 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="container">
+                    <div class="madeBy">
+                        Designed by <a href="https://www.linkedin.com/in/adityasanil/" target="_blank">Sanil</a> &
+                        <a href="https://www.linkedin.com/in/jigar98/" target="_blank">Jigar</a>
+                    </div>
+                </div>
+
             </footer>
         </div>
-
-
-
-
-    <script defer src="scripts/owlcarousel/owl.carousel.min.js"></script>
     </body>
 </html>
