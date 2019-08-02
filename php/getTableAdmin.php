@@ -67,6 +67,8 @@ if($orderBy == 'A') {
             echo "<td></td>";
             echo "<td></td>";
             echo "<td></td>";
+            echo "<td></td>";
+
         }
 
         // echo "<td align='center'>
@@ -148,6 +150,8 @@ if($orderBy == 'A') {
             echo "<td></td>";
             echo "<td></td>";
             echo "<td></td>";
+            echo "<td></td>";
+
         }
 
         // echo "<td align='center'>

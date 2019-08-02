@@ -52,12 +52,32 @@ if(isset($_POST["insert"]))
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">    
-        <link href='../../styles/navbarStyles.css' rel="stylesheet">
         <style>
             .row {
                 justify-content: center;
             }
         </style>
+        <script>
+            function notifyAdmin() {
+                <?php
+
+                    $sqlGetDetails = "SELECT * FROM Users WHERE username = '$sessionHolder'";
+                    $queryGetDetails = mysqli_query($connect, $sqlGetDetails);
+                    $rowDetails = mysqli_fetch_array($queryGetDetails);
+                
+                ?>
+                var message = 'The above client has signed up on our platform.';
+                var name = '<?php echo $rowDetails['firstName'] . " " . $rowDetails['lastName'];  ?>';
+                var clientEmail = '<?php echo $rowDetails['email']; ?>';
+                var TO_ADDRESS = 'aditya.sanil24@gmail.com';
+
+                var xhttpObj = new XMLHttpRequest();
+                xhttpObj.open("POST", "https://script.google.com/macros/s/AKfycbz5haqz1ZW8eEiLCBab9kFENEP9H5FP8FO6rshfjvPe8gSeZqhj/exec", true);
+                xhttpObj.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhttpObj.send("message=" + message +"&name=" + name  + "&clientEmail=" + clientEmail + "&TO_ADDRESS=" + TO_ADDRESS);
+                alert("ran");
+            }
+        </script>
     </head>
     <body>
         <nav class="navbar sticky-top navbar-expand-lg navbar-dark" style="background-color: #0079c4;">
@@ -74,7 +94,7 @@ if(isset($_POST["insert"]))
                 <aside class="col-sm-7">
                     <div class="card text-dark">
                         <article class="card-body">
-                            <h4 class="card-title text-center mb-4 mt-1">Fill Personal Details</h4>
+                            <h4 class="card-title text-center mb-4 mt-1">Hello, <?php echo $sessionHolder; ?></h4>
                             <hr>
                             <p class="text-primary text-center">Please fill in your personal details in order to proceed further</p>
                             
@@ -141,13 +161,12 @@ if(isset($_POST["insert"]))
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text">Account Number</span>
                                             </div>
-                                            <input name="accountNumber" id="accountNumber" class="form-control" placeholder="Bank Account Number" type="text" required pattern="[0-9]{12}" >
+                                            <input name="accountNumber" id="accountNumber" class="form-control" placeholder="Bank Account Number" type="text" required pattern="[0-9]{12}">
                                         </div>
-                                   
                                 </div>
 
                                 <div class="form-group">
-                                    <input type="submit" id="submitDetails" class="btn btn-success btn-block" name= "insert" value="Submit">
+                                    <input type="submit" id="submitDetails" class="btn btn-success btn-block" name= "insert" value="Submit" onclick="notifyAdmin()">
                                     <span id="result"></span>
                                 </div>
                             </form>

@@ -14,7 +14,6 @@ $result = mysqli_query($connect, "SELECT * FROM posts WHERE selectedOption='Case
         <title>Caselaws</title>
         <link href="https://fonts.googleapis.com/css?family=Oswald:200,300,400,500,600,700&display=swap" rel="stylesheet">
         <style>
-
             .col-md-8{
                 font-family: 'Oswald', sans-serif;
                 font-size: 20px;
@@ -25,18 +24,12 @@ $result = mysqli_query($connect, "SELECT * FROM posts WHERE selectedOption='Case
                 height: 25vh;
                 object-fit: cover;
             }
-
-
             .card-img-overlay{
 
                 background-color: rgba(0,0,0,0.5);
                 transition-property: background-color, color;
                 transition-duration: 0.2s;
-
-
             }
-
-
             .card-img-overlay:hover{
                 color: #4ece3d;
                 background-color: rgba(0,0,0,0.8) !important;
