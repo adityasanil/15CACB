@@ -6,30 +6,30 @@ $$sessionHolder = $_SESSION['user'];
 include 'connectionDb15CACB.php';
 
 
-if(isset($_POST)) {
+if (isset($_POST)) {
     foreach ($_POST as $key => $value) {
-        if(strpos($key, 'submitAdmin15CA') !== false) {
+        if (strpos($key, 'submitAdmin15CA') !== false) {
             $string = explode("_", $key);
             $getNumberAdmin15CA = $string[1];
         }
     }
 
-    foreach($_POST as $key2 => $value2) {
-        if(strpos($key2, 'fileAdminID15CA') !== false) {
+    foreach ($_POST as $key2 => $value2) {
+        if (strpos($key2, 'fileAdminID15CA') !== false) {
             $string2 = explode("_", $key2);
-            if($getNumberAdmin15CA == $string2[1]) {
+            if ($getNumberAdmin15CA == $string2[1]) {
                 $fileAdminID15CA = $value2;
             }
         }
     }
 
-    foreach($_FILES as $key => $value) {
-        if(strpos($key, 'fileAdminFile15CA') !== false) {
+    foreach ($_FILES as $key => $value) {
+        if (strpos($key, 'fileAdminFile15CA') !== false) {
             $string = explode("_", $key);
-            if($string[1] == $fileAdminID15CA) {
+            if ($string[1] == $fileAdminID15CA) {
                 $fileAdminFile15CA = $key;
             }
-        } 
+        }
     }
 
     // echo "Value";
@@ -43,7 +43,7 @@ if(isset($_POST)) {
     $target_dir = "../uploadsAdmin/adminUploads15CA/";
 
     $extension = "." . end(explode(".", $_FILES[$fileAdminFile15CA]["name"]));
-    $newFileName = '15CA-'. $fileAdminID15CA . $extension; 
+    $newFileName = '15CA-' . $fileAdminID15CA . $extension;
 
     // echo "<br>" . $newFileName;
 
@@ -58,7 +58,7 @@ if(isset($_POST)) {
     // echo "<br>" . $adminUploadedDoc;
 
     $uploadOk = 1;
-    $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
     if (file_exists($target_file)) {
         echo "<script type='text/javascript'>alert('Sorry, file already exists. Rename it.');</script>";
@@ -71,16 +71,16 @@ if(isset($_POST)) {
         <script>
             window.location.href = "../routes/admin/homeAdmin.php";
         </script>
-        <?php
+    <?php
     }
-    if($imageFileType != "docx" && $imageFileType != "txt" && $imageFileType != "pdf" && $imageFileType != "jpg" && $imageFileType != "jpeg" && $imageFileType != "png") {
+    if ($imageFileType != "docx" && $imageFileType != "png" && $imageFileType != "doc" && $imageFileType != "txt" && $imageFileType != "pdf" && $imageFileType != "jpg" && $imageFileType != "jpeg" && $imageFileType != "png") {
         $uploadOk = 0;
-        echo "<script type='text/javascript'>alert('Sorry, only docx, pdf & txt files are allowed.');</script>";
+        echo "<script type='text/javascript'>alert('Sorry, only doc, jpeg, jpg, docx, pdf & txt files are allowed.');</script>";
         ?>
         <script>
             window.location.href = "../routes/admin/homeAdmin.php";
         </script>
-        <?php
+    <?php
     }
     if ($uploadOk == 0) {
         echo "<script type='text/javascript'>alert('Sorry, there was an error uploading your file.');</script>";
@@ -89,35 +89,33 @@ if(isset($_POST)) {
             window.location.href = "../routes/admin/homeAdmin.php";
         </script>
 
-        <?php
-    }else {
+    <?php
+    } else {
         if (move_uploaded_file($_FILES[$fileAdminFile15CA]["tmp_name"], $target_file)) {
 
             $adminInsertToDb15CA = "UPDATE `documentStore` SET `adminUp15CA`='$location', `taskStatus15CA`='$taskStatus15CA'  WHERE `trackingNumber`='$fileAdminID15CA'";
 
-            if(mysqli_query($connect, $adminInsertToDb15CA)) {
+            if (mysqli_query($connect, $adminInsertToDb15CA)) {
                 echo "<script type='text/javascript'>alert('Uploaded to database');</script>";
-            }else {
+            } else {
                 echo "Error uploading: " . mysqli_error($connect);
             }
-            echo "<script type='text/javascript'>alert('Your file ". basename( $_FILES[$fileAdminFile15CA]["name"]). "has been uploaded.');</script>";
+            echo "<script type='text/javascript'>alert('Your file " . basename($_FILES[$fileAdminFile15CA]["name"]) . "has been uploaded.');</script>";
             ?>
             <script>
                 window.location.href = "../routes/admin/homeAdmin.php";
             </script>
-            <?php
+        <?php
 
-        }else {
+        } else {
             echo "<script type='text/javascript'>alert('Sorry, there was an error uploading your file.');</script>";
             ?>
-        <script>
-            window.location.href = "../routes/admin/homeAdmin.php";
-        </script>
+            <script>
+                window.location.href = "../routes/admin/homeAdmin.php";
+            </script>
         <?php
         }
-
     }
-
 }
 
 ?>

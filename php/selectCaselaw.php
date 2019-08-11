@@ -14,6 +14,10 @@ if (isset($_POST["caselaw_id"]))
 		{
 
 			$output.='
+
+                <div class="modal-header">
+                    <h5 class="modal-title">'.$row["title"].'</h5>
+                </div>
 				<div class="modal-body">
 					<div class="conatainer-fluid">
 						<div class="row">

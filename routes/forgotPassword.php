@@ -21,7 +21,7 @@
                     document.getElementById("resultPass").innerHTML = "Passwords did not match.";
                     return;
             } else {
-                var xmlhttp = new XMLHttpRequest();
+                xmlhttp = new XMLHttpRequest();
                 xmlhttp.onreadystatechange = function() {
                     if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
                         document.getElementById("resultPass").innerHTML = this.responseText;

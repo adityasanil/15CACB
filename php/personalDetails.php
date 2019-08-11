@@ -141,7 +141,7 @@ if (isset($_POST["insert"])) {
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">IFSC Code</i></span>
                                     </div>
-                                    <input class="form-control" id="ifscCode" placeholder="11 digit IFSC Code" type="text" name="ifscCode" required pattern="[A-Za-z0-9]{11}">
+                                    <input class="form-control" id="ifscCode" placeholder="enter your IFSC Code" type="text" name="ifscCode" required>
                                 </div>
                             </div>
                         </div>
@@ -151,7 +151,7 @@ if (isset($_POST["insert"])) {
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">Swift Code</span>
                                 </div>
-                                <input name="swiftCode" id="swiftCode" class="form-control" placeholder="11 digit number" type="text" required pattern="[A-Za-z0-9]{11}">
+                                <input name="swiftCode" id="swiftCode" class="form-control" placeholder="enter swift code" type="text" required">
                             </div>
                         </div>
 

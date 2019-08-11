@@ -1,7 +1,7 @@
-<?php 
+<?php
 session_start();
 
-if($_SESSION['user'] == null) {
+if ($_SESSION['user'] == null) {
     header('Location: ../../index.php');
 }
 
@@ -21,20 +21,23 @@ $sessionHolder = $_SESSION['user'];
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0-11/css/all.min.css">
     <link href='../../styles/navbarStyles.css' rel="stylesheet">
     <link href="../../styles/style.css" rel="stylesheet">
     <script>
-        $(function () {
+        $(function() {
             $('[data-toggle="tooltip"]').tooltip()
         })
-        function logout(){
+
+        function logout() {
             window.location.href = "../../php/logout.php";
         }
     </script>
-    
+
 </head>
 
 <body>
@@ -65,6 +68,9 @@ $sessionHolder = $_SESSION['user'];
                     <li class="nav-item">
                         <a class="nav-link" id="pills-listClients-tab" data-toggle="pill" href="#pills-listClients" role="tab" aria-controls="pills-listClients" aria-selected="false">Clients</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="pills-addAdmin-tab" data-toggle="pill" href="#pills-addAdmin" role="tab" aria-controls="pills-addAdmin" aria-selected="false">Admins</a>
+                    </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="nav-item">
@@ -78,19 +84,22 @@ $sessionHolder = $_SESSION['user'];
     <div class="container">
         <div class="tab-content" id="pills-tabContent">
             <div class="tab-pane fade show active" id="pills-dashboardAdmin" role="tabpanel" aria-labelledby="pills-dashboardAdmin-tab">
-                <?php include '../../routes/admin/dashboardAdmin.php'; ?>  
+                <?php include '../../routes/admin/dashboardAdmin.php'; ?>
             </div>
             <div class="tab-pane fade" id="pills-caselaws" role="tabpanel" aria-labelledby="pills-caselaws-tab">
-                <?php include '../../routes/caselaws.php'; ?>  
+                <?php include '../../routes/caselaws.php'; ?>
             </div>
             <div class="tab-pane fade" id="pills-rules" role="tabpanel" aria-labelledby="pills-rules-tab">
-                <?php include '../../routes/rules.php'; ?>  
+                <?php include '../../routes/rules.php'; ?>
             </div>
             <div class="tab-pane fade" id="pills-createBlog" role="tabpanel" aria-labelledby="pills-createBlog-tab">
-                <?php include '../../routes/createBlog.php'; ?>  
+                <?php include '../../routes/createBlog.php'; ?>
             </div>
             <div class="tab-pane fade" id="pills-listClients" role="tabpanel" aria-labelledby="pills-listClients-tab">
-                <?php include '../../routes/clientsList.php'; ?>  
+                <?php include '../../routes/clientsList.php'; ?>
+            </div>
+            <div class="tab-pane fade" id="pills-addAdmin" role="tabpanel" aria-labelledby="pills-addAdmin-tab">
+                <?php include '../../routes/addAdmin.php'; ?>
             </div>
 
             <!-- Logout Button -->
@@ -100,9 +109,10 @@ $sessionHolder = $_SESSION['user'];
     </div>
 
 
-    
 
-    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
