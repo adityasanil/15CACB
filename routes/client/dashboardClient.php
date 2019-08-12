@@ -84,11 +84,12 @@ include '../../php/connectionDb15CACB.php';
         </div><br>
 
         <div class="table-responsive">
-            <table class="table table-sm table-hover">
+            <table class="table table-sm table-bordered">
                 <thead>
                     <tr>
                         <th scope="col" class="">#</th>
                         <th scope="col">Date Registered</th>
+                        <th scope="col">Party Name</th>
                         <th scope="col">ACK Number</th>
                         <th scope="col">Tracking Number</th>
                         <th scope="col">UDIN</th>
@@ -112,6 +113,7 @@ include '../../php/connectionDb15CACB.php';
                         echo "<tr>";
                         echo "<th scope='row'>$counter</th>";
                         echo "<td>" . $result['dateRegistered'] . "</td>";
+                        echo "<td>" . $result['partyName'] . "</td>";
                         echo "<td>" . $result['ackNumber'] . "</td>";
                         echo "<td>" . $result['trackingNumber'] . "</td>";
                         echo "<td>" . $result['uidNumber'] . "</td>";

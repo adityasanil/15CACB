@@ -29,20 +29,20 @@ if(isset($_POST['loginSubmit'])) {
             $userSession = $_SESSION['user'];
             
             if($row['identity'] == 'admin') {
-                if($r > 0){
+                // if($r > 0){
              ?>
                 <script >
                 window.location.href = "routes/admin/homeAdmin.php";
                 </script>
                 <?php
-                }
-                else {
+                // }
+                // else {
                 ?>
-                <script >
+                <!-- <script >
                 window.location.href = "routes/personalDetails.php";
                 </script>
-                <?php
-                }
+ -->                <?php
+                // }
             }
 
             if($row['identity'] == 'client') {

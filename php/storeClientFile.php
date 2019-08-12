@@ -24,6 +24,7 @@ if (isset($_POST["submitFile"])) {
     $id = $row['id'];
     $firstName = $row['firstName'];
     $lastName = $row['lastName'];
+    $fullName = $row['firstName'] . " " . $row['lastName'];
     $userName = $row['userName'];
     $dateRegistered = date("D\, jS M Y H:i");
     $identity = $row['identity'];
@@ -33,7 +34,6 @@ if (isset($_POST["submitFile"])) {
     } else {
         $remarks = mysqli_real_escape_string($connect, test_input($_POST['clientRemarks']));
     }
-    // $remarks = mysqli_real_escape_string($connect, test_input($_POST['clientRemarks']));
     $partyName = null;
     $contact = $row['contact'];
     $ackNumber = null;
@@ -57,10 +57,7 @@ if (isset($_POST["submitFile"])) {
     $uploadOk = 1;
     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
-    if (file_exists($target_file)) {
-        echo "<script type='text/javascript'>alert('Sorry, file already exists. Rename it.');</script>";
-        $uploadOk = 0;
-    }
+
     if ($_FILES["clientUploadedFile"]["size"] > 5000000) {
         $uploadOk = 0;
         echo "<script type='text/javascript'>alert('Sorry, your file is too large');</script>";
@@ -89,8 +86,8 @@ if (isset($_POST["submitFile"])) {
     } else {
         if (move_uploaded_file($_FILES["clientUploadedFile"]["tmp_name"], $target_file)) {
 
-            $insertToDocumentStore = "INSERT INTO `documentStore`(`id`, `firstName`, `lastName`, `userName`, `dateRegistered`, `identityUser`, `remarks`, `partyName`, `ackNumber`, `trackingNumber`, `uidNumber`, `clientUploadedDoc`, `adminUploadedDoc`, `taskStatus`, `contact`, `process`) 
-						VALUES ('$id', '$firstName', '$lastName', '$userName', '$dateRegistered', '$identity', '$remarks', '$partyName', '$ackNumber', '$trackingNumber', '$uidNumber', '$clientUploadedDoc', '$adminUploadedDoc', '$taskStatus', '$contact', '$process')";
+            $insertToDocumentStore = "INSERT INTO `documentStore`(`id`, `firstName`, `lastName`, `fullName`, `userName`, `dateRegistered`, `identityUser`, `remarks`, `partyName`, `ackNumber`, `trackingNumber`, `uidNumber`, `clientUploadedDoc`, `adminUploadedDoc`, `taskStatus`, `contact`, `process`) 
+						VALUES ('$id', '$firstName', '$lastName', '$fullName', '$userName', '$dateRegistered', '$identity', '$remarks', '$partyName', '$ackNumber', '$trackingNumber', '$uidNumber', '$clientUploadedDoc', '$adminUploadedDoc', '$taskStatus', '$contact', '$process')";
 
             if (mysqli_query($connect, $insertToDocumentStore)) {
                 echo "<script type='text/javascript'>alert('Uploaded to database');</script>";

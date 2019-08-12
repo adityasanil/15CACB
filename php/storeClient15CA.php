@@ -57,10 +57,7 @@ if (isset($_POST)) {
     $uploadOk = 1;
     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
-    if (file_exists($target_file)) {
-        echo "<script type='text/javascript'>alert('Sorry, file already exists. Rename it.');</script>";
-        $uploadOk = 0;
-    }
+    
     if ($_FILES[$clientUp15CA]["size"] > 5000000) {
         $uploadOk = 0;
         echo "<script type='text/javascript'>alert('Sorry, your file is too large');</script>";

@@ -38,6 +38,13 @@ include '../../php/connectionDb15CACB.php';
                             <option value="Pending">Pending</option>
                             <option value="Completed">Completed</option>
                         </select>
+
+                        <div class='ml-3'>
+                            <div class="dropright">
+                                <input type="text" class="dropdown-toggle form-control" style="" onkeyup="searchClient(this.value)" placeholder="enter the value to search">
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -47,19 +54,7 @@ include '../../php/connectionDb15CACB.php';
                     <thead>
                         <tr>
                             <th scope="col" class="">#</th>
-                            <th scope="col">
-        
-                                <div class="dropdown">
-                                    <button class="btn btn-light dropdown-toggle" type="button" onclick="showDropDown()">
-                                    Party Name
-                                    </button>
-
-                                <div class="dropdown-menu" id='drop'>
-                                    <input type="text" class='form-control' name="" placeholder='enter name here' onkeyup="searchClient(this.value)">
-                                    <div id='list'><div>
-                                </div>
-
-                            </th>
+                            <th scope="col">Party Name</th>
                             <th scope="col">Date Registered</th>
                             <th scope="col">Client Remarks</th>
                             <th scope="col">ACK Number</th>
@@ -68,13 +63,17 @@ include '../../php/connectionDb15CACB.php';
                             <th scope="col">Remarks</th>
                             <th scope="col"><i class="fas fa-arrow-down"></i>&nbsp&nbspInvoice</th>
                             <th scope="col"><i class="fas fa-arrow-up"></i>&nbsp&nbsp15CB</th>
+                            <th scope="col">&nbsp&nbspParty</th>
                             <th scope="col"><i class="fas fa-paper-plane"></i>&nbsp&nbsp15CB</th>
+                            <th scope="col"><i class="fas fa-arrow-up"></i>&nbsp&nbspXML</th>
+                            <th scope="col"><i class="fas fa-paper-plane"></i>&nbsp&nbspXML</th>
                             <th scope="col">Status 15CB</th>
                             <th scope="col"><i class="fas fa-arrow-down"></i>&nbsp&nbsp15CA</th>
                             <th scope="col"><i class="fas fa-arrow-down"></i>&nbsp&nbsp15CB</th>
+                            <th scope="col"><i class="fas fa-arrow-down"></i>&nbsp&nbspXML</th>
                         </tr>
                     </thead>
-                    <tbody id="displayData">
+                    <tbody id="list" class="displayData">
                         <?php
 
                         $counter = 1;
@@ -112,7 +111,32 @@ include '../../php/connectionDb15CACB.php';
                                         });
                                     </script>
                                     ";
-                            echo "<td align='center'><input type='submit' class='btn btn-success btn-sm submitBtnTable mb-1' name='submitFinal_" . $counter . "'></td>";
+
+                            echo "<td><input type='text' name='partyName_" . $counter . "' value='" . $result['partyName'] . "'></td>";
+
+                            echo "<td align='center'><input type='submit' class='btn btn-success btn-sm mb-1' name='submitFinal_" . $counter . "'></td>";
+
+                             if($result['clientUploadedDoc'] == true) {
+                                    echo "<td align='center'>
+                                    <label for='fileUploadAdminXML" . $counter . "'>
+                                        <i class='fas fa-upload fa-lg' style='color: #5bc0de'></i>
+                                    </label>
+                                    <input id='fileUploadAdminXML" . $counter ."' form='storeAdminXML' name='fileAdminFileXML_". $result['trackingNumber']."' type='file' style='display:none;'>
+                                    <input type='hidden' name='fileAdminIDXML_".$counter."' form='storeAdminXML' value='" . $result['trackingNumber'] . "'>
+                                </td>
+                                <script>
+                                    $('#fileUploadAdminXML" . $counter . "').change(function() {
+                                        var i = $(this).prev('label').clone();
+                                        var file = $('#fileUploadAdminXML" . $counter . "')[0].files[0].name;
+                                        $(this).prev('label').text(file);
+                                    });
+                                </script>
+                                ";
+                                echo "<td align='center'><input type='submit' class='btn btn-success btn-sm' form='storeAdminXML' name='submitAdminXML_" . $counter . "'></td>";
+                            }
+
+
+
                             echo "<td align='center'><img class='statusLogo' src='" . $result['taskStatus'] . "'></td>";
                             if ($result['clientUp15CA'] == true) {
                                 echo "<td align='center'><a href='" . $result['clientUp15CA'] . "' download><i class='fas fa-download fa-lg' style='color: #d9534f;'></i></a></td>";
@@ -126,6 +150,11 @@ include '../../php/connectionDb15CACB.php';
                                 echo "<td></td>";
                             }
 
+                            if($result['adminXML'] != null){
+                            echo "<td align='center'><a href='" . $result['adminXML'] . "' download><i class='fas fa-download fa-lg'></i></a></td>";
+                            } else {
+                                echo "<td></td>";
+                            }
                             echo "</tr>";
                             ++$counter;
                         }
@@ -134,7 +163,7 @@ include '../../php/connectionDb15CACB.php';
                 </table>
             </div>
         </form>
-        <form action="../../php/storeAdmin15CA.php" id='storeAdmin15CA' enctype="multipart/form-data" method="post"></form>
+        <form action="../../php/storeAdminXML.php" id='storeAdminXML' enctype="multipart/form-data" method="post"></form>
     </div><br><br>
 </body>
 

@@ -47,6 +47,15 @@ if (isset($_POST)) {
         }
     }
 
+    foreach ($_POST as $key5 => $value5) {
+        if (strpos($key5, 'partyName') !== false) {
+            $string5 = explode("_", $key5);
+            if ($getNumber == $string5[1]) {
+                $partyName = $value5;
+            }
+        }
+    }
+
     foreach ($_FILES as $key => $value) {
         $string = explode("_", $key);
         if ($getNumber == $string[1]) {
@@ -87,15 +96,7 @@ if (isset($_POST)) {
     $uploadOk = 1;
     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
-    // if (file_exists($target_file)) {
-    //     $uploadOk = 0;
-    //     echo "<script type='text/javascript'>alert('Sorry, file already exists. Rename it.');</script>";
-    ?>
-    <script>
-        window.location.href = "../routes/admin/homeAdmin.php";
-    </script>
-    <?php
-    // }
+    
     if ($_FILES[$fileFinal]["size"] > 5000000) {
         $uploadOk = 0;
         echo "<script type='text/javascript'>alert('Sorry, your file is too large');</script>";
@@ -123,7 +124,8 @@ if (isset($_POST)) {
     <?php
     } else {
         if (move_uploaded_file($_FILES[$fileFinal]["tmp_name"], $target_file)) {
-            $uploadAdminDoc = "UPDATE `documentStore` SET `adminUploadedDoc`='$location', `ackNumber`='$ackNumber', `uidNumber`='$uidNumber', `taskStatus`='$taskStatus', `process`='$process', `adminRemarks`='$remarksAdmin' WHERE `trackingNumber`='$fileID'";
+
+            $uploadAdminDoc = "UPDATE `documentStore` SET `adminUploadedDoc`='$location', `ackNumber`='$ackNumber', `uidNumber`='$uidNumber', `taskStatus`='$taskStatus', `process`='$process', `adminRemarks`='$remarksAdmin', `partyName`='$partyName' WHERE `trackingNumber`='$fileID'";
 
             if (mysqli_query($connect, $uploadAdminDoc)) {
                 echo "<script type='text/javascript'>alert('Uploaded to database');</script>";

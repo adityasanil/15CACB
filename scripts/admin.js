@@ -1,13 +1,13 @@
 function showTableAdmin(str, holder) {
     var xhttp;
     if (str == "") {
-        document.getElementById("displayData").innerHTML = "";
+        document.getElementById("list").innerHTML = "";
         return;
     }
     xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("displayData").innerHTML = this.responseText;
+            document.getElementById("list").innerHTML = this.responseText;
         }
     };
     xhttp.open("GET", "../../php/getTableAdmin.php?holderAdmin=" + holder + "&orderByAdmin=" + str, true);

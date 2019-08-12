@@ -43,7 +43,8 @@ include 'php/connectionDb15CACB.php';
 
     <div class="dropdown-menu" id='drop'>
         <input type="text" class='form-control' name="" placeholder='enter name here' onkeyup="searchClient(this.value)">
-        <div id='list'><div>
+        <div id='list'></div>
+    </div>
     </div>
 
 
