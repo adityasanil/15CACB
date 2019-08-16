@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Aug 11, 2019 at 10:32 AM
+-- Generation Time: Aug 16, 2019 at 08:27 AM
 -- Server version: 5.7.25
 -- PHP Version: 7.3.1
 
@@ -25,8 +25,11 @@ CREATE TABLE `documentStore` (
   `id` varchar(25) NOT NULL,
   `firstName` varchar(15) NOT NULL,
   `lastName` varchar(15) NOT NULL,
+  `fullName` varchar(50) NOT NULL,
   `userName` varchar(30) NOT NULL,
+  `email` varchar(60) NOT NULL,
   `dateRegistered` varchar(35) NOT NULL,
+  `transactionDate` varchar(20) DEFAULT NULL,
   `identityUser` varchar(7) NOT NULL,
   `remarks` text,
   `partyName` varchar(15) NOT NULL,
@@ -39,7 +42,7 @@ CREATE TABLE `documentStore` (
   `contact` varchar(12) NOT NULL,
   `process` varchar(10) NOT NULL,
   `clientUp15CA` varchar(100) DEFAULT NULL,
-  `adminUp15CA` varchar(200) DEFAULT NULL,
+  `adminXML` varchar(200) DEFAULT NULL,
   `taskStatus15CA` varchar(30) DEFAULT NULL,
   `adminRemarks` varchar(200) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -48,10 +51,8 @@ CREATE TABLE `documentStore` (
 -- Dumping data for table `documentStore`
 --
 
-INSERT INTO `documentStore` (`submitTime`, `id`, `firstName`, `lastName`, `userName`, `dateRegistered`, `identityUser`, `remarks`, `partyName`, `ackNumber`, `trackingNumber`, `uidNumber`, `clientUploadedDoc`, `adminUploadedDoc`, `taskStatus`, `contact`, `process`, `clientUp15CA`, `adminUp15CA`, `taskStatus15CA`, `adminRemarks`) VALUES
-('2019-08-09 19:28:10.044528', '61255d4dbd59a6c8a', 'Harsh', 'Gori', 'harsh.gori', 'Sat, 10th Aug 2019 00:56', 'client', 'none', '', '1234567890', '19486173855', '1234567890', '../../uploads/Invoice-19486173855.docx', '<a href=\'../../uploadsAdmin/15CB-19486173855.docx\' download><i class=\'fas fa-download fa-lg\'></i></a>', '../../images/approved.svg', '8898493855', 'Completed', NULL, NULL, NULL, 'none'),
-('2019-08-09 19:29:49.107648', '61255d4dbd59a6c8a', 'Harsh', 'Gori', 'harsh.gori', 'Sat, 10th Aug 2019 00:59', 'client', 'none', '', '1234567890', '19695543855', '1234567890', '../../uploads/Invoice-19695543855.png', '<a href=\'../../uploadsAdmin/15CB-19695543855.png\' download><i class=\'fas fa-download fa-lg\'></i></a>', '../../images/approved.svg', '8898493855', 'Completed', NULL, NULL, NULL, ''),
-('2019-08-11 10:21:18.394776', '61255d4dbd59a6c8a', 'Harsh', 'Gori', 'harsh.gori', 'Sun, 11th Aug 2019 15:51', 'client', 'none', '', '', '19463463855', '', '../../uploads/Invoice-19463463855.docx', '', '../../images/pending.svg', '8898493855', 'Pending', NULL, NULL, NULL, NULL);
+INSERT INTO `documentStore` (`submitTime`, `id`, `firstName`, `lastName`, `fullName`, `userName`, `email`, `dateRegistered`, `transactionDate`, `identityUser`, `remarks`, `partyName`, `ackNumber`, `trackingNumber`, `uidNumber`, `clientUploadedDoc`, `adminUploadedDoc`, `taskStatus`, `contact`, `process`, `clientUp15CA`, `adminXML`, `taskStatus15CA`, `adminRemarks`) VALUES
+('2019-08-13 14:21:11.627577', '74775d5276b1abef0', 'Sahil', 'Merchant', 'Sahil Merchant', 'sahil.s', 'aditya.sanil24@gmail.com', 'Tue, 13th Aug 2019 19:39', NULL, 'client', 'none', 'dell', '6328792', '19833213844', '6546235762', '../../uploads/Invoice-19833213844.png', '<a href=\'../../uploadsAdmin/15CB-19833213844.jpg\' download><i class=\'fas fa-download fa-lg\'></i></a>', '../../images/approved.svg', '8898493844', 'Completed', NULL, NULL, NULL, 'none');
 
 -- --------------------------------------------------------
 
@@ -78,7 +79,8 @@ CREATE TABLE `personaldetails` (
 
 INSERT INTO `personaldetails` (`id`, `username`, `identity`, `address`, `panNumber`, `companyName`, `gstNumber`, `ifscCode`, `swiftCode`, `accountNumber`) VALUES
 ('35515d3decea3ecf2', 'jigar.kt', 'admin', 'asdssad', '0000000000', '000000000000000000', '000000000000000', '00000000000', '00000000000', '00000000000000'),
-('61255d4dbd59a6c8a', 'harsh.gori', 'client', 'Malad', '1111111111', 'Dell', '111111111111111', '11111111111', '11111111111', '11111111111111111111');
+('61255d4dbd59a6c8a', 'harsh.gori', 'client', 'Malad', '1111111111', 'Dell', '111111111111111', '11111111111', '11111111111', '11111111111111111111'),
+('74775d5276b1abef0', 'sahil.s', 'client', 'malad', '1111111111', 'dell', '111111111111111', '1111111111', '1111111111', '1111111111');
 
 -- --------------------------------------------------------
 
@@ -143,7 +145,8 @@ CREATE TABLE `Users` (
 INSERT INTO `Users` (`id`, `firstName`, `lastName`, `userName`, `password`, `identity`, `email`, `contact`, `addedBy`) VALUES
 ('35515d3decea3ecf2', 'Jigar', 'Thakkar', 'jigar.kt', '$2y$10$PdzSLnc2b9SA11wLHahnze5nhRqwvLINN.Bj/9xi7rxE.yB/hWh5W', 'admin', 'jigar.kt@somaiya.edu', '9819393237', 'Root'),
 ('61255d4dbd59a6c8a', 'Harsh', 'Gori', 'harsh.gori', '$2y$10$UtPC1pXko30U5ZVzabFQoen3vo38kG0ZmizDsQMej3d9h3n4k43fq', 'client', 'harsh@gmail.com', '8898493855', ''),
-('22935d4f13dd3b26d', 'Aditya', 'Sanil', 'aditya.sanil', '$2y$10$ZwoCXI.apjSAW0mw8xkPq.Ndkj2ewZdgZSKr/Yj5vSULcm2cKgHgS', 'admin', 'aditya.sanil@somaiya.edu', '7666003731', 'jigar.kt');
+('22935d4f13dd3b26d', 'Aditya', 'Sanil', 'aditya.sanil', '$2y$10$ZwoCXI.apjSAW0mw8xkPq.Ndkj2ewZdgZSKr/Yj5vSULcm2cKgHgS', 'admin', 'aditya.sanil@somaiya.edu', '7666003731', 'jigar.kt'),
+('74775d5276b1abef0', 'Sahil', 'Merchant', 'sahil.s', '$2y$10$twWfuU2ImZvAUfxdzZsOgO7jKMxFhIv0ePnNN4gkRJUCSItAuC4DG', 'client', 'aditya.sanil24@gmail.com', '8898493844', NULL);
 
 --
 -- Indexes for dumped tables

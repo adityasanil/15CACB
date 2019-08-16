@@ -44,7 +44,7 @@
                     document.getElementById("adminTable").innerHTML = this.responseText;
                 }
             };
-            xhttpObj2.open("GET", "../../php/getAdminList.php", true);
+            xhttpObj2.open("POST", "../../php/getAdminList.php", true);
             xhttpObj2.send();
 		}
 	</script>

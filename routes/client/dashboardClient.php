@@ -1,6 +1,6 @@
 <?php
 session_start();
-$$sessionHolder = $_SESSION['user'];
+$sessionHolder = $_SESSION['user'];
 
 
 include '../../php/connectionDb15CACB.php';
@@ -16,6 +16,8 @@ include '../../php/connectionDb15CACB.php';
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <script type="text/javascript" src="../../scripts/sendMail.js"></script>
+
     <style>
         table {
             overflow-x: auto;
@@ -60,7 +62,7 @@ include '../../php/connectionDb15CACB.php';
                     </label>
                 </div>
                 <div class="col-auto">
-                    <input type="submit" class="btn btn-success" id="submitFile" name="submitFile" value="Submit">
+                    <input type="submit" class="btn btn-success" id="submitFile" name="submitFile" value="Submit" onclick="sendInvoice('<?php echo $sessionHolder; ?>')">
                 </div>
             </div>
         </div>
@@ -135,7 +137,8 @@ include '../../php/connectionDb15CACB.php';
                                         });
                                     </script>
                                     ";
-                            echo "<td align='center'><input type='submit' class='btn btn-success btn-sm submitBtnTable mb-1' name='submit15CA_" . $counter . "'></td>";
+                            echo "<td align='center'><input type='submit' class='btn btn-success btn-sm submitBtnTable mb-1' name='submit15CA_" . $counter . "' 
+                            ></td>";
                             if ($result['clientUp15CA'] == null) {
                                 echo "<td></td>";
                                 echo "<td></td>";
@@ -168,6 +171,8 @@ include '../../php/connectionDb15CACB.php';
         </div>
     </form>
 
+<script data-cfasync="false" type="text/javascript"
+        src="https://cdn.rawgit.com/dwyl/html-form-send-email-via-google-script-without-server/master/form-submission-handler.js"></script>
 
 
 </body>

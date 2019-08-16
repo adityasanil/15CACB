@@ -69,6 +69,29 @@ if (isset($_POST)) {
     // echo "<br>".$uidNumber;
 
 
+
+    $searchEmail = "SELECT `email` FROM documentStore WHERE `trackingNumber`='$fileID'";
+
+    $querySearchEmail = mysqli_query($connect, $searchEmail);
+
+    $fetch = mysqli_fetch_array($querySearchEmail);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    $mailValue = 0;
+
     $taskStatus = '../../images/approved.svg';
 
     $target_dir = "../uploadsAdmin/";
@@ -129,11 +152,37 @@ if (isset($_POST)) {
 
             if (mysqli_query($connect, $uploadAdminDoc)) {
                 echo "<script type='text/javascript'>alert('Uploaded to database');</script>";
+
+                $mailValue = 1;
+
+                if($mailValue == 1) {
+
+                echo "
+                <script type='text/javascript'>
+
+                    var name = 'Admin';
+                    var message = name + ' has uploaded your 15CB document';
+                    var TO_ADDRESS = '". $fetch['email'] . "';
+
+                    var xhttpObj = new XMLHttpRequest();
+                    xhttpObj.open('POST', 'https://script.google.com/macros/s/AKfycbzD3FMWUa6tu-bGHyCkV6UfO3vSd5wC9h0YzEpLYP4d3HS4cHGS/exec', true);
+                    xhttpObj.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                    xhttpObj.send('message=' + message + '&TO_ADDRESS=' + TO_ADDRESS);
+                    window.alert(TO_ADDRESS);       
+                </script>";
+
+            } else {
+
+                echo "
+                <script type='text/javascript'>
+                    console.log('mail not sent');
+                </script>";
+
+            }
             } else {
                 echo "Error uploading: " . mysqli_error($connect);
             }
 
-            // echo "<script type='text/javascript'>alert('Your file ". basename( $_FILES[$fileFinal]["name"]). "has been uploaded.');</script>";
             ?>
             <script>
                 window.location.href = "../routes/admin/homeAdmin.php";

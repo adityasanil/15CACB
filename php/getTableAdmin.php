@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$$sessionHolder = $_SESSION['user'];
+$sessionHolder = $_SESSION['user'];
 
 include 'connectionDb15CACB.php';
 

@@ -26,7 +26,9 @@ if (isset($_POST["submitFile"])) {
     $lastName = $row['lastName'];
     $fullName = $row['firstName'] . " " . $row['lastName'];
     $userName = $row['userName'];
+    $email = $row['email'];
     $dateRegistered = date("D\, jS M Y H:i");
+    $transactionDate = date("Y-m-d");
     $identity = $row['identity'];
 
     if ($_POST['clientRemarks'] == null) {
@@ -86,8 +88,8 @@ if (isset($_POST["submitFile"])) {
     } else {
         if (move_uploaded_file($_FILES["clientUploadedFile"]["tmp_name"], $target_file)) {
 
-            $insertToDocumentStore = "INSERT INTO `documentStore`(`id`, `firstName`, `lastName`, `fullName`, `userName`, `dateRegistered`, `identityUser`, `remarks`, `partyName`, `ackNumber`, `trackingNumber`, `uidNumber`, `clientUploadedDoc`, `adminUploadedDoc`, `taskStatus`, `contact`, `process`) 
-						VALUES ('$id', '$firstName', '$lastName', '$fullName', '$userName', '$dateRegistered', '$identity', '$remarks', '$partyName', '$ackNumber', '$trackingNumber', '$uidNumber', '$clientUploadedDoc', '$adminUploadedDoc', '$taskStatus', '$contact', '$process')";
+            $insertToDocumentStore = "INSERT INTO `documentStore`(`id`, `firstName`, `lastName`, `fullName`, `userName`, `email`, `dateRegistered`, `transactionDate`, `identityUser`, `remarks`, `partyName`, `ackNumber`, `trackingNumber`, `uidNumber`, `clientUploadedDoc`, `adminUploadedDoc`, `taskStatus`, `contact`, `process`) 
+						VALUES ('$id', '$firstName', '$lastName', '$fullName', '$userName', '$email', '$dateRegistered', '$transactionDate', '$identity', '$remarks', '$partyName', '$ackNumber', '$trackingNumber', '$uidNumber', '$clientUploadedDoc', '$adminUploadedDoc', '$taskStatus', '$contact', '$process')";
 
             if (mysqli_query($connect, $insertToDocumentStore)) {
                 echo "<script type='text/javascript'>alert('Uploaded to database');</script>";
@@ -95,6 +97,9 @@ if (isset($_POST["submitFile"])) {
                 echo "Error uploading: " . mysqli_error($connect);
             }
             echo "<script type='text/javascript'>alert('Your file " . basename($_FILES["clientUploadedFile"]["name"]) . " has been uploaded.');</script>";
+
+            echo "<script type='text/javascript' src='../scripts/sendMail.js'>alert('alert');</script>";
+
             ?>
             <script>
                 window.location.href = "../routes/client/homeClient.php";

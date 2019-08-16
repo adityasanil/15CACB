@@ -3,6 +3,7 @@ session_start();
 $$sessionHolder = $_SESSION['user'];
 
 include '../../php/connectionDb15CACB.php';
+include '../../php/sendMail.php';
 
 ?>
 <html>
@@ -16,6 +17,7 @@ include '../../php/connectionDb15CACB.php';
     <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
     <script type="text/javascript" src="../../scripts/admin.js"></script>
+
     <style>
         table {
             overflow-x: auto;
@@ -44,7 +46,6 @@ include '../../php/connectionDb15CACB.php';
                                 <input type="text" class="dropdown-toggle form-control" style="" onkeyup="searchClient(this.value)" placeholder="enter the value to search">
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>

@@ -27,7 +27,6 @@ if (isset($_POST["insert"])) {
 
     $query = "INSERT INTO personaldetails(id, username, identity, address, panNumber, companyName, gstNumber, ifscCode, swiftCode, accountNumber) VALUES ('$id','$username', '$identity', '$address','$pan','$compName','$gst','$ifsc','$swift', '$accNumber')";
     if (mysqli_query($connect, $query)) {
-
         if ($identity == "admin") {
             echo '<script type="text/javascript">
                     alert("Details entered successfully! Press OK to continue");                
@@ -35,7 +34,7 @@ if (isset($_POST["insert"])) {
               </script>';
         } else {
             echo '<script type="text/javascript">
-                    alert("Details entered successfully! Press OK to continue");                
+                    alert("Details entered successfully! Press OK to continue");
                     window.location.href = "client/homeClient.php";
               </script>';
         }
@@ -59,7 +58,6 @@ if (isset($_POST["insert"])) {
     <script>
         function notifyAdmin() {
             <?php
-
             $sqlGetDetails = "SELECT * FROM Users WHERE username = '$sessionHolder'";
             $queryGetDetails = mysqli_query($connect, $sqlGetDetails);
             $rowDetails = mysqli_fetch_array($queryGetDetails);
@@ -68,12 +66,12 @@ if (isset($_POST["insert"])) {
             var message = 'The above client has signed up on our platform.';
             var name = '<?php echo $rowDetails['firstName'] . " " . $rowDetails['lastName'];  ?>';
             var clientEmail = '<?php echo $rowDetails['email']; ?>';
-            var TO_ADDRESS = 'aditya.sanil24@gmail.com';
+            // var TO_ADDRESS = 'aditya.sanil24@gmail.com';
 
             var xhttpObj = new XMLHttpRequest();
-            xhttpObj.open("POST", "https://script.google.com/macros/s/AKfycbz5haqz1ZW8eEiLCBab9kFENEP9H5FP8FO6rshfjvPe8gSeZqhj/exec", true);
+            xhttpObj.open("POST", "https://script.google.com/macros/s/AKfycbyvvMuRXkIdrlf2YZbcsMLpTPVIxe_AZjt29jXoFS-pKYnoJnQ/exec", true);
             xhttpObj.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xhttpObj.send("message=" + message + "&name=" + name + "&clientEmail=" + clientEmail + "&TO_ADDRESS=" + TO_ADDRESS);
+            xhttpObj.send("message=" + message + "&name=" + name + "&clientEmail=" + clientEmail);
         }
     </script>
 </head>
@@ -141,7 +139,7 @@ if (isset($_POST["insert"])) {
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">IFSC Code</i></span>
                                     </div>
-                                    <input class="form-control" id="ifscCode" placeholder="11 digit IFSC Code" type="text" name="ifscCode" required pattern="[A-Za-z0-9]{11}">
+                                    <input class="form-control" id="ifscCode" placeholder="enter IFSC Code" type="text" name="ifscCode" required>
                                 </div>
                             </div>
                         </div>
@@ -151,7 +149,7 @@ if (isset($_POST["insert"])) {
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">Swift Code</span>
                                 </div>
-                                <input name="swiftCode" id="swiftCode" class="form-control" placeholder="11 digit number" type="text" required pattern="[A-Za-z0-9]{11}">
+                                <input name="swiftCode" id="swiftCode" class="form-control" placeholder="enter Swift code" type="text" required>
                             </div>
                         </div>
 
@@ -175,6 +173,8 @@ if (isset($_POST["insert"])) {
         </aside>
     </div>
     </div>
+    <script data-cfasync="false" type="text/javascript"
+        src="https://cdn.rawgit.com/dwyl/html-form-send-email-via-google-script-without-server/master/form-submission-handler.js"></script>
 </body>
 
 </html>
