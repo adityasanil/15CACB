@@ -95,31 +95,31 @@ if (isset($_POST)) {
             $insertToDb15CA = "UPDATE `documentStore` SET `clientUp15CA`='$clientUploadedDoc', `taskStatus15CA`='$taskStatus15CA'  WHERE `trackingNumber`='$fileID15CA'";
 
             if (mysqli_query($connect, $insertToDb15CA)) {
-                echo "<script type='text/javascript'>alert('Your file " . basename($_FILES[$clientUp15CA]["name"]) . "has been uploaded 1.');</script>";
+                echo "<script type='text/javascript'>alert('Your file " . basename($_FILES[$clientUp15CA]["name"]) . " has been uploaded.');</script>";
 
                 $mailValue = 1;
 
-                if($mailValue != 0) {
+                if($mailValue == 1) {
 
-                    echo "
-                    <script type='text/javascript'>
-                        // var name = '" . $sessionHolder . "';
-                        // var message = name + ' uploaded 15CA file.';
-                        // var xhttpObj2 = new XMLHttpRequest();
-                        // xhttpObj2.open('POST', 'https://script.google.com/macros/s/AKfycbyvvMuRXkIdrlf2YZbcsMLpTPVIxe_AZjt29jXoFS-pKYnoJnQ/exec', true);
-                        // xhttpObj2.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-                        // xhttpObj2.send('message=' + message);
-                        window.alert('mail sent');
-                    </script>";
+                echo "
+                <script type='text/javascript'>
+                    var name = '" . $sessionHolder . "';
+                    var message = name + ' uploaded 15CA file.';
+                    var xhttpObj2 = new XMLHttpRequest();
+                    xhttpObj2.open('POST', 'https://script.google.com/macros/s/AKfycbyvvMuRXkIdrlf2YZbcsMLpTPVIxe_AZjt29jXoFS-pKYnoJnQ/exec', true);
+                    xhttpObj2.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                    xhttpObj2.send('message=' + message);
+                    window.alert('15CA sent');
+                </script>";
 
-                } else {
+            } else {
 
-                    echo "
-                    <script type='text/javascript'>
-                        window.alert('mail not sent');
-                    </script>";
+                echo "
+                <script type='text/javascript'>
+                    console.log('mail not sent');
+                </script>";
 
-                }
+            }
 
 
             } else {

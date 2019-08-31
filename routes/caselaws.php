@@ -1,7 +1,9 @@
 <?php
+error_reporting(0);
 
 
 include 'php/connectionDb15CACB.php';
+include '../../php/connectionDb15CACB.php';
 $result = mysqli_query($connect, "SELECT * FROM posts WHERE selectedOption='Caselaw' ORDER BY timestamp DESC");
 
 
@@ -66,10 +68,10 @@ $result = mysqli_query($connect, "SELECT * FROM posts WHERE selectedOption='Case
                 </div><br>
 
                 <!--<div class="card-body">
-                                                            <h5 class="card-title"><?php echo $row["title"]; ?></h5>
-                                                            <p class="card-text"><small class="text-muted text-success">Date of posting:&nbsp<?php echo $row["date"]; ?></small></p>
-                                                            <input type="button" name="view" value="view" id="<?php echo $row["post_id"]; ?>" class="btn btn-info btn-xs read_data" />
-                                                        </div>-->
+                                            <h5 class="card-title"><?php echo $row["title"]; ?></h5>
+                                            <p class="card-text"><small class="text-muted text-success">Date of posting:&nbsp<?php echo $row["date"]; ?></small></p>
+                                            <input type="button" name="view" value="view" id="<?php echo $row["post_id"]; ?>" class="btn btn-info btn-xs read_data" />
+                                        </div>-->
 
             </div>
             <?php

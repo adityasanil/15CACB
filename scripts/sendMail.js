@@ -6,5 +6,4 @@ function sendInvoice(value) {
 	xhttpObj.open("POST", "https://script.google.com/macros/s/AKfycbyvvMuRXkIdrlf2YZbcsMLpTPVIxe_AZjt29jXoFS-pKYnoJnQ/exec", true);
 	xhttpObj.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	xhttpObj.send("message=" + message);
-	window.alert(message);
 }

@@ -1,5 +1,4 @@
 <?php
-session_start();
 $sessionHolder = $_SESSION['user'];
 
 
@@ -16,14 +15,21 @@ include '../../php/connectionDb15CACB.php';
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
-    <script type="text/javascript" src="../../scripts/sendMail.js"></script>
 
     <style>
         table {
             overflow-x: auto;
             white-space: nowrap;
+            overflow-y: auto;
+            height: auto;
         }
+        .tableFixHead    { overflow-y: auto; height: 400px; }
+        .tableFixHead th { position: sticky; top: 0; }
+        th     { background:#eee; }
+
+
     </style>
+    
     <script>
         function showTable(str, holder) {
             var xhttp;
@@ -47,9 +53,36 @@ include '../../php/connectionDb15CACB.php';
     <form action="../../php/storeClientFile.php" method="post" enctype="multipart/form-data" id="uploadClientFileForm">
         <div class="form-group"><br>
             <label for="fileInput" class="lead">Initiate Invoice file</label>
+            <div class="form-row">
+                <div class="col-md-4 mb-3">
+                    <input class="form-control" id="tdsRate" placeholder="Enter Rate of TDS" type="text"  name="tdsRate"></input>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <input class="form-control" id="remittanceCurrency" placeholder="Currency in which remittance is made" type="text"  name="remittanceCurrency"></input>
+                
+                </div>
+                <div class="col-md-4 mb-3">
+                    <input class="form-control" id="remittanceNature" placeholder="Nature of Remittance" type="text"  name="remittanceNature"></input>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="col-md-4 mb-3">
+                    <input class="form-control" id="purposeCode" placeholder="Purpose of Code" type="text"  name="purposeCode"></input>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <input class="form-control" id="taxPaid" placeholder="Please confirm if tax paid is to be grossed up" type="text"  name="taxPaid"></input>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <input class="form-control" id="trc" placeholder="Is TRC(Tax Residency Certificate) available" type="text"  name="trc"></input>
+                </div>
+            </div>
+
             <div class="input-group">
                 <textarea class="form-control" id="remarks" placeholder="Type your remarks here, if any." type="text" rows="4" name="clientRemarks"></textarea>
             </div>
+
+        
         </div>
 
         <div class="form-group">
@@ -62,7 +95,7 @@ include '../../php/connectionDb15CACB.php';
                     </label>
                 </div>
                 <div class="col-auto">
-                    <input type="submit" class="btn btn-success" id="submitFile" name="submitFile" value="Submit" onclick="sendInvoice('<?php echo $sessionHolder; ?>')">
+                    <input type="submit" class="btn btn-success" id="submitFile" name="submitFile" value="Submit">
                 </div>
             </div>
         </div>
@@ -85,7 +118,7 @@ include '../../php/connectionDb15CACB.php';
             </div>
         </div><br>
 
-        <div class="table-responsive">
+        <div class="table-responsive tableFixHead">
             <table class="table table-sm table-bordered">
                 <thead>
                     <tr>
@@ -113,7 +146,7 @@ include '../../php/connectionDb15CACB.php';
 
                     while ($result = mysqli_fetch_array($querySql)) {
                         echo "<tr>";
-                        echo "<th scope='row'>$counter</th>";
+                        echo "<td>$counter</td>";
                         echo "<td>" . $result['dateRegistered'] . "</td>";
                         echo "<td>" . $result['partyName'] . "</td>";
                         echo "<td>" . $result['ackNumber'] . "</td>";

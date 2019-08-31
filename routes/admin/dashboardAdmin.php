@@ -1,6 +1,7 @@
 <?php
-session_start();
-$$sessionHolder = $_SESSION['user'];
+error_reporting(0);
+
+$sessionHolder = $_SESSION['user'];
 
 include '../../php/connectionDb15CACB.php';
 include '../../php/sendMail.php';
@@ -19,10 +20,19 @@ include '../../php/sendMail.php';
     <script type="text/javascript" src="../../scripts/admin.js"></script>
 
     <style>
+        
         table {
             overflow-x: auto;
             white-space: nowrap;
+            overflow-y: auto;
+            height: auto;
         }
+        .tableFixHead    { overflow-y: auto; height: 620px; }
+        .tableFixHead th { position: sticky; top: 0; }
+        th     { background:#eee; }
+
+
+
     </style>
 </head>
 
@@ -50,7 +60,7 @@ include '../../php/sendMail.php';
                 </div>
             </div>
             <br>
-            <div class="table-responsive">
+            <div class="table-responsive tableFixHead">
                 <table id="mytable" class="table table-hover">
                     <thead>
                         <tr>
@@ -82,13 +92,45 @@ include '../../php/sendMail.php';
                         $querySql = mysqli_query($connect, $sql);
 
                         while ($result = mysqli_fetch_array($querySql)) {
+                            
                             echo "<tr>";
-                            echo "<th scope='row'>$counter</th>";
+                            echo "<td>$counter</td>";
                             echo "<td>" . $result['firstName'] . " " . $result['lastName'] . "</td>";
                             echo "<td>" . $result['dateRegistered'] . "</td>";
-                            echo "<td><button type='button' data-container='body' class='btn btn-outline-light btn-sm' style='color: black;' data-toggle='tooltip' data-placement='left' title='" . $result['remarks'] . "'>
-                                    Remark
-                                    </button></td>";
+
+                            echo "<td align='center'><button type='button' class='btn btn- sm btn-light' data-toggle='modal' data-target='#myModal" . $result['trackingNumber'] . "'>
+                            Open
+                            </button></td>";
+
+                            echo '<div class="modal" id="myModal' . $result['trackingNumber'] . '">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+
+                                        <!-- Modal Header -->
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Client remarks</h4>
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+
+                                        <!-- Modal body -->
+                                        <div class="modal-body">
+                                            <p><b>Rate of TDS:</b> ' . $result['tdsRate'] .'</p>
+                                            <p><b>Currency in which remittance is made:</b> ' . $result['remittanceCurrency'] .'</p>
+                                            <p><b>Nature of remittance:</b> ' . $result['remittanceNature'] .'</p>
+                                            <p><b>Purpose code:</b> ' . $result['purposeCode'] .'</p>
+                                            <p><b>Please confirm if tax paid is to be grossed up:</b> ' . $result['taxPaid'] .'</p>
+                                            <p><b>Is TRC(Tax Residency Certificate) available:</b> ' . $result['trc'] .'</p>
+                                            <p><b>Remarks:</b> ' . $result['remarks'] .'</p>                                                                                                                   
+                                        </div>
+
+                                        <!-- Modal footer -->
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                </div>';
 
                             echo "<td><input type='text' name='ackNumber_" . $counter . "' value='" . $result['ackNumber'] . "'></td>";
 

@@ -15,12 +15,45 @@ if ($orderBy == 'A') {
 
     while ($result = mysqli_fetch_array($querySql)) {
         echo "<tr>";
-        echo "<th scope='row'>$counter</th>";
+        echo "<td>$counter</td>";
         echo "<td>" . $result['firstName'] . " " . $result['lastName'] . "</td>";
         echo "<td>" . $result['dateRegistered'] . "</td>";
-        echo "<td><button type='button' data-container='body' class='btn btn-outline-light btn-sm' style='color: black;' data-toggle='tooltip' data-placement='left' title='" . $result['remarks'] . "'>
-                Remark
-                </button></td>";
+        echo "<td align='center'><button type='button' class='btn btn- sm btn-light' data-toggle='modal' data-target='#myModal" . $result['trackingNumber'] . "'>
+                            Open
+                            </button></td>";
+
+        echo '<div class="modal" id="myModal' . $result['trackingNumber'] . '">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title">Remarks</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                               <p><b>Rate of TDS:</b><&nbsp> ' . $result['tdsRate'] . '</p>
+                               <p><b>Currency in which remittance is made:</b><&nbsp> ' . $result['remittanceCurrency'] . '</p>
+                               <p><b>Nature of Remittance:</b><&nbsp> ' . $result['remittanceNature'] . '</p>
+                               <p><b>Purpose Code:</b><&nbsp> ' . $result['purposeCode'] . '</p>
+                               <p><b>Please confirm if tax paid is to be grossed up:</b><&nbsp> ' . $result['taxPaid'] . '</p>
+                               <p><b>Is TRC(Tax Residency Certificate) available:</b><&nbsp> ' . $result['trc'] . '</p>
+                               <p><b>Remarks:</b><&nbsp> ' . $result['remarks'] . '</p> 
+
+
+                            </div>
+
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>';
+
 
         echo "<td><input type='text' name='ackNumber_" . $counter . "' value='" . $result['ackNumber'] . "'></td>";
 
@@ -98,12 +131,44 @@ if ($orderBy == 'A') {
 
     while ($result = mysqli_fetch_array($querySql)) {
         echo "<tr>";
-        echo "<th scope='row'>$counter</th>";
+        echo "<td>$counter</td>";
         echo "<td>" . $result['firstName'] . " " . $result['lastName'] . "</td>";
         echo "<td>" . $result['dateRegistered'] . "</td>";
-        echo "<td><button type='button' data-container='body' class='btn btn-outline-light btn-sm' style='color: black;' data-toggle='tooltip' data-placement='left' title='" . $result['remarks'] . "'>
-                Remark
-                </button></td>";
+
+        echo "<td align='center'><button type='button' class='btn btn- sm btn-light' data-toggle='modal' data-target='#myModal" . $result['trackingNumber'] . "'>
+                            Open
+                            </button></td>";
+
+        echo '<div class="modal" id="myModal' . $result['trackingNumber'] . '">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+
+                                        <!-- Modal Header -->
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Remarks</h4>
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+
+                                        <!-- Modal body -->
+                                        <div class="modal-body">
+                                            <p><b>Rate of TDS:</b><&nbsp> ' . $result['tdsRate'] . '</p>
+                                           <p><b>Currency in which remittance is made:</b><&nbsp> ' . $result['remittanceCurrency'] . '</p>
+                                           <p><b>Nature of Remittance:</b><&nbsp> ' . $result['remittanceNature'] . '</p>
+                                           <p><b>Purpose Code:</b><&nbsp> ' . $result['purposeCode'] . '</p>
+                                           <p><b>Please confirm if tax paid is to be grossed up:</b><&nbsp> ' . $result['taxPaid'] . '</p>
+                                           <p><b>Is TRC(Tax Residency Certificate) available:</b><&nbsp> ' . $result['trc'] . '</p>
+                                           <p><b>Remarks:</b><&nbsp> ' . $result['remarks'] . '</p>                        
+                                        </div>
+
+                                        <!-- Modal footer -->
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                </div>';
+
 
         echo "<td><input type='text' name='ackNumber_" . $counter . "' value='" . $result['ackNumber'] . "'></td>";
 

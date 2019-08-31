@@ -17,7 +17,7 @@ function test_input($data)
 
 if (isset($_POST["submitFile"])) {
 
-    $sql = "SELECT * FROM Users WHERE userName ='$sessionHolder'";
+    $sql = "SELECT * FROM Users WHERE userName ='$sessionHolder' AND identity='client'";
     $querySql = mysqli_query($connect, $sql);
     $row = mysqli_fetch_array($querySql);
 
@@ -32,10 +32,55 @@ if (isset($_POST["submitFile"])) {
     $identity = $row['identity'];
 
     if ($_POST['clientRemarks'] == null) {
-        $remarks = 'none';
-    } else {
+       $remarks = 'none';
+    }
+    else {
         $remarks = mysqli_real_escape_string($connect, test_input($_POST['clientRemarks']));
     }
+
+    if ($_POST['tdsRate'] == null){
+        $tdsRate = 'none';
+    } 
+    else{
+        $tdsRate = mysqli_real_escape_string($connect, test_input($_POST['tdsRate']));
+    }
+
+    if ($_POST['remittanceCurrency'] == null){
+        $remittanceCurrency = 'none';
+    }
+    else{
+        $remittanceCurrency = mysqli_real_escape_string($connect, test_input($_POST['remittanceCurrency']));
+    }
+
+    if ($_POST['remittanceNature'] == null){
+        $remittanceNature = 'none';
+    }
+    else{
+        $remittanceNature = mysqli_real_escape_string($connect, test_input($_POST['remittanceNature']));
+    }
+
+    if ($_POST['purposeCode'] == null){
+        $purposeCode = 'none';
+    }
+    else{
+        $purposeCode = mysqli_real_escape_string($connect, test_input($_POST['purposeCode']));
+    }
+
+    if($_POST['taxPaid'] == null){
+        $taxPaid = 'none';
+    }
+    else{
+        $taxPaid = mysqli_real_escape_string($connect, test_input($_POST['taxPaid']));
+    }
+
+    if($_POST['trc'] == null){
+        $trc = 'none';
+    }
+    else{
+     $trc = mysqli_real_escape_string($connect, test_input($_POST['trc']));   
+    }
+    
+    $mailValue = 0;
     $partyName = null;
     $contact = $row['contact'];
     $ackNumber = null;
@@ -88,18 +133,42 @@ if (isset($_POST["submitFile"])) {
     } else {
         if (move_uploaded_file($_FILES["clientUploadedFile"]["tmp_name"], $target_file)) {
 
-            $insertToDocumentStore = "INSERT INTO `documentStore`(`id`, `firstName`, `lastName`, `fullName`, `userName`, `email`, `dateRegistered`, `transactionDate`, `identityUser`, `remarks`, `partyName`, `ackNumber`, `trackingNumber`, `uidNumber`, `clientUploadedDoc`, `adminUploadedDoc`, `taskStatus`, `contact`, `process`) 
-						VALUES ('$id', '$firstName', '$lastName', '$fullName', '$userName', '$email', '$dateRegistered', '$transactionDate', '$identity', '$remarks', '$partyName', '$ackNumber', '$trackingNumber', '$uidNumber', '$clientUploadedDoc', '$adminUploadedDoc', '$taskStatus', '$contact', '$process')";
+            $insertToDocumentStore = "INSERT INTO `documentStore`(`id`, `firstName`, `lastName`, `fullName`, `userName`, `email`, `dateRegistered`, `transactionDate`, `identityUser`, `remarks`, `tdsRate`, `remittanceCurrency`, `remittanceNature`, `purposeCode`, `taxPaid`, `trc` ,`partyName`, `ackNumber`, `trackingNumber`, `uidNumber`, `clientUploadedDoc`, `adminUploadedDoc`, `taskStatus`, `contact`, `process`) 
+                        VALUES ('$id', '$firstName', '$lastName', '$fullName', '$userName', '$email', '$dateRegistered', '$transactionDate', '$identity', '$remarks', '$tdsRate', '$remittanceCurrency','$remittanceNature', '$purposeCode', '$taxPaid', '$trc', '$partyName', '$ackNumber', '$trackingNumber', '$uidNumber', '$clientUploadedDoc', '$adminUploadedDoc', '$taskStatus', '$contact', '$process')";
 
             if (mysqli_query($connect, $insertToDocumentStore)) {
-                echo "<script type='text/javascript'>alert('Uploaded to database');</script>";
+                echo "<script type='text/javascript'>alert('Your file " . basename($_FILES["clientUploadedFile"]["name"]) . " has been uploaded.');</script>";
+
+                $mailValue = 1;
+
+                if($mailValue == 1) {
+
+                echo "
+                <script type='text/javascript'>
+
+                    var name = '" . $userName . "';
+                    var message = name + ' has uploaded an invoice file.';
+
+                    var xhttpObj = new XMLHttpRequest();
+                    xhttpObj.open('POST', 'https://script.google.com/macros/s/AKfycbyvvMuRXkIdrlf2YZbcsMLpTPVIxe_AZjt29jXoFS-pKYnoJnQ/exec', true);
+                    xhttpObj.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                    xhttpObj.send('message=' + message);
+                    window.alert('mail sent');
+                </script>";
+
+            } else {
+
+                echo "
+                <script type='text/javascript'>
+                    window.alert('mail not sent');
+                </script>";
+
+            }
+
             } else {
                 echo "Error uploading: " . mysqli_error($connect);
             }
-            echo "<script type='text/javascript'>alert('Your file " . basename($_FILES["clientUploadedFile"]["name"]) . " has been uploaded.');</script>";
-
-            echo "<script type='text/javascript' src='../scripts/sendMail.js'>alert('alert');</script>";
-
+            
             ?>
             <script>
                 window.location.href = "../routes/client/homeClient.php";
@@ -107,6 +176,7 @@ if (isset($_POST["submitFile"])) {
         <?php
 
         } else {
+
             echo "<script type='text/javascript'>alert('Sorry, there was an error uploading your file.');</script>";
             ?>
             <script>

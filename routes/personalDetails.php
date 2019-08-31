@@ -9,7 +9,7 @@ $sessionHolder = $_SESSION['user'];
 
 include '../php/connectionDb15CACB.php';
 
-if (isset($_POST["insert"])) {
+if (isset($_POST['address'])) {
     $sql = "SELECT * FROM Users WHERE username = '$sessionHolder'";
     $querySql = mysqli_query($connect, $sql);
     $row = mysqli_fetch_array($querySql);
@@ -22,11 +22,27 @@ if (isset($_POST["insert"])) {
     $compName = $_POST['companyName'];
     $gst = $_POST['gstNumber'];
     $ifsc = $_POST['ifscCode'];
-    $swift = $_POST['swiftCode'];
+    $bsr = $_POST['bsrCode'];
     $accNumber = $_POST['accountNumber'];
 
-    $query = "INSERT INTO personaldetails(id, username, identity, address, panNumber, companyName, gstNumber, ifscCode, swiftCode, accountNumber) VALUES ('$id','$username', '$identity', '$address','$pan','$compName','$gst','$ifsc','$swift', '$accNumber')";
+    $query = "INSERT INTO personaldetails(id, username, identity, address, panNumber, companyName, gstNumber, ifscCode, bsrCode, accountNumber) VALUES ('$id','$username', '$identity', '$address','$pan','$compName','$gst','$ifsc','$bsr', '$accNumber')";
     if (mysqli_query($connect, $query)) {
+
+        ?>
+
+        <script type="text/javascript">
+            var message = 'The above client has signed up on our platform.';
+            var name = '<?php echo $row['firstName'] . " " . $row['lastName'];  ?>';
+            var clientEmail = '<?php echo $row['email']; ?>';
+
+            var xhttpObj = new XMLHttpRequest();
+            xhttpObj.open("POST", "https://script.google.com/macros/s/AKfycbyvvMuRXkIdrlf2YZbcsMLpTPVIxe_AZjt29jXoFS-pKYnoJnQ/exec", true);
+            xhttpObj.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttpObj.send("message=" + message + "&name=" + name + "&clientEmail=" + clientEmail);
+        </script>
+        
+        <?php
+
         if ($identity == "admin") {
             echo '<script type="text/javascript">
                     alert("Details entered successfully! Press OK to continue");                
@@ -66,7 +82,6 @@ if (isset($_POST["insert"])) {
             var message = 'The above client has signed up on our platform.';
             var name = '<?php echo $rowDetails['firstName'] . " " . $rowDetails['lastName'];  ?>';
             var clientEmail = '<?php echo $rowDetails['email']; ?>';
-            // var TO_ADDRESS = 'aditya.sanil24@gmail.com';
 
             var xhttpObj = new XMLHttpRequest();
             xhttpObj.open("POST", "https://script.google.com/macros/s/AKfycbyvvMuRXkIdrlf2YZbcsMLpTPVIxe_AZjt29jXoFS-pKYnoJnQ/exec", true);
@@ -76,7 +91,7 @@ if (isset($_POST["insert"])) {
     </script>
 </head>
 
-<body>
+<body onload="">
     <nav class="navbar sticky-top navbar-expand-lg navbar-dark" style="background-color: #0079c4;">
         <div class="container">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
@@ -147,9 +162,9 @@ if (isset($_POST["insert"])) {
                         <div class="form-group">
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text">Swift Code</span>
+                                    <span class="input-group-text">BSR Code</span>
                                 </div>
-                                <input name="swiftCode" id="swiftCode" class="form-control" placeholder="enter Swift code" type="text" required>
+                                <input name="bsrCode" id="bsrCode" class="form-control" placeholder="enter BSR code" type="text" required>
                             </div>
                         </div>
 
@@ -164,7 +179,7 @@ if (isset($_POST["insert"])) {
                         </div>
 
                         <div class="form-group">
-                            <input type="submit" id="submitDetails" class="btn btn-success btn-block" name="insert" value="Submit" onclick="notifyAdmin()">
+                            <input type="submit" id="submitDetails" class="btn btn-success btn-block" name="insert" value="Submit">
                             <span id="result"></span>
                         </div>
                     </form>

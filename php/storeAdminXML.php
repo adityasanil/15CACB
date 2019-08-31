@@ -64,9 +64,9 @@ if (isset($_POST)) {
         </script>
     <?php
     }
-    if ($imageFileType != "docx" && $imageFileType != "png" && $imageFileType != "doc" && $imageFileType != "txt" && $imageFileType != "pdf" && $imageFileType != "jpg" && $imageFileType != "jpeg" && $imageFileType != "png") {
+    if ($imageFileType != "xml" && $imageFileType != "docx" && $imageFileType != "png" && $imageFileType != "doc" && $imageFileType != "txt" && $imageFileType != "pdf" && $imageFileType != "jpg" && $imageFileType != "jpeg" && $imageFileType != "png") {
         $uploadOk = 0;
-        echo "<script type='text/javascript'>alert('Sorry, only doc, jpeg, jpg, docx, pdf & txt files are allowed.');</script>";
+        echo "<script type='text/javascript'>alert('Sorry, only xml, doc, jpeg, jpg, docx, pdf & txt files are allowed.');</script>";
         ?>
         <script>
             window.location.href = "../routes/admin/homeAdmin.php";
@@ -87,11 +87,11 @@ if (isset($_POST)) {
             $adminInsertToDbXML = "UPDATE `documentStore` SET `adminXML`='$adminUploadedDocXML' WHERE `trackingNumber`='$fileAdminIDXML'";
 
             if (mysqli_query($connect, $adminInsertToDbXML)) {
-                echo "<script type='text/javascript'>alert('Uploaded to database');</script>";
+                echo "<script type='text/javascript'>alert('Your file " . basename($_FILES[$fileAdminFileXML]["name"]) . "has been uploaded.');</script>";
             } else {
                 echo "Error uploading: " . mysqli_error($connect);
             }
-            echo "<script type='text/javascript'>alert('Your file " . basename($_FILES[$fileAdminFileXML]["name"]) . "has been uploaded.');</script>";
+
             ?>
             <script>
                 window.location.href = "../routes/admin/homeAdmin.php";

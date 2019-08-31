@@ -76,7 +76,7 @@
 		<div class="form-row">
 			<div class="form-group col-md-4">
 			  <label for="contact">Contact number</label>
-			  <input type="text" class="form-control" id="contactNumber" placeholder="enter contact number" required>
+			  <input type="text" class="form-control" id="contactNumber" maxlength="10" placeholder="enter contact number" required>
 			</div>
 
 			<div class="form-group col-md-4">

@@ -1,7 +1,7 @@
 <?php
 // session_start()
 
-include 'php/connectionDb15CACB.php';
+include '../../php/connectionDb15CACB.php';
 $result = mysqli_query($connect, "SELECT * FROM posts WHERE selectedOption='Rule' ORDER BY timestamp ASC");
 
 
@@ -65,13 +65,13 @@ $result = mysqli_query($connect, "SELECT * FROM posts WHERE selectedOption='Rule
                 </div><br>
 
                 <!--<div class="col-sm-6 col-md-5 col-lg-3">
-                                        <div class="card shadow mb-3" style="width: 16rem;">
-                                            <div class="card-body">
-                                                <h5 class="card-title"><?php echo $row["title"]; ?></h5>
-                                                <p class="card-text"><small class="text-muted text-success">Date of posting:&nbsp<?php echo $row["date"]; ?></small></p>
-                                                <input type="button" name="view" value="view" id="<?php echo $row["post_id"]; ?>" class="btn btn-info btn-xs view_data" />
-                                            </div>
-                                        </div>-->
+                                    <div class="card shadow mb-3" style="width: 16rem;">
+                                        <div class="card-body">
+                                            <h5 class="card-title"><?php echo $row["title"]; ?></h5>
+                                            <p class="card-text"><small class="text-muted text-success">Date of posting:&nbsp<?php echo $row["date"]; ?></small></p>
+                                            <input type="button" name="view" value="view" id="<?php echo $row["post_id"]; ?>" class="btn btn-info btn-xs view_data" />
+                                        </div>
+                                    </div>-->
             </div>
             <?php
             ++$a;
